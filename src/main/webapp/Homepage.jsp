@@ -13,37 +13,48 @@
         <title>Home Page</title>
     </head>
     <body class="Homepage">         
-        <img class="Bgr" src="/image/homepage-bgr.png"/>
+        <img class="Bgr" src="image/homepage-bgr.png"/>
+        <div><a href="Homepage.jsp"><img class ="Logo" src="image/logo(white).png"/></a></div>
+
         <div class="Header">
-            
-            <a href="Homepage.jsp" class="Home">HOME</a>
-            <a href="AboutUspage.jsp" class="About">ABOUT</a>
-            <a href="Specspage.jsp" class="Specs">SPECS</a>
-            <a href="Gamespage.jsp" class="Games">GAMES</a>
-            <a href="Menupage.jsp" class="Menu">MENU</a>
-            <a href="Bookingpage.jsp" class="Booking">BOOKING</a>
-            <a href="Acountpage.jsp" class="Account">ACCOUNT</a>
-            <a href="Homepage.jsp"><img class ="Logo" src="/image/logo (white).png"/></a>
+            <nav>
+                <ul>
+                    <li><a href="Homepage.jsp" class="Home">HOME</a></li>
+                    <li><a href="AboutUspage.jsp" class="About">ABOUT</a></li>
+                    <li><a href="Specspage.jsp" class="Specs">SPECS</a></li>
+                    <li><a href="Gamespage.jsp" class="Games">GAMES</a></li>
+                    <li><a href="Menupage.jsp" class="Menu">MENU</a></li>
+                    <li><a href="Bookingpage.jsp" class="Booking">BOOKING</a></li>
+                    <li><a href="Acountpage.jsp" class="Account">ACCOUNT</a></li>
+                </ul>
+            </nav>
         </div>
-        
+
         <div class="Welcome">
             <span class="id1" >Welcome to<br/></span>
             <span class="id2">Internet Café</span>
         </div>
-        <p class="Brief">Internet Café offers a serene retreat in the heart of the city, where state-of-the-art technology meets tranquil ambiance. Enjoy high-speed internet, gourmet refreshments, and a peaceful atmosphere for work, study, or play</p>
-        <a href="AboutUspage.jsp" class="SeeMore">See more</a>
+        <div class="slogan">
+            <p class="Brief">Internet Café offers a serene retreat in the heart of the city, where state-of-the-art technology meets tranquil ambiance. Enjoy high-speed internet, gourmet refreshments, and a peaceful atmosphere for work, study, or play</p>
+            <p><a href="AboutUspage.jsp" class="SeeMore">See more</a></p>
+        </div>
         <div class="Footer">
-            <a class="Rectangle"></a>
-            <a class="Contact">Contact</a>
-            <a class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</a>
-            <a class="Phone">📞 Phone: (+84) 88888888</a>
-            <a class="Email">✉️ Email: internetcafe@gmail.com</a>
-            <a class="Support">Support </a>
-            <a class="Feedback">Feedback</a>
-            <a class="PrivacyPolicy">Privacy Policy</a>
-            <a class="Acc">Account</a>
-            <a class="MyAccount">My account</a>
-            <a class="ViewAllOrders">View all orders</a>
+            <div class="Contact">
+                <p><u>Contact</u></p>
+                <p><a class="Phone">📞 Phone: (+84) 88888888</a></p>
+                <p><a class="Email">✉️ Email: internetcafe@gmail.com</a></p>
+                <p><a class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</a></p>
+            </div>
+            <div class="Support">
+                <p><u>Support</u></p>
+                <p><a class="Feedback">Feedback</a></p>
+                <p><a class="PrivacyPolicy">Privacy Policy</a></p>
+            </div>
+            <div class="Acc">
+                <p><u>Account</u></p>
+                <p><a class="MyAccount">My account</a></p>
+                <p><a class="ViewAllOrders">View all orders</a></p>
+            </div>
         </div>
     </body>
 </html>
