@@ -1,0 +1,446 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : May 26, 2024, 10:20:22 PM
+    Author     : Jiang
+*/
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+.Aboutuspage {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+    width: 100%;
+    height: 2690px;
+    position: relative;
+    background: #1E0126;
+}
+
+.image {
+    width: 380px;
+    height: 380px;
+    left: 198px;
+    top: 242px;
+    position: absolute;
+}
+
+.Brief {
+    width: 534px;
+    height: 262px;
+    left: 708px;
+    top: 295px;
+    position: absolute;
+}
+
+.title {
+    width: 534px;
+    height: 56px;
+    left: 0;
+    top: 0;
+    position : absolute;
+    color: white;
+    font-size: 45px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.90px;
+    word-wrap: break-word;
+}
+
+.InternetCafe {
+    width: 534px;
+    left: 0;
+    top: 87px;
+    position: absolute;
+    text-align: justify;
+    color: white;
+    font-size: 18px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 25px;
+    letter-spacing: 0.18px;
+    word-wrap: break-word;
+}
+
+.MV {
+    width: 1200px;
+    height: 236px;
+    left: 120px;
+    top: 751px;
+    position: absolute;
+}
+
+.MissionVision {
+    width: 329px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.MVdescript {
+    width: 1200px;
+    left: 0;
+    top: 76px;
+    position: absolute;
+    text-align: justify;
+    color: white;
+    font-size: 18px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 25px;
+    word-wrap: break-word;
+}
+.WhyChoose {
+    width: 1200px;
+    height: 316px;
+    left: 120px;
+    top: 1059px;
+    position: absolute;
+}
+
+.Why {
+    width: 570px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.reason {
+    width: 1200px;
+    left: 0;
+    top: 76px;
+    position: absolute;
+    text-align: justify;
+    color: white;
+    font-size: 18px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 25px;
+    word-wrap: break-word;
+}
+
+.Service {
+    width: 1200px;
+    height: 241px;
+    left: 120px;
+    top: 1447px;
+    position: absolute;
+}
+
+.Services {
+    width: 329px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.servicedescript {
+    width: 1200px;
+    left: 0;
+    top: 76px;
+    position: absolute;
+    text-align: justify;
+    color: white;
+    font-size: 18px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 25px;
+    word-wrap: break-word;
+}
+
+.Join {
+    width: 1200px;
+    height: 126px;
+    left: 120px;
+    top: 1760px;
+    position: absolute;
+}
+
+.JoinUsToday {
+    width: 329px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.joindescript {
+    width: 1200px;
+    left: 0;
+    top: 76px;
+    position: absolute;
+    text-align: justify;
+    color: white;
+    font-size: 18px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 25px;
+    word-wrap: break-word;
+}
+
+.Connect {
+    width: 1200px;
+    height: 231px;
+    left: 120px;
+    top: 1958px;
+    position: absolute;
+}
+
+.ConnectWithUs {
+    width: 329px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.connectdescript {
+    width: 1200px;
+    left: 0;
+    top: 76px;
+    position: absolute;
+    text-align: justify;
+    color: white;
+    font-size: 18px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 25px;
+    word-wrap: break-word;
+}
+
+.Header{
+    width: 1200px; 
+    height: 95px; 
+    left: 120px; 
+    top: 44px; 
+    position: absolute;
+    .Logo{
+        width: 174px; 
+        height: 95px; 
+        left: 0px; 
+        top: 0px; 
+        position: absolute;
+    }
+    .About{
+        left: 551px; 
+        top: 57px;
+        position: absolute;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        word-wrap: break-word;
+    }
+    .Specs{
+        left: 663px; 
+        top: 57px;
+        position: absolute;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        word-wrap: break-word;;
+    }
+    .Games{
+        left: 767px; 
+        top: 57px; 
+        position: absolute;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        word-wrap: break-word;
+    }
+    .Menu{
+        left: 879px; 
+        top: 57px; 
+        position: absolute;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        word-wrap: break-word;
+    }
+    .Booking{
+        left: 980px; 
+        top: 57px; 
+        position: absolute;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        word-wrap: break-word;
+    }
+    .Account{
+        left: 1113px; 
+        top: 57px; 
+        position: absolute;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        word-wrap: break-word;
+    }
+    .Home{
+        left: 448px; 
+        top: 57px; 
+        position: absolute;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        word-wrap: break-word;
+    }
+}
+.Footer{
+    width: 100%; 
+    height: 329px; 
+    left: 0px; 
+    top: 2360px; 
+    position: absolute;
+    .Rectangle{
+        width: 100%; 
+        height: 329px; 
+        left: 0px; 
+        top: 0px;
+        position: absolute; 
+        background: #0D0D0D;
+    }
+    .Contact{
+        left: 120px; 
+        top: 66px; 
+        position: absolute; 
+        text-align: justify;
+        color: white;
+        font-size: 20px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        text-decoration: underline;
+        word-wrap: break-word;
+    }
+    .Office{
+        left: 120px; 
+        top: 123px; 
+        position: absolute; 
+        text-align: justify;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        word-wrap: break-word;
+    }
+    .Phone{
+        left: 120px; 
+        top: 178px; 
+        position: absolute; 
+        text-align: justify;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        word-wrap: break-word;
+    }
+    .Email{
+        left: 120px; 
+        top: 233px; 
+        position: absolute; 
+        text-align: justify;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        word-wrap: break-word;
+    }
+    .Support{
+        left: 812px; 
+        top: 66px; 
+        position: absolute; 
+        text-align: justify;
+        color: white;
+        font-size: 20px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        text-decoration: underline;
+        word-wrap: break-word;
+    }
+    .Feedback{
+        left: 812px; 
+        top: 123px; 
+        position: absolute; 
+        text-align: justify;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        word-wrap: break-word;
+    }
+    .PrivacyPolicy{
+        left: 812px; 
+        top: 178px; 
+        position: absolute; 
+        text-align: justify;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        word-wrap: break-word;
+    }
+    .Acc{
+        left: 1141px; 
+        top: 66px; 
+        position: absolute; 
+        text-align: justify;
+        color: white;
+        font-size: 20px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        text-decoration: underline;
+        word-wrap: break-word;
+    }
+    .MyAccount{
+        left: 1141px; 
+        top: 123px; 
+        position: absolute; 
+        text-align: justify;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        word-wrap: break-word;
+    }
+    .ViewAllOrders{
+        left: 1141px; 
+        top: 178px; 
+        position: absolute; 
+        text-align: justify;
+        color: white;
+        font-size: 18px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        word-wrap: break-word;
+    }
+}
