@@ -23,7 +23,7 @@
                 <input type="text" id="username" name="username" required class="account" placeholder="Account"><br>
                 <input type="email" id="email" name="email" required class="email" placeholder="Email"><br>
                 <input type="password" id="pass" name="pass" required class="pass" placeholder="Password" ><br>
-                <input type="password" name="cfpass" required class="cfpass" placeholder="Comfirm Password"><br>
+                <input type="tel" name="cfpass" required class="cfpass" placeholder="Comfirm Password"><br>
                 <!--<span class="tooltiptext">Must contain a number and least of 6 characters</span>-->
                 <label class="checkbox"><input type="checkbox" required style="width: 14px; height: 14px">Remember me</label>
                 <p>By clicking register button you agree to our terms and conditions and privacy and policy.</p>

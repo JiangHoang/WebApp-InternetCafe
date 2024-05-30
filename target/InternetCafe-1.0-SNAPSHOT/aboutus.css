@@ -232,215 +232,75 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     word-wrap: break-word;
 }
 
-.Header{
-    width: 1200px; 
-    height: 95px; 
-    left: 120px; 
-    top: 44px; 
-    position: absolute;
+.headerbox{
+    display: block;
+    width: 100%; 
+    height: 12%; 
+    position: fixed;
+    z-index: 100;
+    margin: 0 0;
     .Logo{
-        width: 174px; 
-        height: 95px; 
-        left: 0px; 
-        top: 0px; 
-        position: absolute;
+        width: 10vw; 
+        height: 10vh; 
+        margin-left: 5%;
+        margin-top: 0.5%;
+        position: sticky;
+        float: left;
+        z-index: 1000;
     }
-    .About{
-        left: 551px; 
-        top: 57px;
-        position: absolute;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 600;
-        word-wrap: break-word;
-    }
-    .Specs{
-        left: 663px; 
-        top: 57px;
-        position: absolute;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 600;
-        word-wrap: break-word;;
-    }
-    .Games{
-        left: 767px; 
-        top: 57px; 
-        position: absolute;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 600;
-        word-wrap: break-word;
-    }
-    .Menu{
-        left: 879px; 
-        top: 57px; 
-        position: absolute;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 600;
-        word-wrap: break-word;
-    }
-    .Booking{
-        left: 980px; 
-        top: 57px; 
-        position: absolute;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 600;
-        word-wrap: break-word;
-    }
-    .Account{
-        left: 1113px; 
-        top: 57px; 
-        position: absolute;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 600;
-        word-wrap: break-word;
-    }
-    .Home{
-        left: 448px; 
-        top: 57px; 
-        position: absolute;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 600;
-        word-wrap: break-word;
+    nav ul{
+        width: 90vw;
+        display: block;
+        text-align: center;
+        background: transparent;
+        margin-top: 0;
+        li{
+            display: inline-block;
+            list-style: none;
+            margin: 2vw;
+            a{
+                text-decoration: none;
+                color: white;
+                font-size: 18px;
+                font-family: 'Outfit', sans-serif;
+                font-weight: 600;
+                position: relative;
+            }
+            a::after{
+                content:'';
+                width: 0;
+                height: 1px;
+                background:whitesmoke;
+                position: relative;
+                left: 0;
+                bottom: -2px;
+                transition: 0.3s ;
+            }
+            a:hover::after{
+                width: 100%;
+            }
+        }
     }
 }
+body.scrolled .headerbox {
+    width: 100vw;
+    height: 12vh;
+    background-color: black;
+}
 .Footer{
-    width: 100%; 
-    height: 329px; 
-    left: 0px; 
-    top: 2360px; 
-    position: absolute;
-    .Rectangle{
-        width: 100%; 
-        height: 329px; 
-        left: 0px; 
-        top: 0px;
-        position: absolute; 
-        background: #0D0D0D;
-    }
-    .Contact{
-        left: 120px; 
-        top: 66px; 
-        position: absolute; 
-        text-align: justify;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5% auto;
+    div{
         color: white;
-        font-size: 20px;
+        font-size: 1.3vw;
         font-family: 'Outfit', sans-serif;
-        font-weight: 700;
-        text-decoration: underline;
-        word-wrap: break-word;
-    }
-    .Office{
-        left: 120px; 
-        top: 123px; 
-        position: absolute; 
-        text-align: justify;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 700;
-        word-wrap: break-word;
-    }
-    .Phone{
-        left: 120px; 
-        top: 178px; 
-        position: absolute; 
-        text-align: justify;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 700;
-        word-wrap: break-word;
-    }
-    .Email{
-        left: 120px; 
-        top: 233px; 
-        position: absolute; 
-        text-align: justify;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 700;
-        word-wrap: break-word;
-    }
-    .Support{
-        left: 812px; 
-        top: 66px; 
-        position: absolute; 
-        text-align: justify;
-        color: white;
-        font-size: 20px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 700;
-        text-decoration: underline;
-        word-wrap: break-word;
-    }
-    .Feedback{
-        left: 812px; 
-        top: 123px; 
-        position: absolute; 
-        text-align: justify;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 700;
-        word-wrap: break-word;
-    }
-    .PrivacyPolicy{
-        left: 812px; 
-        top: 178px; 
-        position: absolute; 
-        text-align: justify;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 700;
-        word-wrap: break-word;
-    }
-    .Acc{
-        left: 1141px; 
-        top: 66px; 
-        position: absolute; 
-        text-align: justify;
-        color: white;
-        font-size: 20px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 700;
-        text-decoration: underline;
-        word-wrap: break-word;
-    }
-    .MyAccount{
-        left: 1141px; 
-        top: 123px; 
-        position: absolute; 
-        text-align: justify;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 700;
-        word-wrap: break-word;
-    }
-    .ViewAllOrders{
-        left: 1141px; 
-        top: 178px; 
-        position: absolute; 
-        text-align: justify;
-        color: white;
-        font-size: 18px;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 700;
-        word-wrap: break-word;
+        font-weight: 500;
+        vertical-align: top;
+        p u{
+            font-size: 2vw;
+            font-weight: 900;
+            color: #AB04D9;
+        } 
     }
 }

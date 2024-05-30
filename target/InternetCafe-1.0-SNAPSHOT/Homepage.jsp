@@ -14,22 +14,22 @@
     </head>
     <body class="Homepage">         
         <img class="Bgr" src="image/homepage-bgr.png"/>
-        <div><a href="Homepage.jsp"><img class ="Logo" src="image/logo(white).png"/></a></div>
-
-        <div class="Header">
-            <nav>
-                <ul>
-                    <li><a href="Homepage.jsp" class="Home">HOME</a></li>
-                    <li><a href="AboutUspage.jsp" class="About">ABOUT</a></li>
-                    <li><a href="Specspage.jsp" class="Specs">SPECS</a></li>
-                    <li><a href="Gamespage.jsp" class="Games">GAMES</a></li>
-                    <li><a href="Menupage.jsp" class="Menu">MENU</a></li>
-                    <li><a href="Bookingpage.jsp" class="Booking">BOOKING</a></li>
-                    <li><a href="Acountpage.jsp" class="Account">ACCOUNT</a></li>
-                </ul>
-            </nav>
+        <div class="headerbox">
+            <a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"/></a>
+            <div class="Header">
+                <nav>
+                    <ul>
+                        <li><a href="Homepage.jsp" class="Home">HOME</a></li>
+                        <li><a href="AboutUspage.jsp" class="About">ABOUT</a></li>
+                        <li><a href="Specspage.jsp" class="Specs">SPECS</a></li>
+                        <li><a href="Gamespage.jsp" class="Games">GAMES</a></li>
+                        <li><a href="Menupage.jsp" class="Menu">MENU</a></li>
+                        <li><a href="Bookingpage.jsp" class="Booking">BOOKING</a></li>
+                        <li><a href="Acountpage.jsp" class="Account">ACCOUNT</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-
         <div class="Welcome">
             <span class="id1" >Welcome to<br/></span>
             <span class="id2">Internet Café</span>
@@ -56,5 +56,15 @@
                 <p><a class="ViewAllOrders">View all orders</a></p>
             </div>
         </div>
+        <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementsByClassName("headerbox");
+            if (window.scrollY > 0) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+        </script>
     </body>
 </html>

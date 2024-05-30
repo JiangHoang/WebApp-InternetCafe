@@ -14,6 +14,22 @@
     </head>
     <body class="Aboutuspage">
         <img class="image" src="/image/aboutme.png"/>
+        <div class="headerbox">
+            <a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"/></a>
+            <div class="Header">
+                <nav>
+                    <ul>
+                        <li><a href="Homepage.jsp" class="Home">HOME</a></li>
+                        <li><a href="AboutUspage.jsp" class="About">ABOUT</a></li>
+                        <li><a href="Specspage.jsp" class="Specs">SPECS</a></li>
+                        <li><a href="Gamespage.jsp" class="Games">GAMES</a></li>
+                        <li><a href="Menupage.jsp" class="Menu">MENU</a></li>
+                        <li><a href="Bookingpage.jsp" class="Booking">BOOKING</a></li>
+                        <li><a href="Acountpage.jsp" class="Account">ACCOUNT</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
         <div class="Brief">
             <div class="title">ABOUT INTERNET CAFÉ</div>
             <div class="InternetCafe">At Internet Café, we believe in creating a harmonious blend of technology and tranquility. Located in the heart of the city, our café is designed to be a serene oasis where digital connectivity meets relaxation. Whether you're a freelancer looking for a peaceful place to work, a gamer seeking the best online experience, or a student needing a quiet spot for study and research, Internet Café is your perfect destination.</div>
@@ -38,28 +54,33 @@
             <div class="ConnectWithUs">Connect with Us</div>
             <div class="connectdescript"><span>Stay updated on our latest events, promotions, and community news by following us on social media. Join our mailing list for exclusive offers and updates.<br/></span><span>Facebook: InternetCafé<br/>Twitter: @InternetCafé<br/>Instagram: @InternetCafé</span></div>
         </div>
-        <div class="Header">
-            <a href="Homepage.jsp" class="Home">HOME</a>
-            <a href="AboutUspage.jsp" class="About">ABOUT</a>
-            <a href="Specspage.jsp" class="Specs">SPECS</a>
-            <a href="Gamespage.jsp" class="Games">GAMES</a>
-            <a href="Menupage.jsp" class="Menu">MENU</a>
-            <a href="Bookingpage.jsp" class="Booking">BOOKING</a>
-            <a href="Acountpage.jsp" class="Account">ACCOUNT</a>
-            <a href="Homepage.jsp"><img class="Logo" src="/image/logo (white).png"/></a>
-        </div>
         <div class="Footer">
-            <a class="Rectangle"></a>
-            <a class="Contact">Contact</a>
-            <a class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</a>
-            <a class="Phone">📞 Phone: (+84) 88888888</a>
-            <a class="Email">✉️ Email: internetcafe@gmail.com</a>
-            <a class="Support">Support </a>
-            <a class="Feedback">Feedback</a>
-            <a class="PrivacyPolicy">Privacy Policy</a>
-            <a class="Acc">Account</a>
-            <a class="MyAccount">My account</a>
-            <a class="ViewAllOrders">View all orders</a>
-        </div>
+            <div class="Contact">
+                <p><u>Contact</u></p>
+                <p><a class="Phone">📞 Phone: (+84) 88888888</a></p>
+                <p><a class="Email">✉️ Email: internetcafe@gmail.com</a></p>
+                <p><a class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</a></p>
+            </div>
+            <div class="Support">
+                <p><u>Support</u></p>
+                <p><a class="Feedback">Feedback</a></p>
+                <p><a class="PrivacyPolicy">Privacy Policy</a></p>
+            </div>
+            <div class="Acc">
+                <p><u>Account</u></p>
+                <p><a class="MyAccount">My account</a></p>
+                <p><a class="ViewAllOrders">View all orders</a></p>
+            </div>
+        </div> 
+        <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementsByClassName("headerbox");
+            if (window.scrollY > 0) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+        </script>
     </body>
 </html>
