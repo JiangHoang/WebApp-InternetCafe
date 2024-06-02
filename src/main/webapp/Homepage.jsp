@@ -1,4 +1,4 @@
-<%-- 
+=<%-- 
     Document   : Homepage
     Created on : May 26, 2024, 7:24:58 PM
     Author     : Jiang
@@ -14,8 +14,8 @@
     </head>
     <body class="Homepage">         
         <img class="Bgr" src="image/homepage-bgr.png"/>
-        <div class="headerbox">
-            <a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"/></a>
+            <div><a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"/></a></div>
+
             <div class="Header">
                 <nav>
                     <ul>
@@ -29,15 +29,15 @@
                     </ul>
                 </nav>
             </div>
-        </div>
-        <div class="Welcome">
-            <span class="id1" >Welcome to<br/></span>
-            <span class="id2">Internet Café</span>
-        </div>
-        <div class="slogan">
-            <p class="Brief">Internet Café offers a serene retreat in the heart of the city, where state-of-the-art technology meets tranquil ambiance. Enjoy high-speed internet, gourmet refreshments, and a peaceful atmosphere for work, study, or play</p>
-            <p><a href="AboutUspage.jsp" class="SeeMore">See more</a></p>
-        </div>
+
+            <div class="Welcome">
+                <span class="id1" >Welcome to<br/></span>
+                <span class="id2">Internet Café</span>
+            </div>
+            <div class="slogan">
+                <p class="Brief">Internet Café offers a serene retreat in the heart of the city, where state-of-the-art technology meets tranquil ambiance. Enjoy high-speed internet, gourmet refreshments, and a peaceful atmosphere for work, study, or play</p>
+                <p><a href="AboutUspage.jsp" class="SeeMore">See more</a></p>
+            </div>
         <div class="Footer">
             <div class="Contact">
                 <p><u>Contact</u></p>
