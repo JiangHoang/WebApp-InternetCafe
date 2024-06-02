@@ -1,68 +1,126 @@
-<%-- 
-    Document   : newjsp
-    Created on : May 28, 2024, 6:18:14 PM
-    Author     : Jiang
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="booking">
-      <img class="group" src="image/homepage-bgr.png" />
-      <div class="frame">
-        <div class="select-type"></div>
-        <div class="contain"></div>
-        <div class="status">
-          <div class="rectangle"></div>
-          <div class="div"></div>
-          <div class="rectangle-2"></div>
-        </div>
-        <div class="book"></div>
-        <div class="time">
-          <div class="rectangle-3"></div>
-          <div class="text-wrapper">Time</div>
-        </div>
-        <div class="date">
-          <div class="rectangle-4"></div>
-          <div class="text-wrapper-2">Date</div>
-        </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Floating Labels Example</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+      flex-direction: column;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .form-floating {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: #007bff;
+    }
+
+    .form-control:focus + label,
+    .form-control:not(:placeholder-shown) + label {
+      top: -20px;
+      left: 10px;
+      font-size: 12px;
+      color: #007bff;
+      background-color: #fff;
+      padding: 0 5px;
+    }
+
+    label {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 16px;
+      color: #777;
+      transition: all 0.2s ease;
+      pointer-events: none;
+      background-color: transparent;
+    }
+
+    .hidden-box {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.5s linear;
+      background-color: #e0e0e0;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .hidden-box.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="email" placeholder=" ">
+        <label for="email">Email address</label>
       </div>
-      <footer class="footer">
-        <div class="group-2">
-          <div class="text-wrapper-3">Contact</div>
-          <p class="text-wrapper-4">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</p>
-          <div class="text-wrapper-5">📞 Phone: (+84) 88888888</div>
-          <div class="text-wrapper-6">✉️ Email: internetcafe@gmail.com</div>
-        </div>
-        <div class="group-3">
-          <div class="text-wrapper-3">Support</div>
-          <div class="text-wrapper-4">Feedback</div>
-          <div class="text-wrapper-5">Privacy Policy</div>
-        </div>
-        <div class="group-4">
-          <div class="text-wrapper-3">Account</div>
-          <div class="text-wrapper-4">My account</div>
-          <div class="text-wrapper-5">View all orders</div>
-        </div>
-      </footer>
-      <div class="text-wrapper-7">Book here</div>
-      <p class="booking-intro">Your Cyber Seat Awaits – Book a Computer!</p>
-      <div class="navbar">
-        <div class="text-wrapper-8">ABOUT</div>
-        <div class="text-wrapper-9">SPECS</div>
-        <div class="text-wrapper-10">GAMES</div>
-        <div class="text-wrapper-11">MENU</div>
-        <div class="text-wrapper-12">BOOKING</div>
-        <div class="text-wrapper-13">ACCOUNT</div>
-        <div class="text-wrapper-14">HOME</div>
-        <img class="logo-white" src="image/logo (white).png" />
+      <div class="form-floating">
+        <input type="password" class="form-control" id="password" placeholder=" ">
+        <label for="password">Password</label>
       </div>
-    </div>
-  </body>
+    </form>
+  </div>
+
+  <button onclick="showNextBox()">Show Next Box</button>
+
+  <div class="hidden-box">
+    This is the first hidden box.
+  </div>
+  <div class="hidden-box">
+    This is the second hidden box.
+  </div>
+  <div class="hidden-box">
+    This is the third hidden box.
+  </div>
+
+  <script>
+    let currentBoxIndex = 0;
+
+    function showNextBox() {
+      const boxes = document.querySelectorAll('.hidden-box');
+      if (currentBoxIndex < boxes.length) {
+        boxes[currentBoxIndex].style.visibility = 'visible';
+        boxes[currentBoxIndex].style.opacity = '1';
+        currentBoxIndex++;
+      }
+    }
+  </script>
+</body>
 </html>
