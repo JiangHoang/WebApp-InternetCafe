@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author Chung Anh
  */
-public class connect {
+public class Connect {
     public static Statement Connect(){
         Statement stmt = null;
         try{
@@ -28,7 +28,7 @@ public class connect {
             Connection connection = DriverManager.getConnection(jdbcUrl);
             stmt = connection.createStatement();              
         }catch (ClassNotFoundException ex) {
-            Logger.getLogger(connect.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }catch (SQLException e){
             e.printStackTrace();
         }
