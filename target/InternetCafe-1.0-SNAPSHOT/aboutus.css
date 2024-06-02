@@ -8,279 +8,100 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
 
-.Aboutuspage {
+body {
     margin: 0;
-    font-family: 'Outfit', sans-serif;
-    color: white;
     width: 100%;
-    height: 2690px;
-    position: relative;
-    background: #1E0126;
-}
-
-.image {
-    width: 380px;
-    height: 380px;
-    left: 198px;
-    top: 242px;
-    position: absolute;
-}
-
-.Brief {
-    width: 534px;
-    height: 262px;
-    left: 708px;
-    top: 295px;
-    position: absolute;
-}
-
-.title {
-    width: 534px;
-    height: 56px;
-    left: 0;
-    top: 0;
-    position : absolute;
-    color: white;
-    font-size: 45px;
+    height: 100%;
+    background: #1E0126; 
     font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.90px;
-    word-wrap: break-word;
-}
-
-.InternetCafe {
-    width: 534px;
-    left: 0;
-    top: 87px;
-    position: absolute;
-    text-align: justify;
     color: white;
-    font-size: 18px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    line-height: 25px;
-    letter-spacing: 0.18px;
-    word-wrap: break-word;
 }
-
-.MV {
-    width: 1200px;
-    height: 236px;
-    left: 120px;
-    top: 751px;
-    position: absolute;
-}
-
-.MissionVision {
-    width: 329px;
-    left: 0;
-    top: 0;
-    position: absolute;
-    color: white;
-    font-size: 40px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    word-wrap: break-word;
-}
-
-.MVdescript {
-    width: 1200px;
-    left: 0;
-    top: 76px;
-    position: absolute;
-    text-align: justify;
-    color: white;
-    font-size: 18px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    line-height: 25px;
-    word-wrap: break-word;
-}
-.WhyChoose {
-    width: 1200px;
-    height: 316px;
-    left: 120px;
-    top: 1059px;
-    position: absolute;
-}
-
-.Why {
-    width: 570px;
-    left: 0;
-    top: 0;
-    position: absolute;
-    color: white;
-    font-size: 40px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    word-wrap: break-word;
-}
-
-.reason {
-    width: 1200px;
-    left: 0;
-    top: 76px;
-    position: absolute;
-    text-align: justify;
-    color: white;
-    font-size: 18px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    line-height: 25px;
-    word-wrap: break-word;
-}
-
-.Service {
-    width: 1200px;
-    height: 241px;
-    left: 120px;
-    top: 1447px;
-    position: absolute;
-}
-
-.Services {
-    width: 329px;
-    left: 0;
-    top: 0;
-    position: absolute;
-    color: white;
-    font-size: 40px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    word-wrap: break-word;
-}
-
-.servicedescript {
-    width: 1200px;
-    left: 0;
-    top: 76px;
-    position: absolute;
-    text-align: justify;
-    color: white;
-    font-size: 18px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    line-height: 25px;
-    word-wrap: break-word;
-}
-
-.Join {
-    width: 1200px;
-    height: 126px;
-    left: 120px;
-    top: 1760px;
-    position: absolute;
-}
-
-.JoinUsToday {
-    width: 329px;
-    left: 0;
-    top: 0;
-    position: absolute;
-    color: white;
-    font-size: 40px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    word-wrap: break-word;
-}
-
-.joindescript {
-    width: 1200px;
-    left: 0;
-    top: 76px;
-    position: absolute;
-    text-align: justify;
-    color: white;
-    font-size: 18px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    line-height: 25px;
-    word-wrap: break-word;
-}
-
-.Connect {
-    width: 1200px;
-    height: 231px;
-    left: 120px;
-    top: 1958px;
-    position: absolute;
-}
-
-.ConnectWithUs {
-    width: 329px;
-    left: 0;
-    top: 0;
-    position: absolute;
-    color: white;
-    font-size: 40px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    word-wrap: break-word;
-}
-
-.connectdescript {
-    width: 1200px;
-    left: 0;
-    top: 76px;
-    position: absolute;
-    text-align: justify;
-    color: white;
-    font-size: 18px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    line-height: 25px;
-    word-wrap: break-word;
-}
-
-.headerbox{
+.Header{
     display: block;
     width: 100%; 
-    height: 12%; 
-    position: fixed;
-    z-index: 100;
-    margin: 0 0;
-    .Logo{
-        width: 10vw; 
-        height: 10vh; 
-        margin-left: 5%;
-        margin-top: 0.5%;
-        position: sticky;
-        float: left;
-        z-index: 1000;
-    }
-    nav ul{
-        width: 90vw;
-        display: block;
-        text-align: center;
-        background: transparent;
-        margin-top: 0;
-        li{
-            display: inline-block;
-            list-style: none;
-            margin: 2vw;
-            a{
-                text-decoration: none;
-                color: white;
-                font-size: 18px;
-                font-family: 'Outfit', sans-serif;
-                font-weight: 600;
-                position: relative;
-            }
-            a::after{
-                content:'';
-                width: 0;
-                height: 1px;
-                background:whitesmoke;
-                position: relative;
-                left: 0;
-                bottom: -2px;
-                transition: 0.3s ;
-            }
-            a:hover::after{
-                width: 100%;
-            }
-        }
-    }
+    height: 10%; 
+    position: sticky;
+    top: 0;
+}
+.Logo{
+    width: 10vw; 
+    height: 10vh; 
+    margin-left: 5%;
+    margin-top: 0.5%;
+    position: absolute;
+    z-index: 2000;
+}
+nav ul{
+    display: block;
+    text-align: center;
+    background: black;
+    opacity: 0.8;
+    margin-top: 0;
+}
+nav ul li{
+    display:inline-block;
+    list-style: none;
+    margin: 2vw;
+}
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.3vw;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    position: relative;
+}
+nav ul li a::after{
+    content:'';
+    width: 0;
+    height: 1px;
+    background:whitesmoke;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    transition: 0.3s ;
+}
+nav ul li a:hover::after{
+    width: 100%;
+}
+.content{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 5% 10%;
+    text-align: justify;
+    font-size: 1.4vw;
+}
+.content div{
+    margin-bottom: 3%;
+}
+.brief{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.brief div{
+    width: fit-content;
+    margin: 2.5% 5%;
+}
+.script{
+    vertical-align: center;
+}
+.content .title{
+    margin-bottom: 2%;
+    font-size: 3vw;
+    font-weight: 700;
+}
+/*.content .MV .title{
+    margin-top: 8%; 
+} */
+.image{
+    width: 100%;
+    height: 100%;
+}
+.FooterBG{
+    background: #0D0D0D;
 }
 body.scrolled .headerbox {
     width: 100vw;
@@ -289,18 +110,19 @@ body.scrolled .headerbox {
 }
 .Footer{
     display: flex;
-    justify-content: space-evenly;
-    margin: 5% auto;
-    div{
-        color: white;
-        font-size: 1.3vw;
-        font-family: 'Outfit', sans-serif;
-        font-weight: 500;
-        vertical-align: top;
-        p u{
-            font-size: 2vw;
-            font-weight: 900;
-            color: #AB04D9;
-        } 
-    }
+    justify-content: space-between;
+    margin: 0 10%;
 }
+.Footer div{
+    color: white;
+    font-size: 1.3vw;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    vertical-align: top;
+}
+.Footer div p u{
+    font-size: 2vw;
+    font-weight: 900;
+    color: #de4cd8;
+}
+
