@@ -79,10 +79,10 @@ body.scrolled .headerbox {
     width: 80%;
     color: white;
     font-family: 'Outfit', sans-serif;
-    margin: 10%;
+    margin: 10% 10% 5% 10%;
     .title{
         width: 100%;
-        font-weight: 600;    
+        font-weight: 900;    
         font-size: 25px;
         display: block;
     }
@@ -114,7 +114,6 @@ body.scrolled .headerbox {
             label{
                 font-weight: 600;    
                 font-size: 18px;
-                /*background-color: yellow;*/
                 margin: auto auto 1% 0;
             }
         }
@@ -221,6 +220,83 @@ body.scrolled .headerbox {
                                 }
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+.contain-ordered{
+    width: 80%;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    margin: 5% 10%;
+    .title{
+        width: 100%;
+        font-weight: 900;    
+        font-size: 25px;
+        display: block;
+    }
+    .myorder{
+        margin: 3% auto;
+        width: 100%;
+        display: flex;
+        height: fit-content;
+        flex-direction: row;
+        justify-content: space-between;
+        .pending-order, .confirmed-order, .completed-order{
+            background-color: black;
+            border-radius: 15px;
+            width: 32%;
+            .title1{
+                margin: 3%;
+                width: 100%;
+                font-weight: 600;    
+                font-size: 20px;
+                display: block;
+            }
+            ul{
+                margin: 3%;
+                background-color: #0D0D0D;
+                height: fit-content;
+                border-radius: 15px;
+                display: flex;
+                flex-direction: column;
+                list-style: none;
+                padding-left: 0;
+                position: relative;
+                li{
+                    height: 10vh;
+                    display: flex;
+                    flex-direction: column;
+                    list-style: none;
+                    position: relative;
+                    margin: 3vh 0;
+                    .ordered{
+                        margin: auto 3%;
+                        display: flex;
+                        justify-content: space-between;
+                        
+                        .ordered-info{
+                            display: flex;
+                            flex-direction: column;
+                            div{
+                                margin: 1% 0;
+                            }
+                            label{
+                                font-weight: 600;
+                                font-size: 15px;
+                                
+                            }
+                            .label1{
+                                font-weight: 200;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                    .price{
+                        font-weight: 600;
+                        font-size: 18px;
                     }
                 }
             }

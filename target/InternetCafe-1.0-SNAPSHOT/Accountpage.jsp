@@ -177,8 +177,89 @@
                 <label>Ordered Recording</label>
             </div>
             <div class="myorder">
-                <div class="order">
-                    
+                <div class="pending-order">
+                    <div class="title1">
+                        <label>Pending Confirmation</label>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="ordered">
+                                <div class="ordered-info">
+                                    <div>
+                                        <label>Bill ID: </label>
+                                        <label class="label1">#010101</label>
+                                    </div>
+                                    <div>
+                                        <label>Trans. Date, Time: </label>
+                                        <label class="label1">2024/10/02 | 10:30</label>
+                                    </div>
+                                    <div>
+                                        <label>Check-in: </label>
+                                        <label class="label1">2024/10/02 | 10:30</label>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <label>$48</label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="confirmed-order">
+                    <div class="title1">
+                        <label>Confirmed</label>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="ordered">
+                                <div class="ordered-info">
+                                    <div>
+                                        <label>Bill ID: </label>
+                                        <label class="label1">#010101</label>
+                                    </div>
+                                    <div>
+                                        <label>Trans. Date, Time: </label>
+                                        <label class="label1">2024/10/02 | 10:30</label>
+                                    </div>
+                                    <div>
+                                        <label>Check-in: </label>
+                                        <label class="label1">2024/10/02 | 10:30</label>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <label>$48</label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="completed-order">
+                    <div class="title1">
+                        <label>Completed</label>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="ordered">
+                                <div class="ordered-info">
+                                    <div>
+                                        <label>Bill ID: </label>
+                                        <label class="label1">#010101</label>
+                                    </div>
+                                    <div>
+                                        <label>Trans. Date, Time: </label>
+                                        <label class="label1">2024/10/02 | 10:30</label>
+                                    </div>
+                                    <div>
+                                        <label>Check-in: </label>
+                                        <label class="label1">2024/10/02 | 10:30</label>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <label>$48</label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
