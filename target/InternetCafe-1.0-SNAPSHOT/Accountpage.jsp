@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="account.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Account Page</title>
     </head>
     <body class="Accountpage">
@@ -258,12 +258,54 @@
                                     <label>$48</label>
                                 </div>
                             </div>
-                            <div class="contain-button">
-                                <button>Feedback</button>
-                            </div>
                         </li>
                     </ul>
                     
+                </div>
+            </div>
+        </div>
+        <div class="contain-feedback">
+            <div class="title">
+                <label>Feedback</label>
+            </div>
+            <div class="Rectangle">
+                <div class="feedback">
+                    <div class="rate">
+                        <div class="contain-star" onclick="showstar()">
+                            <div class="star" id="id">
+                                <%
+                                    int R = 90;
+                                    for(int i=4; i>=0; i--){
+                                        double x = Math.cos(i*(Math.PI)/6 + Math.PI/6)*R + R/1.1;
+                                        double y = Math.sin( i*(Math.PI)/6 + Math.PI/6)*R - Math.sqrt(3)*R/4;
+                                        String s = "style = \"bottom:" + y + "px; left: " + x +"px; position: absolute\"";
+                                        out.print("<span class='fa fa-star' id='id" + i + "'" + s +"></span>");
+                                    }
+                                    double h = (Math.sqrt(3)*R/2 + R)/2;
+                                    double w = Math.sqrt(3)*R+ R/2;
+                                %>
+                                <script>
+                                    document.getElementById('id').style.height = '<%=h%>px';
+                                    document.getElementById('id').style.width = '<%=w%>px';
+                                </script>
+                            </div>
+                        </div>
+                        <label class="label1">HELP US TO IMPROVE</label>
+                        <label class="label2">Tell us what you think!</label>
+                    </div>
+                    <div class="contain-form">
+                        <form>
+                            <div>
+                                <label>Name:</label>
+                                <input type="text">
+                            </div>
+                            <div>
+                                <label>Feedback:</label>
+                                <textarea class="fb" cols="55" rows="5"></textarea>
+                            </div>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -286,32 +328,45 @@
             </div>
         </div>
         <script>
-        window.addEventListener('scroll', function() {
-            const header = document.getElementsByClassName("headerbox");
-            if (window.scrollY > 0) {
-                document.body.classList.add('scrolled');
-            } else {
-                document.body.classList.remove('scrolled');
-            }
-        });
+            window.addEventListener('scroll', function() {
+                const header = document.getElementsByClassName("headerbox");
+                if (window.scrollY > 0) {
+                    document.body.classList.add('scrolled');
+                } else {
+                    document.body.classList.remove('scrolled');
+                }
+            });
 
-        function showbox(event, classname, id){
-            event.preventDefault();
-            var elements = document.getElementsByClassName(classname);
-            for (var i = 0; i < elements.length; i++) {
-                elements[i].style.visibility = 'visible';
+            function showbox(event, classname, id){
+                event.preventDefault();
+                var elements = document.getElementsByClassName(classname);
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].style.visibility = 'visible';
+                }
+                document.getElementById(id).style.height = 'fit-content';
             }
-            document.getElementById(id).style.height = 'fit-content';
-        }
 
-        function hiddenbox(event, classname, id){
-            event.preventDefault();
-            var elements = document.getElementsByClassName(classname);
-            for (var i = 0; i < elements.length; i++) {
-                elements[i].style.visibility = 'hidden';
+            function hiddenbox(event, classname, id){
+                event.preventDefault();
+                var elements = document.getElementsByClassName(classname);
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].style.visibility = 'hidden';
+                }
+                document.getElementById(id).style.height = '10vh';
             }
-            document.getElementById(id).style.height = '10vh';
-        }
+            document.addEventListener('DOMContentLoaded', function() {
+                const stars = document.querySelectorAll('.fa-star');
+
+                stars.forEach((star, index) => {
+                    star.addEventListener('click', function() {
+                        stars.forEach(s => s.classList.remove('clicked'));
+
+                        for (let i = 0; i <= index; i++) {
+                            stars[i].classList.add('clicked');
+                        }
+                    });
+                });
+            });
         </script>
     </body>
 </html>
