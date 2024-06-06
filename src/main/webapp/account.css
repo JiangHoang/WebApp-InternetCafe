@@ -1,0 +1,433 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jun 1, 2024, 10:56:22 PM
+    Author     : Jiang
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+.Accountpage{
+    margin: 0;
+    width: 100%; 
+    height: 100%; 
+    position: absolute; 
+    background: #0D0D0D;
+    left: 0; 
+    top: 0;
+    float:none;
+}
+
+.headerbox{
+    display: block;
+    width: 100%; 
+    height: 12%; 
+    position: fixed;
+    z-index: 100;
+    margin: 0 0;
+    .Logo{
+        width: 10vw; 
+        height: 10vh; 
+        margin-left: 5%;
+        margin-top: 0.5%;
+        position: sticky;
+        float: left;
+        z-index: 1000;
+    }
+    nav ul{
+        width: 90vw;
+        display: block;
+        text-align: center;
+        background: transparent;
+        margin-top: 0;
+        li{
+            display: inline-block;
+            list-style: none;
+            margin: 2vw;
+            a{
+                text-decoration: none;
+                color: white;
+                font-size: 18px;
+                font-family: 'Outfit', sans-serif;
+                font-weight: 600;
+                position: relative;
+            }
+            a::after{
+                content:'';
+                width: 0;
+                height: 1px;
+                background:whitesmoke;
+                position: relative;
+                left: 0;
+                bottom: -2px;
+                transition: 0.3s ;
+            }
+            a:hover::after{
+                width: 100%;
+            }
+        }
+    }
+}
+body.scrolled .headerbox {
+    width: 100vw;
+    height: 12vh;
+    background-color: black;
+}
+.contain-myaccount{
+    width: 80%;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    margin: 10% 10% 5% 10%;
+    .title{
+        width: 100%;
+        font-weight: 900;    
+        font-size: 25px;
+        display: block;
+    }
+    .myaccount{
+        margin: 3% auto;
+        width: 100%;
+        display: block;
+        background-color: black;
+        border-radius: 15px;
+        padding-bottom: 5px;
+        .Rectangle{
+            width: 100%;
+            height: 10vh;
+            background-color: #1E0126;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .info{
+            width: 100%;
+            display: flex;
+            .circle{
+                width: 5vw;
+                height: 10vh;
+                background-color: gray;
+                border-radius: 50px;
+                margin: -3vh 2% auto 2%;
+                border: 1px solid;
+            }
+            label{
+                font-weight: 600;    
+                font-size: 18px;
+                margin: auto auto 1% 0;
+            }
+        }
+        .contain-editinfo{
+            margin: 3%;
+            background-color: #0D0D0D;
+            border-radius: 15px;
+            .edit-infor{
+                ul{
+                    display: flex;
+                    flex-direction: column;
+                    list-style: none;
+                    padding-left: 0;
+                    position: relative;
+                    li{
+                        height: 10vh;
+                        display: flex;
+                        flex-direction: column;
+                        list-style: none;
+                        position: relative;
+                        .showed{
+                            margin: 2% 3%;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            /*position: relative;*/
+                            div{
+                                margin: auto 0;
+                                display: flex;
+                                flex-direction: column;
+                                .label1{
+                                    font-weight: 600;    
+                                    font-size: 18px;
+                                }
+                                .label2{
+                                    font-weight: 400;    
+                                    font-size: 13px;
+                                }
+                            }
+                            button{
+                                width: 6%;
+                                margin: auto 0;
+                                height: 4.5vh;
+                                background-color: #757575;
+                                color: white;
+                                border: none;
+                                border-radius: 10px;
+                                font-family: 'Outfit', sans-serif;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                    .change-account, .change-password, .change-email, .change-phone{
+                        visibility: hidden;
+                        display: flex;
+                        flex-direction: row;
+                        background-color: black;
+                        border-radius: 5px;
+                        justify-content: space-between;
+                        .annouce{
+                            display: flex;
+                            flex-direction: column;
+                            margin: 3%;
+                            .label1{
+                                font-weight: 600;    
+                                font-size: 20px;
+                                margin: 3% 0;
+                            }
+                            .label2{
+                                font-weight: 400;    
+                                font-size: 15px;
+                            }
+                        }
+                        form{
+                            width: 50%;
+                            .edit{
+                                display: flex;
+                                justify-content: space-between;
+                                margin: 5% 5%;
+                                input{
+                                    width: 60%;
+                                    height: 4vh;
+                                    border: 1px solid #ccc;
+                                    border-radius: 5px;
+                                    outline: none;
+                                }
+                            }
+                            
+                            .contain-button{
+                                display: flex;
+                                width: 90%;
+                                /*background-color: red;*/
+                                margin: 5% 5%;
+                                align-content:center;
+                                justify-content: right;
+                                input{
+                                    background-color: white;
+                                    border: 1px solid #ccc;
+                                    border-radius: 3px;
+                                    height: 4vh;
+                                    width: 25%;
+                                    margin: auto 0 auto 3%;
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.contain-ordered{
+    width: 80%;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    margin: 5% 10%;
+    .title{
+        width: 100%;
+        font-weight: 900;    
+        font-size: 25px;
+        display: block;
+    }
+    .myorder{
+        margin: 3% auto;
+        width: 100%;
+        display: flex;
+        height: fit-content;
+        flex-direction: row;
+        justify-content: space-between;
+        .pending-order, .confirmed-order, .completed-order{
+            background-color: black;
+            border-radius: 15px;
+            width: 32%;
+            .title1{
+                margin: 3%;
+                width: 100%;
+                font-weight: 600;    
+                font-size: 20px;
+                display: block;
+            }
+            ul{
+                margin: 3%;
+                background-color: #0D0D0D;
+                height: fit-content;
+                border-radius: 15px;
+                display: flex;
+                flex-direction: column;
+                list-style: none;
+                padding-left: 0;
+                position: relative;
+                li{
+                    display: flex;
+                    flex-direction: column;
+                    list-style: none;
+                    position: relative;
+                    margin: 3vh 0;
+                    .ordered{
+                        margin: auto 3%;
+                        display: flex;
+                        justify-content: space-between;
+                        
+                        .ordered-info{
+                            display: flex;
+                            flex-direction: column;
+                            div{
+                                margin: 1% 0;
+                            }
+                            label{
+                                font-weight: 600;
+                                font-size: 15px;
+                                
+                            }
+                            .label1{
+                                font-weight: 200;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                    .price{
+                        font-weight: 600;
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}
+.contain-feedback{
+    width: 80%;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    margin: 10% 10% 5% 10%;
+    .title{
+        width: 100%;
+        font-weight: 900;    
+        font-size: 25px;
+        display: block;
+        margin-bottom: 5%;
+    }
+    .Rectangle{
+        background-color: black;
+        width: 100%;
+        border-radius: 15px;
+        padding: 0.2%;
+        .feedback{
+            margin: 3%;
+            height: 90%;
+            display: flex;
+            justify-content: space-between;
+            background-color: #0D0D0D;
+            border-radius: 15px;
+            .rate{
+                width: 30%;
+                margin: 3%;
+                border-right: 1px solid gray;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-content: center;
+                /*background-color: red;*/
+                .contain-star{
+                    width: 100%;
+                    position: relative;
+                    height: 85px;
+                    /*background-color: yellow;*/
+                    display: flex;
+                    justify-content: center;
+                    align-content: center;
+                    .star{
+                    position: relative;
+
+                        /*left: 5%;*/
+                        height: fit-content;
+                        /*width: 40%;*/
+                        /*background-color: blue;*/
+                        .fa-star{
+                            color: gray;
+                            font-size: 40px;
+                            cursor: pointer;
+                            /*background-color: green;*/
+                        }
+                        .fa-star.clicked{
+                            color: yellow;
+                        }
+                    }
+                }
+                label{
+                    width: 100%;
+                    position: relative;
+                    text-align: center;
+                    margin: 3% auto;
+                    font-size: 18px;
+                    font-weight: 900;   
+                }
+            }
+            .contain-form{
+                /*background-color: red;*/
+                width: 50%;
+                margin: 3%;
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    div{
+                        margin: 3%;
+                        display: flex;
+                        justify-content: space-between;
+                        
+                        label{
+                            font-weight: 400;    
+                            font-size: 18px;
+                        }
+                        input{
+                            width: 71.5%;
+                            font-family: 'Outfit', sans-serif;
+                            outline: none;
+                        }
+                        .fb{
+                                resize: none;
+                                font-family: 'Outfit', sans-serif;
+                                outline: none;
+                            }
+                        
+                    }
+                    button{
+                        width: 15%;
+                        height: 4.5vh;
+                        border: none;
+                        background-color: #757575;
+                        color: white;
+                        font-size: 15px;
+                        margin: 3% 3% 3% auto;
+                        border-radius: 10px;
+                        font-family: 'Outfit', sans-serif;
+                    }
+                }
+            }
+        }
+    }
+}
+.Footer{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5% auto;
+    div{
+        color: white;
+        font-size: 1.3vw;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 500;
+        vertical-align: top;
+        p u{
+            font-size: 2vw;
+            font-weight: 900;
+            color: #AB04D9;
+        } 
+    }
+}

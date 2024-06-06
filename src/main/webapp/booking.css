@@ -23,7 +23,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     width: 100%; 
     height: 100%;
     position: absolute; 
-    /*mask-image: linear-gradient(180deg, white 10%, rgba(255, 255, 255, 0.10) 80%);*/
+    mask-image: linear-gradient(180deg, white 10%, rgba(255, 255, 255, 0.10) 80%);
     opacity: 0.95; 
     backdrop-filter: blur(100px);
     z-index: -1;
@@ -155,7 +155,7 @@ body.scrolled .headerbox {
         width: 80%;
         height: 100%;
         position: relative;
-        background: #1E0126;
+        background: black;
         border-radius: 40px;
         display: block;
         margin: 5% auto;
@@ -167,7 +167,7 @@ body.scrolled .headerbox {
         .content{
             width: 55%;
             height: 90%;
-            background: #460259;
+            background: #0D0D0D;
             display: block;
             border-radius: 40px;
             font-size: 18px;
@@ -179,7 +179,7 @@ body.scrolled .headerbox {
         .group{
             width: 40%;
             height: 90%;
-            background: #460259;  
+            background: #0D0D0D;  
             display: flex;  /* Use flexbox to align items vertically */
             flex-direction: column;  /* Align children vertically */
             border-radius: 40px;
@@ -189,42 +189,41 @@ body.scrolled .headerbox {
             font-weight: 600;
             position: relative;
             margin: 3%;
+            justify-content: center;
+            align-content: center;
             form{
                 width: 100%;
-                display: block;
+                /*display: flex;*/
                 /*background: red;*/
-                
                 table{
                     width: 80%;
                     height: 70%;
 /*                    display: block;*/
-                    margin: 8% 10%;
+                    margin: 5% 10%;
                     tr{
                         width: 100%;
                         margin: 5% 5%;
                         input{
+                            border:none;
+                            color: white;
                             width: 100%;
+                            background-color: transparent;
+                            border-bottom: 1px solid gray;
+                            outline: none;
+                            font-family: 'Outfit', sans-serif;
+                            font-size: 15px;
+                        }
+                        input::-webkit-calendar-picker-indicator {
+                            filter: invert(1);
+                            width: 20px;;
+                            height: 20px;
+                            opacity: 0.6;
+                            filter: invert(0.8);
                         }
                         .label{
                             width: 40%
                         }
                     }
-                }
-                .contain-button{
-                    display: flex;
-                    width: 100%;
-                    text-align: center;
-                    justify-content: center;
-                    margin: 0 0;
-                    button{
-                        width: 30%;
-                        height: fit-content;
-                        font-size: 16px;
-                        background: #1E0126;
-                        color: white;
-                        font-family: 'Outfit', sans-serif;
-                        font-weight: 600;
-                    } 
                 }
             }
             .annouce{
@@ -247,31 +246,32 @@ body.scrolled .headerbox {
             }
         }
         .contain-food, .contain-drink{
-            margin: 3%;
+            margin: 3% 3% 0 3%;
             width: 45%;
             height: 90%;
-            background: #460259;
             display: block;
-            border-radius: 40px;
             position: relative;
+            /*background-color: red;*/
             .contain{
-                margin: 5% 10%;
-                width: 80%;
-                margin: 20px auto;
-                max-height: 80%; /* Set the max-height as needed */
+                margin: 0;
+                width: 100%;
+                /*margin: 20px auto;*/
+                max-height: 90%; /* Set the max-height as needed */
                 overflow-y: auto;
-                border: 1px solid #AB04D9;
+                /*border: 1px solid gray;*/
+                border-radius: 15px;
                 table {
                     width: 100%;
+                    height: 100%;
                     border-collapse: collapse;
                     font-family: 'Outfit', sans-serif;
-                    background-color: #460259;
+                    background-color: #0d0d0d;
                     th, td {
-                        border: 1px solid #AB04D9;
+                        /*border: 1px solid gray;*/
                         padding: 8px;
                         text-align: center;
                         font-size: 18px;
-                        color: white
+                        color: white;
                     }
 
                     th {
@@ -285,34 +285,45 @@ body.scrolled .headerbox {
                     }
 
                     tr:hover {
-                        background-color: #AB04D9;
+                        background-color: #333;
                     }
 
 
                     input[type="number"] {
                         width: 70%;
+                        outline: none;
                     }
+                    
                 }
             }
-        }       
-        }
-        .next {
-            width: 90%;
-            height: fit-content;
-            color: white;
-            font-size: 18px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 400;
-            text-align: right;
-            display: block;
-            justify-content: flex-end;
-            position: relative;
-            margin: auto 3% 3% auto;  
-            a{
-                /*text-decoration: none;*/
-            }
+                .contain::-webkit-scrollbar {
+                    display: none;
+                }
+            }       
         }
     }
+}
+.contain-button{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    /*background-color: red;*/
+    /*padding-bottom: 1%;*/
+     margin: 0 0;
+     position: relative;
+    button{
+        width: 8vw;
+        margin: 0 0;
+        height: 4.5vh;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-family: 'Outfit', sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+    } 
 }
 
 .Footer{

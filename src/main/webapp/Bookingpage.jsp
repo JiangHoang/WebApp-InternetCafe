@@ -25,7 +25,7 @@
                         <li><a href="Gamespage.jsp" class="Games">GAMES</a></li>
                         <li><a href="Menupage.jsp" class="Menu">MENU</a></li>
                         <li><a href="Bookingpage.jsp" class="Booking">BOOKING</a></li>
-                        <li><a href="Acountpage.jsp" class="Account">ACCOUNT</a></li>
+                        <li><a href="Accountpage.jsp" class="Account">ACCOUNT</a></li>
                     </ul>
                 </nav>
             </div>
@@ -75,18 +75,13 @@
                                 </tr>
                             </table>
                             <div class="contain-button">
-                                <button type="submit">Search</button>  
+                                <button type="submit">Check</button>  
                             </div>                      
                         </form>
                         <div class="annouce" >
                             <label >Having Computer</label>
                         </div>
-
                     </div>
-                    
-                </div>
-                <div class="next">
-                    <a href="#title2"><u>Next</u></a>
                 </div>
             </div>
         </div>
@@ -218,9 +213,9 @@
                         </div> 
                     </div>
                 </div>
-                <div class="next">
+                <div class="contain-button">
                     <div>
-                        <label><i><u>Next</u></i></label>
+                        <button>Order</button>
                     </div>
                 </div>
             </div>               

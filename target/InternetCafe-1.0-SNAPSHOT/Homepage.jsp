@@ -25,7 +25,7 @@
                         <li><a href="Gamespage.jsp" class="Games">GAMES</a></li>
                         <li><a href="Menupage.jsp" class="Menu">MENU</a></li>
                         <li><a href="Bookingpage.jsp" class="Booking">BOOKING</a></li>
-                        <li><a href="Acountpage.jsp" class="Account">ACCOUNT</a></li>
+                        <li><a href="Accountpage.jsp" class="Account">ACCOUNT</a></li>
                     </ul>
                 </nav>
             </div>
