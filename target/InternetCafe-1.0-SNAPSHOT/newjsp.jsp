@@ -1,40 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-.container {
-  position: relative;
-  width: 200px;
-  height: 100px;
-  border: 1px solid #000;
-  border-radius: 100px 100px 0 0;
-  overflow: hidden;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slideshow</title>
+  <style>
+    .slideshow-container {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+    }
 
-.element {
-  position: absolute;
-  bottom: 0;
-  width: 40px;
-  height: 40px;
-  background-color: #4CAF50;
-}
+    .slides {
+      display: flex;
+    }
 
-.element:nth-child(1) { left: 10%; transform: translateY(50%); }
-.element:nth-child(2) { left: 30%; transform: translateY(50%); }
-.element:nth-child(3) { left: 50%; transform: translateY(50%); }
-.element:nth-child(4) { left: 70%; transform: translateY(50%); }
-.element:nth-child(5) { left: 90%; transform: translateY(50%); }
-</style>
+    .slides img {
+      width: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    #prevBtn {
+      left: 10px;
+    }
+
+    #nextBtn {
+      right: 10px;
+    }
+  </style>
 </head>
 <body>
+  <div class="slideshow-container">
+    <div class="slides">
+      <img src="image/Menu/1.jpg" alt="Slide 1">
+      <img src="image/Menu/2.jpg" alt="Slide 2">
+      <img src="image/Menu/3.jpg" alt="Slide 3">
+      <img src="image/Menu/4.jpg" alt="Slide 4">
+      <img src="image/Menu/5.jpg" alt="Slide 1">
+      <img src="image/Menu/6.jpg" alt="Slide 2">
+      <img src="image/Menu/3.jpg" alt="Slide 3">
+      <img src="image/Menu/4.jpg" alt="Slide 4">
+    </div>
+    <button id="prevBtn" onclick="plusSlides(-1)">Previous</button>
+    <button id="nextBtn" onclick="plusSlides(1)">Next</button>
+  </div>
+  <script>
+    let slideIndex = 0;
 
-<div class="container">
-  <div class="element"></div>
-  <div class="element"></div>
-  <div class="element"></div>
-  <div class="element"></div>
-  <div class="element"></div>
-</div>
+    function showSlides() {
+      const slides = document.querySelectorAll('.slides img');
+      slides.forEach((slide, index) => {
+        if (index === slideIndex) {
+          slide.style.transform = 'translateX(0)';
+        } else {
+          slide.style.transform = 'translateX(-100%)';
+        }
+      });
+    }
 
+    function plusSlides(n) {
+      slideIndex += n;
+      if (slideIndex < 0) {
+        slideIndex = 0;
+      } else if (slideIndex >= 4) {
+        slideIndex = 0;
+      }
+      showSlides();
+    }
+
+    showSlides();
+  </script>
 </body>
 </html>
