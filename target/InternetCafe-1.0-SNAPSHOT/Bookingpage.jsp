@@ -210,8 +210,9 @@
                                             <td class="quantity"><input type="number" min="0" name="quant<%=Mid%>" value="<%= (request.getParameter("quant" + Mid) != null) ? request.getParameter("quant" + Mid) : "" %>"></td>
                                         </tr>
                                         
-                                    <%
-                                    }%>
+                                <%
+                                    }
+                                %>
                             </table>                        
                         </div>
                     </div>
@@ -234,8 +235,9 @@
                                             <td class="status"><input type="checkbox" name="m<%=Mid%>" <%= (request.getParameter("m" + Mid) != null) ? "checked" : "" %>></td>
                                             <td class="quantity"><input type="number" min="0" name="quant<%=Mid%>" value="<%= (request.getParameter("quant" + Mid) != null) ? request.getParameter("quant" + Mid) : "" %>"></td>
                                         </tr>
-                                    <%
-                                    }%>                              
+                                <%
+                                    }
+                                %>                              
                             </table>
                         </div> 
                     </div>
