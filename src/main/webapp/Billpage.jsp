@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="bill.css">
-        <title>Bill Page</title>
+        <title>Bill</title>
     </head>
     <body class="billpage">
         <div class="contain-bill">

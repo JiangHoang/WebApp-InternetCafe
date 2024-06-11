@@ -10,6 +10,7 @@
         <meta charset="utf-8">
         <title>Ordering</title>
         <link rel="stylesheet" type="text/css" href="order.css">
+        <link rel="stylesheet" type="text/css" href="headerfooter.css">
     </head>
     <body class="Orderpage">
         <div class="headerbox">
