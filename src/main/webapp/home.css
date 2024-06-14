@@ -132,6 +132,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
                     }
                     .rate{
                         margin: 7%;
+                        .fa-star{
+                            color: gray;
+                        }
+                        .fa-star.clicked{
+                            color: yellow;
+                        }
                     }
                     .description{
                         margin: 7%;

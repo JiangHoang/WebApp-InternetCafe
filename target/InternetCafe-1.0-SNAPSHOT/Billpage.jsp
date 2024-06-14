@@ -22,6 +22,7 @@
                 </div>
                 <div class="bold size-bigger">INVOICE</div>
             </div>
+            <!-- m chi dc sua o bill info + order info -->
             <div class="bill-info">
                 <div class="account">
                     <label class="bold">Bill to:</label>

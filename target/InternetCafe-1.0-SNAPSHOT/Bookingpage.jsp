@@ -162,6 +162,7 @@
                                             }else if(available.size() < quant){
                                                 out.print("<div class='message'><label>Only " + available.size() + " computers left</label></div>");
                                             }else{
+                                                out.print(sTime + " " + eTime);
                                 %>
                                                 <script>
                                                     window.location.href = "#title2";

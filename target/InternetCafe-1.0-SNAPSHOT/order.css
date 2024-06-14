@@ -94,7 +94,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
             }
         }
         .items-ordered{
-            display: flex;
+            display: block;
             border-radius: 40px;
             width: 35%;
             background-color: #1E0126;
@@ -149,7 +149,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
                 margin-left: 10%;
                 margin-bottom: 5%;
                 display: flex;
-                
+                position: absolute;
                 border: 1px solid gray;
                 height: 5vh;
                 justify-content: center;

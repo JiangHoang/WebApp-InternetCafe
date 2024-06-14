@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="java.sql.ResultSet"%>
 =<%-- 
     Document   : Homepage
     Created on : May 26, 2024, 7:24:58 PM
@@ -49,132 +51,43 @@
                 </div>
                 
                 <div class="contain-slide">
+                    <%
+                        ResultSet feedback = dataExecute.feedbackData.selectFeedback();
+                        while (feedback.next()){
+                            String des = feedback.getString("Description");
+                            String name = feedback.getString("Name");
+                            int rate = feedback.getInt("Rate");
+                    %>
                     <div class="contain-personal-feedback ">
                         <div class="personal-feedback">
                             <div class="info">
                                 <img class="avatar" src="image/kyobigames.png"/>
-                                <label class="acc">account name</label>
+                                <label class="acc"><%=name%></label>
                             </div>
                             <div class="rate">
+                                <%
+                                    for (int i = 0; i < 5 ; i++){
+                                        if (rate > 0){
+                                %>
+                                <span class='fa fa-star clicked' id='id'></span>
+                                <%
+                                        } else {
+                                %>
                                 <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
+                                <%
+                                        }
+                                        rate--;
+                                    }
+                                %>
                             </div>
                             <div class="description">
-                                <p>It's good</p>
+                                <p><%=des%></p>
                             </div>
                         </div>
                     </div>
-                    <div class="contain-personal-feedback ">
-                        <div class="personal-feedback">
-                            <div class="info">
-                                <img class="avatar" src="image/kyobigames.png"/>
-                                <label class="acc">account name</label>
-                            </div>
-                            <div class="rate">
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                            </div>
-                            <div class="description">
-                                <p>It's bad</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contain-personal-feedback ">
-                        <div class="personal-feedback">
-                            <div class="info">
-                                <img class="avatar" src="image/kyobigames.png"/>
-                                <label class="acc">account name</label>
-                            </div>
-                            <div class="rate">
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                            </div>
-                            <div class="description">
-                                <p>It's hhahaha</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contain-personal-feedback ">
-                        <div class="personal-feedback">
-                            <div class="info">
-                                <img class="avatar" src="image/kyobigames.png"/>
-                                <label class="acc">account name</label>
-                            </div>
-                            <div class="rate">
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                            </div>
-                            <div class="description">
-                                <p>It's excicted</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contain-personal-feedback ">
-                        <div class="personal-feedback">
-                            <div class="info">
-                                <img class="avatar" src="image/kyobigames.png"/>
-                                <label class="acc">account name</label>
-                            </div>
-                            <div class="rate">
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                            </div>
-                            <div class="description">
-                                <p>It's heheheh</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contain-personal-feedback ">
-                        <div class="personal-feedback">
-                            <div class="info">
-                                <img class="avatar" src="image/kyobigames.png"/>
-                                <label class="acc">account name</label>
-                            </div>
-                            <div class="rate">
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                            </div>
-                            <div class="description">
-                                <p>It's yayyyyy</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contain-personal-feedback ">
-                        <div class="personal-feedback">
-                            <div class="info">
-                                <img class="avatar" src="image/kyobigames.png"/>
-                                <label class="acc">account name</label>
-                            </div>
-                            <div class="rate">
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                                <span class='fa fa-star' id='id'></span>
-                            </div>
-                            <div class="description">
-                                <p>It's quaoooo</p>
-                            </div>
-                        </div>
-                    </div>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </div>

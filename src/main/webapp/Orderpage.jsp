@@ -95,6 +95,14 @@
                             </li>
                             <li>
                                 <div>
+                                    <div class="product">Coca</div>
+                                    <label class="type">Drink</label><br>
+                                    <label class="quantity">x2</label>
+                                </div>
+                                <span class="money">5$</span>
+                            </li>
+                            <li>
+                                <div>
                                     <div class="coupon">Coupon</div>
                                     <label class="code">Code</label><br>
                                 </div>
