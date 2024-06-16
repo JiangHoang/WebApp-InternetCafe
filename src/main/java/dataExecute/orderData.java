@@ -52,10 +52,12 @@ public class orderData {
         return Connect.ExecuteQuery(sql);
     }
     public static void InsertBill(String date, String time, String Sid, String price, String cpid, String pay){
+        String sql ="";
         if (cpid == null || cpid.isEmpty()) {
-            cpid = "NULL";
-        }
-        String sql = "INSERT INTO Bill(Bill_Date, Bill_Time, Service_ID, Total_Price, Coupon_ID, Payment_Method)\n"
+            sql = "INSERT INTO Bill(Bill_Date, Bill_Time, Service_ID, Total_Price, Coupon_ID, Payment_Method)\n"
+                    + "VALUES('"+date+"', '"+time+"', '"+Sid+"', '"+price+"', NULL, '"+pay+"')";
+        }else
+            sql = "INSERT INTO Bill(Bill_Date, Bill_Time, Service_ID, Total_Price, Coupon_ID, Payment_Method)\n"
                     + "VALUES('"+date+"', '"+time+"', '"+Sid+"', '"+price+"', '"+cpid+"', '"+pay+"')";
         Connect.ExecuteUpdate(sql);
     }

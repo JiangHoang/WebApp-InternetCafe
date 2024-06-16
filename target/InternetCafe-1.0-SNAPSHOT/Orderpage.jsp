@@ -157,7 +157,9 @@
                                             valid = true;
                                             break;
                                         }
-                                    }
+                                    }                                        
+                                    System.out.print("\nhme" +coupon);
+
                                         if(valid != false){
                                             double dc = Double.parseDouble(discount);
                                             dc = total * (dc/100);
@@ -171,13 +173,14 @@
                                                 </div>
                                                 <span class="money">-<%out.print(String.format("%.2f", dc));%>$</span>
                                             </li>
-                                            <input type="hidden" id="couponid" name="couponid" value="<%=coupon%>">
+                                            <input type="hidden" id="cpid" name="cpid" value="<%=coupon%>">
                             <%          }}%>
                             <li>
                                 <div>
                                     <div class="total">Total</div>
                                 </div>
                                 <span class="money"><%out.print(String.format("%.2f", total));%>$</span>
+                                <input type="hidden" id="total" name="total" value="<%=total%>">
                             </li>
                         </ul>
                     </div>
@@ -197,9 +200,9 @@
                                 String pay = request.getParameter("payment-method");
                                 String date = df.format(Date);
                                 String time = tf.format(Time);
-                                String Total = Double.toString(total);
                                 
-                                String cpid =request.getParameter("couponid");
+                                String Total = request.getParameter("total");
+                                String cpid =request.getParameter("cpid");
                                 System.out.print("\nhuhu" +cpid);
                                 
                                 dataExecute.orderData.InsertBill( date, time, Sid, Total, cpid, pay);
