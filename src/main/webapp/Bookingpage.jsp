@@ -138,59 +138,7 @@
                                 </table>
                                 <div class="contain-button">
                                     <button type="submit" name="check">Check</button>  
-                                </div> 
-                                <%
-                                    if(request.getParameter("check") != null){
-                                        List<String> available = new ArrayList();
-
-                                        String date = request.getParameter("booking-day");
-                                        String sTime= request.getParameter("start-time");
-                                        String eTime= request.getParameter("end-time");
-                                        String quantity = request.getParameter("quantity");
-                                        String type = request.getParameter("type");
-
-                                        String title = "Please choose the area!";
-                                        String title2 = "Out of computer!";
-                                        if( date == null || date.trim().isEmpty() ||
-                                            sTime == null || sTime.trim().isEmpty() ||
-                                            eTime == null || eTime.trim().isEmpty() ||
-                                            quantity == null || quantity.trim().isEmpty() ||
-                                            type.equals("none")){
-                                            out.print("<div class='message'><label>" + title + "</label></div>");
-                                        }
-                                        else{
-                                            int quant = Integer.parseInt(quantity);
-                                            int remain = 0; 
-                                            ResultSet res = dataExecute.bookingData.checkComputer(date, type, quant);
-                                            if(res.isBeforeFirst()){
-                                                while(res.next()){
-                                                    String computer = res.getString("Computer_ID");
-                                                    available.add(computer);
-                                                }
-                                                remain = quant - available.size();
-                                            }
-                                            if(!res.isBeforeFirst() || remain > 0){
-                                                ResultSet rs = dataExecute.bookingData.checkSlot(date, type, sTime, eTime, remain);
-                                                while(rs.next()){
-                                                    String computer = rs.getString("Computer_ID");
-                                                    available.add(computer);
-                                                }
-                                            }
-                                            if(available.isEmpty()){  
-                                                out.print("<div class='message'><label>" + title2 + "</label></div>");
-                                            }else if(available.size() < quant){
-                                                out.print("<div class='message'><label>Only " + available.size() + " computers left</label></div>");
-                                            }else{
-                                                out.print(sTime + " " + eTime);
-                                %>
-                                                <script>
-                                                    window.location.href = "#title2";
-                                                </script>
-                                <%          }
-                                        }
-                                    }
-                                %>
-                                
+                                </div>                               
                             </div>
                         </div>
                     </div>
@@ -240,8 +188,6 @@
                                 session.setAttribute("date", date);
                                 session.setAttribute("sTime", sTime);
                                 session.setAttribute("eTime", eTime);
-
-
                 %>              
                                 <script>
                                     window.location.href = "#title2";

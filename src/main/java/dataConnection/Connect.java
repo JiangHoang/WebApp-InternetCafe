@@ -22,7 +22,7 @@ public class Connect {
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-            String jdbcUrl = "jdbc:sqlserver://ZANG\\SQLEXPRESS:1433;databaseName=Web_PJ;user=sa;password=123456;"
+            String jdbcUrl = "jdbc:sqlserver://LAPTOP-DCGSC18J\\SQLEXPRESS:1433;databaseName=Web_PJ;user=sa;password=123456;"
             + "encrypt=true;trustServerCertificate=true;";
 
             Connection connection = DriverManager.getConnection(jdbcUrl);
