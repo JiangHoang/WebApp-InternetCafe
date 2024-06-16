@@ -11,13 +11,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="home.css">
         <link rel="stylesheet" type="text/css" href="headerfooter.css">
+        <link rel="stylesheet" type="text/css" href="home.css">
+
         <title>Home</title>
     </head>
     <body class="Homepage">
+        <%
+            String cid = "";
+            Cookie[] cookies = null;
+            cookies = request.getCookies();
+            if( cookies != null ){
+               for (int i = 0; i < cookies.length; i++){
+                    if(cookies[i].getName().equals("cid")){
+                        cid = cookies[i].getValue();
+                        break;
+                    }
+               }
+            }
+        %>
         <img class="Bgr" src="image/homepage-bgr.png"/>
         <div class="headerbox">
             <a href="Homepage.jsp"><img class="Logo" src="image/logo.png"/></a>
@@ -42,7 +58,7 @@
             </div>
             <div class="slogan">
                 <p class="Brief">Internet Café offers a serene retreat in the heart of the city, where state-of-the-art technology meets tranquil ambiance. Enjoy high-speed internet, gourmet refreshments, and a peaceful atmosphere for work, study, or play</p>
-                <p><a href="AboutUspage.jsp" class="SeeMore">See more</a></p>
+                <p><a href="AboutUspage.jsp" class="SeeMore"><u>See more</u></a></p>
             </div>
         </div>
         <div class="feedback-summary">
@@ -70,7 +86,7 @@
                                     for (int i = 0; i < 5; i++) {
                                         if (rate > 0) {
                                 %>
-                                <span class="fa fa-star fbed" id="id"></span>
+                                <span class="fa fa-star rated" id="id"></span>
                                 <%
                                         } else {
                                 %>
@@ -98,7 +114,7 @@
         <form action="Homepage.jsp" method="POST" id="feedbackForm">
             <%
             String Description = "";
-            int Rate = 0;
+            String Rate = "";
             String Name = "";
             %>
             <div class="contain-feedback">
@@ -141,7 +157,7 @@
                             <label class="label1">HELP US TO IMPROVE</label>
                             <label class="label2">Tell us what you think!</label>
                         </div>
-                        <div style="width: 1px; height: 30vh; background-color: gray; margin: 5% auto;"></div>
+                        <div style="width: 0.3vh; background-color: gray; margin: 5% auto;"></div>
                         <div class="contain-form">
                             <div class="fbform">
                                 <div class="name">
@@ -161,6 +177,7 @@
                                         console.log("Description:", this.value);
                                     });
                                     </script>
+                                    
                                 </div>
                                 <%
                                     String desString = request.getParameter("description");
@@ -168,26 +185,20 @@
                                     String nameString = request.getParameter("name");
                                     
                                     Description = desString;
-                                    try {
-                                        Rate = Integer.parseInt(rating);
-                                        System.out.println("The integer value is: " + Rate);
-                                    } catch (NumberFormatException e) {
-                                        System.out.println("Invalid input: " + rating + " is not a valid integer.");
-                                    }
+                                    Rate = rating;
                                     Name = nameString;
                                 %>
-                                
+                                <button type="button" name="feedback" class="btn feedbackbutt" data-toggle="modal" data-target="#exampleModalCenter">Submit</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="button" name="feedback" class="btn feedbackbutt" data-toggle="modal" data-target="#exampleModalCenter">Submit</button>
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -196,10 +207,11 @@
                             Are you sure you want to submit your feedback?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                            <button type="submit" class="btn btn-primary accept">Yes</button>
+                            <button type="button" class="btn" data-dismiss="modal">No</button>
+                            <button type="submit" class="btn accept">Yes</button>
                             <%
-                                dataExecute.feedbackData.insertFeedback(Description, Name, Rate, Rate);
+                                System.out.println("\n" + Description + "\t" + Name + "\t" + Rate);
+                                dataExecute.feedbackData.insertFeedback(Description, Name, Rate, cid);
                                 if (request.getParameter("accept") != null) {
                                     System.out.println("success");
                                 }
@@ -209,23 +221,22 @@
                 </div>
             </div>
         </form>
-
         <div class="Footer">
             <div class="Contact">
                 <p><u>Contact</u></p>
-                <p><a class="Phone">📞 Phone: (+84) 88888888</a></p>
-                <p><a class="Email">✉️ Email: internetcafe@gmail.com</a></p>
-                <p><a class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</a></p>
+                <p class="Phone">📞 Phone: (+84) 88888888</p>
+                <p class="Email">✉️ Email: internetcafe@gmail.com</p>
+                <p class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</p>
             </div>
             <div class="Support">
                 <p><u>Support</u></p>
-                <p><a class="Feedback">Feedback</a></p>
-                <p><a class="PrivacyPolicy">Privacy Policy</a></p>
+                <p class="Feedback">Feedback</p>
+                <p class="PrivacyPolicy">Privacy Policy</p>
             </div>
             <div class="Acc">
                 <p><u>Account</u></p>
-                <p><a class="MyAccount">My account</a></p>
-                <p><a class="ViewAllOrders">View all orders</a></p>
+                <p class="MyAccount">My account</p>
+                <p class="ViewAllOrders">View all orders</p>
             </div>
         </div>
         <script>
@@ -238,7 +249,6 @@
                     }
                 });
         </script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     </body>
 </html>

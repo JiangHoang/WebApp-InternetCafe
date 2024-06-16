@@ -10,8 +10,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="menu.css">
         <link rel="stylesheet" type="text/css" href="headerfooter.css">
+        <link rel="stylesheet" type="text/css" href="menu.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <title>Menu</title>
     </head>
@@ -33,13 +33,31 @@
             </div>
         </div>
         <div class="contain-menu">
-            <label class="title">MENU</label>
             <div class="contain-option">
-                <div>
-                    <button class="butts" id="allbut" onclick="show(event, 'all', 'allbut')">Food & Drink</button>
-                    <button class="butts" id="foodbut" onclick="show(event, 'food', 'foodbut')">Food</button>
-                    <button class="butts" id="drinkbut" onclick="show(event, 'drink', 'drinkbut')">Drink</button>
-                </div>
+                <label class="title">MENU</label>
+                <select onchange="show(this.options[this.selectedIndex].dataset.category, this.options[this.selectedIndex].id)">
+                    <option id="allbut" data-category="all" selected>Sort By</option>
+                    <option id="allbut" data-category="all">Food & Drink</option>
+                    <option id="foodbut" data-category="food">Food</option>
+                    <option id="drinkbut" data-category="drink">Drink</option>
+                </select>
+                <script>
+                    function show(category, buttonId) {
+                        let contents = document.querySelectorAll('.contain');
+                        contents.forEach(content => {
+                            content.classList.remove('active');
+                        });
+
+                        let buttons = document.querySelectorAll('option');
+                        buttons.forEach(button => {
+                            button.classList.remove('active');
+                        });
+
+                        document.getElementById(category).classList.add('active');
+
+                        document.getElementById(buttonId).classList.add('active');
+                    }
+                </script>
             </div>
             <%
                     ResultSet rs = dataExecute.menuData.selectMenuSet();
@@ -80,7 +98,7 @@
                         ct++;
                     }
             %>
-            <div class="contain" id="all">
+            <div class="contain active" id="all">
                  <div class="col-1">
                     <%for (int i=0; i<ct; i++) if (i%3==0) 
                         out.print("<div class='contain-img'>"
@@ -213,17 +231,7 @@
                     document.body.classList.remove('scrolled');
                 }
             });
-            function show(event, id, id1){
-                event.preventDefault();
-                var elements = document.getElementsByClassName('contain');
-                var element = document.getElementsByClassName('butts');
-                for (var i = 0; i < elements.length; i++) {
-                    elements[i].style.display = 'none';
-                    element[i].style.fontWeight = '400';
-                }
-                document.getElementById(id).style.display = 'flex';
-                document.getElementById(id1).style.fontWeight = '700';
-            }
+            
         </script>
     </body>
 </html>
