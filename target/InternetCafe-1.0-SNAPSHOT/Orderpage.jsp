@@ -19,18 +19,21 @@
     </head>
     <body class="Orderpage">
         <%
-            String cid = "";
             String acc = "";
             String email = "";
             String phone = "";
             Cookie[] cookies = null;
                 cookies = request.getCookies();
                 if( cookies != null ){
-                    acc = cookies[0].getValue();
-                    email = cookies[2].getValue();
-                    phone = cookies[3].getValue();
-                    cid = cookies[4].getValue();
-                    System.out.print("\n"+acc+ "\t" + email +"\t" + phone );
+                    for (int i = 0; i < cookies.length; i++){
+                        if(cookies[i].getName().equals("acc"))
+                            acc = cookies[i].getValue();
+                        else if(cookies[i].getName().equals("email"))
+                            email = cookies[i].getValue();
+                        else if(cookies[i].getName().equals("phone"))
+                             phone = cookies[i].getValue();
+                        System.out.print("\n"+acc+ "\t" + email +"\t" + phone );
+                    }
                 }
         %>
         <div class="headerbox">
@@ -185,7 +188,7 @@
                     </div>
                             <div class="enter-coupon">
                                 <input type="text" class="couponid" name="couponid" placeholder="Enter Your Coupon">
-                                <button type="submit" class="addcoupon" name="addcoupon" >Add</button>
+                                <button class="addcoupon" name="addcoupon" >Add</button>
                             </div>
                         <%  
                             boolean ord = false;
