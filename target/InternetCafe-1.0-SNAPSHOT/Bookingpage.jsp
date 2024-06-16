@@ -55,7 +55,6 @@
                                 <button class="but" id="but3" onclick="show(event, 'infor', 'gaming', 'but3')">Gaming</button>
                             </div>
                             <div class="infor normal">
-<!--                                <div class="area">Normal Area</div>-->
                                 <ul>
                                     <li>MSI Pro MP275/27 inch (1920x1080)/IPS 100Hz</li>
                                     <li>Office 26 Intel Core i3 12100 3.3 GHz - 4.3 GHz / 8GB / 256GB / 350W</li>
@@ -66,7 +65,6 @@
                                 </ul>
                             </div>
                             <div class="infor vip">
-                                <!--<div class="area">VIP Area</div>-->
                                 <ul>
                                     <li>Asus ProArt PA248QV-P/24inch/FHD (1920x1200)/IPS 75Hz</li>
                                     <li>G4060 i5 12400F/16GB/500GB/650W/GeForce RTX4060</li>
@@ -77,7 +75,6 @@
                                 </ul>
                             </div>
                             <div class="infor gaming">
-                                <!--<div class="area">Gaming Area</div>-->
                                 <ul>
                                     <li>Gaming Gigabyte GS27F/27 inch/FHD (1920x1080)/IPS 170Hz</li>
                                     <li>Crystal White i7 12700F / RAM 32GB / SSD 500GB / 750W / RTX 4060</li>

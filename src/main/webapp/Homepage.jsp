@@ -1,25 +1,26 @@
-<%@page import="java.util.List"%>
-<%@page import="java.sql.ResultSet"%>
-=<%-- 
+<%-- 
     Document   : Homepage
     Created on : May 26, 2024, 7:24:58 PM
     Author     : Jiang
 --%>
-
+<%@page import="dataExecute.feedbackData"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="home.css">
         <link rel="stylesheet" type="text/css" href="headerfooter.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Home</title>
     </head>
-    <body class="Homepage">         
+    <body class="Homepage">
         <img class="Bgr" src="image/homepage-bgr.png"/>
         <div class="headerbox">
-            <a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"/></a>
+            <a href="Homepage.jsp"><img class="Logo" src="image/logo.png"/></a>
             <div class="Header">
                 <nav>
                     <ul>
@@ -36,29 +37,29 @@
         </div>
         <div>
             <div class="Welcome">
-                <span class="id1" >Welcome to<br/></span>
+                <span class="id1">Welcome to<br/></span>
                 <span class="id2">Internet Café</span>
             </div>
             <div class="slogan">
-                <p class="Brief">Internet Café offers a serene retreat in the heart of the city, where state-of-the-art technology meets tranquil ambiance. Enjoy high-speed internet, gourmet refreshments, and a peacefdiv atmosphere for work, study, or play</p>
+                <p class="Brief">Internet Café offers a serene retreat in the heart of the city, where state-of-the-art technology meets tranquil ambiance. Enjoy high-speed internet, gourmet refreshments, and a peaceful atmosphere for work, study, or play</p>
                 <p><a href="AboutUspage.jsp" class="SeeMore">See more</a></p>
             </div>
         </div>
         <div class="feedback-summary">
             <div class="feedback">
-                <div class='title'>
+                <div class="title">
                     <label>Customer Think About Us</label>
                 </div>
-                
                 <div class="contain-slide">
                     <%
-                        ResultSet feedback = dataExecute.feedbackData.selectFeedback();
-                        while (feedback.next()){
-                            String des = feedback.getString("Description");
-                            String name = feedback.getString("Name");
-                            int rate = feedback.getInt("Rate");
+                        try {
+                            ResultSet feedback = feedbackData.selectFeedback();
+                            while (feedback.next()) {
+                                String des = feedback.getString("Description");
+                                String name = feedback.getString("Name");
+                                int rate = feedback.getInt("Rate");
                     %>
-                    <div class="contain-personal-feedback ">
+                    <div class="contain-personal-feedback">
                         <div class="personal-feedback">
                             <div class="info">
                                 <img class="avatar" src="image/kyobigames.png"/>
@@ -66,14 +67,14 @@
                             </div>
                             <div class="rate">
                                 <%
-                                    for (int i = 0; i < 5 ; i++){
-                                        if (rate > 0){
+                                    for (int i = 0; i < 5; i++) {
+                                        if (rate > 0) {
                                 %>
-                                <span class='fa fa-star clicked' id='id'></span>
+                                <span class="fa fa-star fbed" id="id"></span>
                                 <%
                                         } else {
                                 %>
-                                <span class='fa fa-star' id='id'></span>
+                                <span class="fa fa-star" id="id"></span>
                                 <%
                                         }
                                         rate--;
@@ -86,51 +87,129 @@
                         </div>
                     </div>
                     <%
+                            }
+                        } catch (SQLException e) {
+                            e.printStackTrace();
                         }
                     %>
                 </div>
             </div>
         </div>
-        <div class="contain-feedback">
-            <div class="title">
-                <label>Feedback</label>
-            </div>
-            <div class="Rectangle">
-                <div class="feedback">
-                    <div class="rate">
-                        <div class="contain-star" onclick="showstar()">
-                            <div class="star" id="id">
+        <form action="Homepage.jsp" method="POST" id="feedbackForm">
+            <%
+            String Description = "";
+            int Rate = 0;
+            String Name = "";
+            %>
+            <div class="contain-feedback">
+                <div class="title">
+                    <label>Feedback</label>
+                </div>
+                <div class="Rectangle">
+                    <div class="feedback">
+                        <div class="rate">
+                            <div class="contain-star">
+                                <div class="star" id="id" value="">
+                                    <%
+                                        int R = 90;
+                                        for (int i = 4; i >= 0; i--) {
+                                            double x = Math.cos(i * (Math.PI) / 6 + Math.PI / 6) * R + R / 1.1;
+                                            double y = Math.sin(i * (Math.PI) / 6 + Math.PI / 6) * R - Math.sqrt(3) * R / 4;
+                                            String s = "style=\"bottom:" + y + "px; left: " + x + "px; position: absolute\"";
+                                            out.print("<span class='fa fa-star rating' id='star" + i + "' " + s + "></span>");
+                                        }
+                                    %>
+                                </div>
+                                <input type="hidden" name="starRating" id="rateid" value="">
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const starid = document.getElementById('rateid');
+                                        const stars = document.querySelectorAll('.rating');
+                                        stars.forEach((star, index) => {
+                                            star.addEventListener('click', function() {
+                                                stars.forEach(s => s.classList.remove('clicked'));
+                                                for (let i = 0; i <= index; i++) {
+                                                    stars[i].classList.add('clicked');
+                                                }
+                                                starid.value = index + 1;
+                                                console.log("Star Rating:", starid.value)
+                                            });
+                                        });
+                                    });
+                                </script>
+                            </div>
+                            <label class="label1">HELP US TO IMPROVE</label>
+                            <label class="label2">Tell us what you think!</label>
+                        </div>
+                        <div style="width: 1px; height: 30vh; background-color: gray; margin: 5% auto;"></div>
+                        <div class="contain-form">
+                            <div class="fbform">
+                                <div class="name">
+                                    <label>Name:</label>
+                                    <input type="text" name="name" value="" required>
+                                    <script>
+                                        document.getElementsByName("name")[0].addEventListener('input', function() {
+                                        console.log("Name:", this.value);
+                                    });
+                                    </script>
+                                </div>
+                                <div class="des">
+                                    <label>Feedback:</label>
+                                    <textarea class="fb" name="description" cols="50" rows="5" value="" required></textarea>
+                                    <script>
+                                        document.getElementsByName("description")[0].addEventListener('input', function() {
+                                        console.log("Description:", this.value);
+                                    });
+                                    </script>
+                                </div>
                                 <%
-                                    int R = 90;
-                                    for(int i=4; i>=0; i--){
-                                        double x = Math.cos(i*(Math.PI)/6 + Math.PI/6)*R + R/1.1;
-                                        double y = Math.sin( i*(Math.PI)/6 + Math.PI/6)*R - Math.sqrt(3)*R/4;
-                                        String s = "style = \"bottom:" + y + "px; left: " + x +"px; position: absolute\"";
-                                        out.print("<span class='fa fa-star' id='id" + i + "'" + s +"></span>");
+                                    String desString = request.getParameter("description");
+                                    String rating = request.getParameter("starRating");
+                                    String nameString = request.getParameter("name");
+                                    
+                                    Description = desString;
+                                    try {
+                                        Rate = Integer.parseInt(rating);
+                                        System.out.println("The integer value is: " + Rate);
+                                    } catch (NumberFormatException e) {
+                                        System.out.println("Invalid input: " + rating + " is not a valid integer.");
                                     }
+                                    Name = nameString;
                                 %>
+                                
                             </div>
                         </div>
-                        <label class="label1">HELP US TO IMPROVE</label>
-                        <label class="label2">Tell us what you think!</label>
-                    </div>
-                    <div style="width: 1px; height: 30vh; background-color: gray; margin: 5% auto;"></div>        
-                    <div class="contain-form">
-                        <form>
-                            <div>
-                                <label>Name:</label>
-                                <input type="text">
-                            </div>
-                            <div>
-                                <label>Feedback:</label>
-                                <textarea class="fb" cols="50" rows="5"></textarea>
-                            </div>
-                            <button type="submit">Submit</button>
-                        </form>
                     </div>
                 </div>
             </div>
-        </div>
+            <button type="button" name="feedback" class="btn feedbackbutt" data-toggle="modal" data-target="#exampleModalCenter">Submit</button>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to submit your feedback?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button type="submit" class="btn btn-primary accept">Yes</button>
+                            <%
+                                dataExecute.feedbackData.insertFeedback(Description, Name, Rate, Rate);
+                                if (request.getParameter("accept") != null) {
+                                    System.out.println("success");
+                                }
+                            %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
         <div class="Footer">
             <div class="Contact">
                 <p><u>Contact</u></p>
@@ -150,27 +229,16 @@
             </div>
         </div>
         <script>
-        window.addEventListener('scroll', function() {
-            const header = document.getElementsByClassName("headerbox");
-            if (window.scrollY > 0) {
-                document.body.classList.add('scrolled');
-            } else {
-                document.body.classList.remove('scrolled');
-            }
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            const stars = document.querySelectorAll('.fa-star');
-
-            stars.forEach((star, index) => {
-                star.addEventListener('click', function() {
-                    stars.forEach(s => s.classList.remove('clicked'));
-
-                    for (let i = 0; i <= index; i++) {
-                        stars[i].classList.add('clicked');
+            window.addEventListener('scroll', function() {
+                    const header = document.getElementsByClassName("headerbox");
+                    if (window.scrollY > 0) {
+                        document.body.classList.add('scrolled');
+                    } else {
+                        document.body.classList.remove('scrolled');
                     }
                 });
-            });
-        });
         </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 </html>

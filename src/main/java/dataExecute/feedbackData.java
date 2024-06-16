@@ -16,4 +16,9 @@ public class feedbackData {
         String sql ="SELECT * FROM Feedback";
         return Connect.ExecuteQuery(sql);
     }
+    public static void insertFeedback(String description, String name, int rate, int cid){
+        String sql = "INSERT INTO Feedback VALUES ('" + description +"','" + name + "'," + rate + "," + cid +")";
+        Connect.ExecuteUpdate(sql);
+    }
 }
+

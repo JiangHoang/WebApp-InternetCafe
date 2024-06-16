@@ -11,6 +11,11 @@
         <title>Ordering</title>
         <link rel="stylesheet" type="text/css" href="order.css">
         <link rel="stylesheet" type="text/css" href="headerfooter.css">
+                    <script type="text/javascript">
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
     </head>
     <body class="Orderpage">
         <div class="headerbox">
@@ -68,8 +73,11 @@
                         <input type="checkbox">
                         <label>I agree with Terms & Conditions</label>
                     </div>
+                    
                     <button type="submit" class="finishorder">Submit</button>
+                    
                 </div>
+                
                 <div class="items-ordered">
                     <div class="title1">
                         <label>Your Cart</label>
@@ -122,6 +130,7 @@
                     </div>
                 </div>
             </form>
+        <button onclick="goBack()" style="position: relative; margin-right: 0;" type="">Back</button>
         </div>
         <div class="Footer">
             <div class="Contact">

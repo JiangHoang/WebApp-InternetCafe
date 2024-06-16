@@ -135,7 +135,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
                         .fa-star{
                             color: gray;
                         }
-                        .fa-star.clicked{
+                        .fa-star .fbed{
                             color: yellow;
                         }
                     }
@@ -204,8 +204,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
                             font-size: 40px;
                             cursor: pointer;
                         }
-                        .fa-star.clicked{
-                            color: yellow;
+                        .clicked{
+                            color: gold;
                         }
                     }
                 }
@@ -223,10 +223,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
                 /*background-color: red;*/
                 width: 50%;
                 margin: 5%;
-                form{
+                .fbform{
                     display: flex;
                     flex-direction: column;
-                    div{
+                    .name, .des{
                         margin: 3%;
                         display: flex;
                         justify-content: space-between;
@@ -240,14 +240,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
                             font-family: 'Outfit', sans-serif;
                             outline: none;
                         }
-                        .fb{
+                        textarea{
                                 resize: none;
                                 font-family: 'Outfit', sans-serif;
                                 outline: none;
                             }
                         
                     }
-                    button{
+                    .feedbackbutt{
                         width: 15%;
                         height: 4.5vh;
                         border: none;
