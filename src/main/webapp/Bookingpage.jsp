@@ -1,4 +1,4 @@
-<%-- 
+            <%-- 
     Document   : Bookingpage
     Created on : May 28, 2024, 1:20:03 PM
     Author     : Jiang
@@ -17,6 +17,25 @@
         <title>Booking</title>
     </head>
     <body class="Bookingpage">
+        <%
+            String date = "";
+            String sTime= "";
+            String eTime= "";
+            String cid = "";
+            String sid = "";            
+            List<String> available = new ArrayList();
+            
+            Cookie[] cookies = null;
+            cookies = request.getCookies();
+            if( cookies != null ){
+               for (int i = 0; i < cookies.length; i++){
+                    if(cookies[i].getName().equals("cid")){
+                        cid = cookies[i].getValue();
+                        break;
+                    }
+               }
+            }
+        %>
         <img class="Bgr" src="image/Booking-bgr.png"/>
         <div class="headerbox">
             <a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"/></a>
@@ -55,6 +74,7 @@
                                 <button class="but" id="but3" onclick="show(event, 'infor', 'gaming', 'but3')">Gaming</button>
                             </div>
                             <div class="infor normal">
+<!--                                <div class="area">Normal Area</div>-->
                                 <ul>
                                     <li>MSI Pro MP275/27 inch (1920x1080)/IPS 100Hz</li>
                                     <li>Office 26 Intel Core i3 12100 3.3 GHz - 4.3 GHz / 8GB / 256GB / 350W</li>
@@ -65,6 +85,7 @@
                                 </ul>
                             </div>
                             <div class="infor vip">
+                                <!--<div class="area">VIP Area</div>-->
                                 <ul>
                                     <li>Asus ProArt PA248QV-P/24inch/FHD (1920x1200)/IPS 75Hz</li>
                                     <li>G4060 i5 12400F/16GB/500GB/650W/GeForce RTX4060</li>
@@ -75,6 +96,7 @@
                                 </ul>
                             </div>
                             <div class="infor gaming">
+                                <!--<div class="area">Gaming Area</div>-->
                                 <ul>
                                     <li>Gaming Gigabyte GS27F/27 inch/FHD (1920x1080)/IPS 170Hz</li>
                                     <li>Crystal White i7 12700F / RAM 32GB / SSD 500GB / 750W / RTX 4060</li>
@@ -116,69 +138,70 @@
                                 </table>
                                 <div class="contain-button">
                                     <button type="submit" name="check">Check</button>  
-                                </div> 
-                                <%
-                                    if(request.getParameter("check") != null){
-                                        List<String> available = new ArrayList();
-
-                                        String date = request.getParameter("booking-day");
-                                        String sTime= request.getParameter("start-time");
-                                        String eTime= request.getParameter("end-time");
-                                        String quantity = request.getParameter("quantity");
-                                        String type = request.getParameter("type");
-
-                                        String title = "Please choose the area!";
-                                        String title2 = "Out of computer!";
-                                        if( date == null || date.trim().isEmpty() ||
-                                            sTime == null || sTime.trim().isEmpty() ||
-                                            eTime == null || eTime.trim().isEmpty() ||
-                                            quantity == null || quantity.trim().isEmpty() ||
-                                            type.equals("none")){
-                                            out.print("<div class='message'><label>" + title + "</label></div>");
-                                        }
-                                        else{
-                                            int quant = Integer.parseInt(quantity);
-                                            int remain = 0; 
-                                            ResultSet res = dataExecute.bookingData.checkComputer(date, type, quant);
-                                            if(res.isBeforeFirst()){
-                                                while(res.next()){
-                                                    String computer = res.getString("Computer_ID");
-                                                    available.add(computer);
-                                                }
-                                                remain = quant - available.size();
-                                            }
-                                            if(!res.isBeforeFirst() || remain > 0){
-                                                ResultSet rs = dataExecute.bookingData.checkSlot(date, type, sTime, eTime, remain);
-                                                while(rs.next()){
-                                                    String computer = rs.getString("Computer_ID");
-                                                    available.add(computer);
-                                                }
-                                            }
-                                            if(available.isEmpty()){  
-                                                out.print("<div class='message'><label>" + title2 + "</label></div>");
-                                            }else if(available.size() < quant){
-                                                out.print("<div class='message'><label>Only " + available.size() + " computers left</label></div>");
-                                            }else{
-                                                out.print(sTime + " " + eTime);
-                                %>
-                                                <script>
-                                                    window.location.href = "#title2";
-                                                </script>
-                                <%          }
-                                        }
-                                    }
-                                %>
-                                
+                                </div>                               
                             </div>
                         </div>
                     </div>
                     
                 </div>
+                <%
+                    if(request.getParameter("check") != null){
+                        date = request.getParameter("booking-day");
+                        sTime = request.getParameter("start-time");
+                        eTime = request.getParameter("end-time");
+                        String quantity = request.getParameter("quantity");
+                        String type = request.getParameter("type");
+
+                        String title = "Please choose the area!";
+                        String title2 = "Out of computer!";
+                        if( date == null || date.trim().isEmpty() ||
+                            sTime == null || sTime.trim().isEmpty() ||
+                            eTime == null || eTime.trim().isEmpty() ||
+                            quantity == null || quantity.trim().isEmpty() ||
+                            type.equals("none")){
+                            out.print("<font color =  \"#FF00FF\" align=\"right\">" + title + "</font>");
+                        }
+                        else{
+                            int quant = Integer.parseInt(quantity);
+                            int remain = 0; 
+                            ResultSet res = dataExecute.bookingData.checkComputer(date, type, quant);
+                            if(res.isBeforeFirst()){
+                                while(res.next()){
+                                    String computer = res.getString("Computer_ID");
+                                    available.add(computer);
+                                }
+                                remain = quant - available.size();
+                            }
+                            if(!res.isBeforeFirst() || remain > 0){
+                                ResultSet rs = dataExecute.bookingData.checkSlot(date, type, sTime, eTime, remain);
+                                while(rs.next()){
+                                    String computer = rs.getString("Computer_ID");
+                                    available.add(computer);
+                                }
+                            }
+                            if(available.isEmpty()){  
+                                out.print("<font color =  \"#FF00FF\" align=\"right\">" + title2 + "</font>");
+                            }else if(available.size() < quant){
+                                out.print("<font color =  \"#FF00FF\" align=\"right\">Only "+available.size()+ " computers left</font>");
+                            }else{
+                                session.setAttribute("available", available);
+                                session.setAttribute("date", date);
+                                session.setAttribute("sTime", sTime);
+                                session.setAttribute("eTime", eTime);
+                %>              
+                                <script>
+                                    window.location.href = "#title2";
+                                </script>
+                               
+                <%          }
+                        }
+                    }
+                %>
             </div>
         </form> 
             
         <div id="title2"></div>
-        <form action="#title2">
+        <form action="#title2" method="post">
         <%
             String Mid = null;
         %>
@@ -244,16 +267,18 @@
                     <button type="submit" name="book">Book</button>  
                 </div>  
                 <%  
+                    int stage = 0;
+                    List<List<String>> ord = new ArrayList<>();
+
                     if(request.getParameter("book") != null){
                         boolean empty = false;
-                        List<List<String>> ord = new ArrayList<>();
                         ResultSet result = dataExecute.bookingData.selectMenu();
                         while(result.next()){
                             Mid = result.getString("Menu_ID");
                             if(request.getParameter("m" + Mid) != null){
                                 if(request.getParameter("quant" + Mid) != null && !request.getParameter("quant" + Mid).isEmpty()){
                                     List<String> row = new ArrayList<>();
-                                    row.add("m" + Mid);
+                                    row.add( Mid);
                                     row.add(request.getParameter("quant"+ Mid));
                                     ord.add(row);
                                 }
@@ -263,22 +288,39 @@
                             }
                         }
                         String title = "Please choose the quantity!";
-                        
                         if(empty){
                             out.print("<font color =  \"#FF00FF\" align=\"right\">" + title + "</font>");
                         }
                         else{
-                            for(List<String> list : ord){
-                                for(String val : list){
-                                    out.print("<font color =  \"#FF00FF\" align=\"right\">" + val + "</font>");
-
-                                }
-                                out.print("\n");
+                            dataExecute.bookingData.InsertOrder(cid);
+                            res = dataExecute.bookingData.SelectOrder(cid);
+                            while(res.next()){
+                                sid = res.getString("Service_ID");
                             }
-                            response.sendRedirect("Orderpage.jsp");
+                            System.out.print("\nhahahahaha" + sid);
+                            for(List<String> list : ord){
+                                dataExecute.bookingData.InsertOrdMenu(sid, list.get(0), list.get(1));
+                            }
+                            available = (List<String>) session.getAttribute("available");
+                            date =  (String) session.getAttribute("date");
+                            sTime =  (String) session.getAttribute("sTime");
+                            eTime =  (String) session.getAttribute("eTime");
+                            for(String compid: available){
+                                System.out.print("\nNum" + compid);
+                                dataExecute.bookingData.InsertOrdComp(sid, compid, sTime, eTime, date);
+                            }
+
+                            request.setAttribute("Sid", sid);
+                            System.out.print("\t" +request.getAttribute("Sid"));
+                            request.setAttribute("comp", available);
+                            stage = 1;
+//                            response.sendRedirect("Orderpage.jsp");
                         }
                     }
-                    
+                    if(stage == 1){
+                        request.getRequestDispatcher("Orderpage.jsp").forward(request, response); 
+
+                    }
                 %>            
 
             </div>               

@@ -14,17 +14,18 @@ import java.sql.SQLException;
  */
 public class bookingData {
     public static ResultSet checkComputer(String date, String type, int quant){
-        String sql = "SELECT TOP "+quant+" C.Computer_ID\n" +
-                     "FROM Computer as C\n" +
-                     "FULL OUTER JOIN Service_Computer as SC\n" +
-                     "ON C.Computer_ID = SC.Computer_ID\n" +
-                     "WHERE C.Type ='"+type+"'\n" +
-                     "EXCEPT\n" +
-                     "SELECT C.Computer_ID\n" +
-                     "FROM Computer as C\n" +
-                     "JOIN Service_Computer as SC\n" +
-                     "ON C.Computer_ID = SC.Computer_ID\n" +
-                     "WHERE SC.CheckInDate = '"+date+"'";
+        String sql = "SELECT TOP "+quant+" Comp.Computer_ID \n" +
+                     "FROM (SELECT C.Computer_ID \n" +
+                     " 	  FROM Computer as C \n" +
+                     "	  FULL OUTER JOIN Service_Computer as SC \n" +
+                     "	  ON C.Computer_ID = SC.Computer_ID \n" +
+                     "	  WHERE C.Type ='"+type+"' \n" +
+                     "	  EXCEPT \n" +
+                     "	  SELECT C.Computer_ID \n" +
+                     "	  FROM Computer as C \n" +
+                     "	  JOIN Service_Computer as SC \n" +
+                     "	  ON C.Computer_ID = SC.Computer_ID \n" +
+                     "	  WHERE SC.CheckInDate = '"+date+"') as Comp";
         return Connect.ExecuteQuery(sql);
     } 
     
@@ -70,9 +71,9 @@ public class bookingData {
                     + "VALUES('"+Cid+"')";
         Connect.ExecuteUpdate(sql);
     }
-    public static void InsertOrdComp(String Sid, String Cid, String sTime, String eTime, String date){
-        String sql = "INSERT INTO Service_Computer(Computer_ID, Start_Time, Stop_Time, CheckInDate)\n"
-                    + "VALUES('"+Sid+"','"+Cid+"','"+sTime+"','"+eTime+"','"+date+"')";
+    public static void InsertOrdComp(String Sid, String Compid, String sTime, String eTime, String date){
+        String sql = "INSERT INTO Service_Computer(Service_ID, Computer_ID, Start_Time, Stop_Time, CheckInDate)\n"
+                    + "VALUES('"+Sid+"','"+Compid+"','"+sTime+"','"+eTime+"','"+date+"')";
         Connect.ExecuteUpdate(sql);
     }
     public static void InsertOrdMenu(String Sid,String Mid, String quant){
