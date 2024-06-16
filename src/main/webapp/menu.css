@@ -1,0 +1,107 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jun 4, 2024, 12:58:22 PM
+    Author     : Jiang
+*/
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+.Menupage{
+    margin: 0;
+    width: 100%; 
+    height: 100%; 
+    position: absolute; 
+    background: #0D0D0D;
+    left: 0; 
+    top: 0;
+    float: none;
+}
+.contain-menu{
+    margin: 10%;
+    width: 80%;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    flex-direction: column;
+    .title{
+        width: 100%;
+        font-weight: 900;    
+        font-size: 30px;
+        display: block;
+        margin-bottom: 3%;
+        text-align: center;
+    }
+    .contain-option{
+        margin-bottom: 3%;
+            label{
+                font-weight: 900;    
+                font-size: 20px;
+            }
+            .butts{
+                border: none;
+                color: white;
+                background-color: transparent;
+                cursor: pointer;
+                font-weight: 400;    
+                font-size: 20px;
+                border-bottom: 1px solid white;
+            }
+            #allbut{
+                font-weight: 700;
+            }
+
+    }
+    .contain{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .col-1, .col-2, .col-3{
+            display: flex;
+            flex-direction: column;
+            width: 32%;
+            position: relative;
+            .contain-img{
+                width: 100%;
+                position: relative;
+                img{
+                    /*position: absolute;*/
+                    width: 100%;
+                    height: fit-content;
+                    margin-bottom: 3%;
+                    display: block;
+                }
+                
+                .show-info{
+                    display: flex;
+                    background-color: #0D0D0D;
+                    width: 100%;
+                    height: 12vh;
+                    justify-content: space-between;
+                    position: absolute;
+                    z-index: 1;
+                    opacity: 0;
+                    bottom: 1%;
+                    cursor: auto;
+                    label{
+                        font-family: 'Outfit', sans-serif;
+                        color: white;
+                        font-size: 20px;
+                        font-weight: 700;
+                        margin: auto 10%;
+                    }
+                }
+                
+            }
+            .contain-img:hover .show-info{
+                    opacity: 0.8;
+                    cursor: pointer;
+            }
+        }
+    }
+    #food, #drink{
+        display: none;
+    }
+}
+

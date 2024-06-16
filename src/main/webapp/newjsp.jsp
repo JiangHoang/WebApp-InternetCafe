@@ -1,39 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-.container {
-  position: relative;
-  width: 200px;
-  height: 100px;
-  border: 1px solid #000;
-  border-radius: 100px 100px 0 0;
-  overflow: hidden;
-}
-
-.element {
-  position: absolute;
-  bottom: 0;
-  width: 40px;
-  height: 40px;
-  background-color: #4CAF50;
-}
-
-.element:nth-child(1) { left: 10%; transform: translateY(50%); }
-.element:nth-child(2) { left: 30%; transform: translateY(50%); }
-.element:nth-child(3) { left: 50%; transform: translateY(50%); }
-.element:nth-child(4) { left: 70%; transform: translateY(50%); }
-.element:nth-child(5) { left: 90%; transform: translateY(50%); }
-</style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 
-<div class="container">
-  <div class="element"></div>
-  <div class="element"></div>
-  <div class="element"></div>
-  <div class="element"></div>
-  <div class="element"></div>
+<div class="w3-row-padding">
+  <div class="w3-col s4">
+    <div class="w3-container w3-red">
+      <p>Column 1</p>
+    </div>
+  </div>
+  <div class="w3-col s4">
+    <div class="w3-container w3-blue">
+      <p>Column 2</p>
+    </div>
+  </div>
+  <div class="w3-col s4">
+    <div class="w3-container w3-green">
+      <p>Column 3</p>
+    </div>
+  </div>
 </div>
 
 </body>
