@@ -1,4 +1,4 @@
-<%-- 
+ <%-- 
     Document   : Homepage
     Created on : May 26, 2024, 7:24:58 PM
     Author     : Jiang
@@ -26,10 +26,11 @@
             Cookie[] cookies = null;
                 cookies = request.getCookies();
                 if( cookies != null ){
-                    acc = cookies[1].getValue();
-                    email = cookies[3].getValue();
-                    phone = cookies[4].getValue();
-                    cid = cookies[5].getValue();
+                    acc = cookies[0].getValue();
+                    email = cookies[2].getValue();
+                    phone = cookies[3].getValue();
+                    cid = cookies[4].getValue();
+                    System.out.print("\n"+acc+ "\t" + email +"\t" + phone );
                 }
         %>
         <div class="headerbox">

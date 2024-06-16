@@ -60,7 +60,7 @@
             </div>
         </div>
         <div id="title1"></div>
-        <form action="#title1">
+        <form action="#title1" method="post">
             <div class="Title" >
                 <label>Computer Rental</label>
             </div>

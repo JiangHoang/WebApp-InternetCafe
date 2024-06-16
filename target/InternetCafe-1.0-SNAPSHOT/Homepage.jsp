@@ -53,7 +53,7 @@
                 <div class="contain-slide">
                     <%
                         try {
-                            ResultSet feedback = feedbackData.selectFeedback();
+                            ResultSet feedback = dataExecute.feedbackData.selectFeedback();
                             while (feedback.next()) {
                                 String des = feedback.getString("Description");
                                 String name = feedback.getString("Name");
