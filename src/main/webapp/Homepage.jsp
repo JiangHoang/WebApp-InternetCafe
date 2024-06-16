@@ -58,7 +58,7 @@
             </div>
             <div class="slogan">
                 <p class="Brief">Internet Café offers a serene retreat in the heart of the city, where state-of-the-art technology meets tranquil ambiance. Enjoy high-speed internet, gourmet refreshments, and a peaceful atmosphere for work, study, or play</p>
-                <p><a href="AboutUspage.jsp" class="SeeMore">See more</a></p>
+                <p><a href="AboutUspage.jsp" class="SeeMore"><u>See more</u></a></p>
             </div>
         </div>
         <div class="feedback-summary">
