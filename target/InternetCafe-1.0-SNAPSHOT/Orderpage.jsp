@@ -4,6 +4,11 @@
     Author     : Jiang
 --%>
 
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalTime"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
     <head>
@@ -12,6 +17,20 @@
         <link rel="stylesheet" type="text/css" href="order.css">
     </head>
     <body class="Orderpage">
+        <%
+            String cid = "";
+            String acc = "";
+            String email = "";
+            String phone = "";
+            Cookie[] cookies = null;
+                cookies = request.getCookies();
+                if( cookies != null ){
+                    acc = cookies[1].getValue();
+                    email = cookies[3].getValue();
+                    phone = cookies[4].getValue();
+                    cid = cookies[5].getValue();
+                }
+        %>
         <div class="headerbox">
             <a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"/></a>
             <div class="Header">
@@ -32,7 +51,19 @@
             <div class="title">
                 <label>Order Information</label>
             </div>
-            <form>
+            <form action="Orderpage.jsp" class="info" method="post">
+                <%
+                    ArrayList<String> comp = (ArrayList) request.getAttribute("comp");
+                    String Sid = (String)request.getAttribute("Sid");
+                    String compString = "";
+                    if ( comp == null && Sid == null) {
+                        compString = request.getParameter("comp");
+                        Sid = request.getParameter("Sid");
+                    }else
+                        compString = String.join(", ", comp);
+                %>
+                <input type="hidden" name="Sid" value="<%= Sid %>">
+                <input type="hidden" name="comp" value="<%= compString%>">
                 <div class="contain-userinfo">
                     <div class="title1">
                         <label>Your Information</label>
@@ -41,23 +72,23 @@
                         <table class="Userinfo">
                             <tr>
                                 <td class="colum1">Account</td>
-                                <td><input type="text" class="account" value="motcaihamgidodegoiaccount" disabled></td>
+                                <td><input type="text" class="account" value="<%=acc%>" disabled></td>
                             </tr>
                             <tr>
                                 <td class="colum1">Email</td>
-                                <td><input type="email" class="email" value="abc@gmail.com" disabled></td>
+                                <td><input type="email" class="email" value="<%=email%>" disabled></td>
                             </tr>
                             <tr>
                                 <td class="colum1">Phone</td>
-                                <td><input type="tel" class="phone" value="088888888" disabled></td>
+                                <td><input type="tel" class="phone" value="<%=phone%>" disabled></td>
                             </tr>
                             <tr>
                                 <td class="colum1">Payment method</td>
                                 <td>
                                     <select name="payment-method">
-                                        <option value="Credit">Credit Card</option>
-                                        <option value="Credit">Debit Card</option>
-                                        <option value="Online">Internet Banking</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                        <option value="Debit Card">Debit Card</option>
+                                        <option value="Internet Banking">Internet Banking</option>
                                     </select>
                                 </td>
                             </tr>
@@ -67,7 +98,7 @@
                         <input type="checkbox">
                         <label>I agree with Terms & Conditions</label>
                     </div>
-                    <button type="submit" class="finishorder">Submit</button>
+                    <button type="submit" class="finishorder" name="finishorder">Submit</button>
                 </div>
                 <div class="items-ordered">
                     <div class="title1">
@@ -75,43 +106,107 @@
                     </div>
                     <div class="contain-list">
                         <ul>
+                            <%
+                                ResultSet res = dataExecute.orderData.SelectOrdComp(Sid);
+                                while(res.next()){
+                                    String type = res.getString("Type");
+                                    String price = res.getString("Price");
+                            %>
                             <li>
                                 <div>
-                                    <div class="product">VIP</div>
+                                    <div class="product"><%out.print(type);%></div>
                                     <label class="type">Computer</label><br>
-                                    <label class="quantity">x2</label>
+                                    <div class="quantity"><%out.print(compString);%></div>
+
                                 </div>
-                                <span class="money">5$</span>
+                                <span class="money"><%out.print(price);%>$</span>
                                 
                             </li>
-                            <li>
-                                <div>
-                                    <div class="product">Coca</div>
-                                    <label class="type">Drink</label><br>
-                                    <label class="quantity">x2</label>
-                                </div>
-                                <span class="money">5$</span>
-                            </li>
-                            <li>
-                                <div>
-                                    <div class="coupon">Coupon</div>
-                                    <label class="code">Code</label><br>
-                                </div>
-                                <span class="money">-5$</span>
-                            </li>
+                            <%  }
+                                res = dataExecute.orderData.SelectOrdMenu(Sid);
+                                while(res.next()){
+                                    String name = res.getString("Name");
+                                    String quant = res.getString("Quantity");
+                                    String price = res.getString("Price");
+                                    String type = res.getString("Type");
+
+                            %>
+                                    <li>
+                                        <div>
+                                            <div class="product"><%out.print(name);%></div>
+                                            <label class="type"><%out.print(type);%></label><br>
+                                            <label class="quantity">x<%out.print(quant);%></label>
+                                        </div>
+                                        <span class="money"><%out.print(price);%>$</span>
+                                    </li>
+                            <%  }%>
+                            <%
+                                boolean valid = false;
+                                double total = 0;
+                                res = dataExecute.orderData.SelectTotal(Sid);
+                                if(res.next()){
+                                    total = Double.parseDouble(res.getString("Total"));
+                                }
+                                String coupon ="";
+                                if(request.getParameter("addcoupon") != null){
+                                    res = dataExecute.orderData.SelectCoupon();
+                                    String discount ="";
+                                    while(res.next()){
+                                        coupon = res.getString("Coupon_ID");
+                                        discount = res.getString("Discount");
+                                        if(coupon.equals(request.getParameter("couponid"))){
+                                            valid = true;
+                                            break;
+                                        }
+                                    }
+                                        if(valid != false){
+                                            double dc = Double.parseDouble(discount);
+                                            dc = total * (dc/100);
+                                            total = total - dc;
+
+                            %>
+                                            <li>
+                                                <div>
+                                                    <div class="coupon">Coupon</div>
+                                                    <label class="code"><%out.print(coupon);%></label><br>
+                                                </div>
+                                                <span class="money">-<%out.print(String.format("%.2f", dc));%>$</span>
+                                            </li>
+                            <%          }}%>
                             <li>
                                 <div>
                                     <div class="total">Total</div>
                                 </div>
-                                <span class="money">5$</span>
+                                <span class="money"><%out.print(String.format("%.2f", total));%>$</span>
                             </li>
                         </ul>
                     </div>
-                    <div class="enter-coupon">
-                        <input type="text" class="couponid" placeholder="Enter Your Coupon">
-                        <button class="add-coupon" type="button">Add</button>
+                            <div class="enter-coupon">
+                                <input type="text" class="couponid" name="couponid" placeholder="Enter Your Coupon">
+                                <button type="submit" class="addcoupon" name="addcoupon" >Add</button>
+                            </div>
+                        <%  
+                            boolean ord = false;
+                            if(request.getParameter("finishorder") != null){
+                                LocalDate Date = LocalDate.now(); 
+                                DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                                
+                                LocalTime Time = LocalTime.now();
+                                DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm");
+                                
+                                String pay = request.getParameter("payment-method");
+                                String date = df.format(Date);
+                                String time = tf.format(Time);
+                                String Total = Double.toString(total);
+                                
+                                dataExecute.orderData.InsertBill( date, time, Sid, Total, coupon, pay);
+                                ord = true;
+                            }  
+                            if(ord)
+                                response.sendRedirect("Accountpage.jsp");
+
+                        %>
                     </div>
-                </div>
             </form>
         </div>
         <div class="Footer">

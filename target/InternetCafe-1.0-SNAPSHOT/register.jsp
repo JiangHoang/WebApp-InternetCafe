@@ -61,7 +61,8 @@
                                 invalidUser = true;
                                 out.print("<font color =  \"#FF00FF\" align=\"center\">" + error + "</font>");
                             }else{
-                                response.sendRedirect("Homepage.jsp");
+                                dataExecute.loginData.InsertUser(acc, pass, email, phone);
+                                response.sendRedirect("login.jsp");
                             }
                         }
 

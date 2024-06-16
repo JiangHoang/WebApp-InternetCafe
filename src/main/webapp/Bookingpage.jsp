@@ -1,4 +1,4 @@
-<%-- 
+            <%-- 
     Document   : Bookingpage
     Created on : May 28, 2024, 1:20:03 PM
     Author     : Jiang
@@ -16,6 +16,25 @@
         <title>JSP Page</title>
     </head>
     <body class="Bookingpage">
+        <%
+            String date = "";
+            String sTime= "";
+            String eTime= "";
+            String cid = "";
+            String sid = "";            
+            List<String> available = new ArrayList();
+            
+            Cookie[] cookies = null;
+            cookies = request.getCookies();
+            if( cookies != null ){
+               for (int i = 0; i < cookies.length; i++){
+                    if(cookies[i].getName().equals("cid")){
+                        cid = cookies[i].getValue();
+                        break;
+                    }
+               }
+            }
+        %>
         <img class="Bgr" src="image/Booking-bgr.png"/>
         <div class="headerbox">
             <a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"/></a>
@@ -40,7 +59,7 @@
             </div>
         </div>
         <div id="title1"></div>
-        <form action="#title1">
+        <form action="#title1" method="post">
         <div class="Title" >
             <label>Computer Rental</label>
         </div>
@@ -59,7 +78,6 @@
                         <label>viet mo ta cai may tinh</label>
                     </div>
                     <div class="group">
-                        <form action="search" method="post">
                             <table>
                                 <tr class="date">
                                     <td class="label">Date:</td>
@@ -81,7 +99,6 @@
                             <div class="contain-button">
                                 <button type="submit" name="check">Check</button>  
                             </div>                      
-                        </form>
                         <div class="annouce" >
                             <label >Having Computer</label>
                         </div>
@@ -89,11 +106,9 @@
                 </div>
                 <%
                     if(request.getParameter("check") != null){
-                        List<String> available = new ArrayList();
-
-                        String date = request.getParameter("booking-day");
-                        String sTime= request.getParameter("start-time");
-                        String eTime= request.getParameter("end-time");
+                        date = request.getParameter("booking-day");
+                        sTime = request.getParameter("start-time");
+                        eTime = request.getParameter("end-time");
                         String quantity = request.getParameter("quantity");
                         String type = request.getParameter("type");
 
@@ -129,7 +144,13 @@
                             }else if(available.size() < quant){
                                 out.print("<font color =  \"#FF00FF\" align=\"right\">Only "+available.size()+ " computers left</font>");
                             }else{
-                %>
+                                session.setAttribute("available", available);
+                                session.setAttribute("date", date);
+                                session.setAttribute("sTime", sTime);
+                                session.setAttribute("eTime", eTime);
+
+
+                %>              
                                 <script>
                                     window.location.href = "#title2";
                                 </script>
@@ -143,7 +164,7 @@
         </form> 
             
         <div id="title2"></div>
-        <form action="#title2">
+        <form action="#title2" method="post">
         <%
             String Mid = null;
         %>
@@ -207,16 +228,18 @@
                     <button type="submit" name="book">Book</button>  
                 </div>  
                 <%  
+                    int stage = 0;
+                    List<List<String>> ord = new ArrayList<>();
+
                     if(request.getParameter("book") != null){
                         boolean empty = false;
-                        List<List<String>> ord = new ArrayList<>();
                         ResultSet result = dataExecute.bookingData.selectMenu();
                         while(result.next()){
                             Mid = result.getString("Menu_ID");
                             if(request.getParameter("m" + Mid) != null){
                                 if(request.getParameter("quant" + Mid) != null && !request.getParameter("quant" + Mid).isEmpty()){
                                     List<String> row = new ArrayList<>();
-                                    row.add("m" + Mid);
+                                    row.add( Mid);
                                     row.add(request.getParameter("quant"+ Mid));
                                     ord.add(row);
                                 }
@@ -226,22 +249,39 @@
                             }
                         }
                         String title = "Please choose the quantity!";
-                        
                         if(empty){
                             out.print("<font color =  \"#FF00FF\" align=\"right\">" + title + "</font>");
                         }
                         else{
-                            for(List<String> list : ord){
-                                for(String val : list){
-                                    out.print("<font color =  \"#FF00FF\" align=\"right\">" + val + "</font>");
-
-                                }
-                                out.print("\n");
+                            dataExecute.bookingData.InsertOrder(cid);
+                            res = dataExecute.bookingData.SelectOrder(cid);
+                            while(res.next()){
+                                sid = res.getString("Service_ID");
                             }
-                            response.sendRedirect("Orderpage.jsp");
+                            System.out.print("\nhahahahaha" + sid);
+                            for(List<String> list : ord){
+                                dataExecute.bookingData.InsertOrdMenu(sid, list.get(0), list.get(1));
+                            }
+                            available = (List<String>) session.getAttribute("available");
+                            date =  (String) session.getAttribute("date");
+                            sTime =  (String) session.getAttribute("sTime");
+                            eTime =  (String) session.getAttribute("eTime");
+                            for(String compid: available){
+                                System.out.print("\nNum" + compid);
+                                dataExecute.bookingData.InsertOrdComp(sid, compid, sTime, eTime, date);
+                            }
+
+                            request.setAttribute("Sid", sid);
+                            System.out.print("\t" +request.getAttribute("Sid"));
+                            request.setAttribute("comp", available);
+                            stage = 1;
+//                            response.sendRedirect("Orderpage.jsp");
                         }
                     }
-                    
+                    if(stage == 1){
+                        request.getRequestDispatcher("Orderpage.jsp").forward(request, response); 
+
+                    }
                 %>            
 
             </div>               

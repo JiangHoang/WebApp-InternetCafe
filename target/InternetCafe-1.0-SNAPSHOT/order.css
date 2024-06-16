@@ -29,7 +29,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         font-weight: 900;
         font-family: 'Outfit', sans-serif;
     }
-    form{
+    .info{
         position: absolute;
         width: 70%;
         display: flex;
@@ -132,6 +132,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
                             font-size: 15px;
                         }
                         .quantity{
+                            display: inline-block;
                             font-weight: 200; 
                             font-size: 12px;
                         }
@@ -168,7 +169,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
                     outline: none;
                     border: none;
                 }
-                .add-coupon{
+                .addcoupon{
                     margin: 1%;
                     height: 4.5vh;
                     background-color: transparent;
