@@ -51,9 +51,12 @@ public class orderData {
             String sql = "SELECT * FROM Coupon";
         return Connect.ExecuteQuery(sql);
     }
-    public static void InsertBill(String date, String time, String Sid, String price, String coupon, String pay){
+    public static void InsertBill(String date, String time, String Sid, String price, String cpid, String pay){
+        if (cpid == null || cpid.isEmpty()) {
+            cpid = "NULL";
+        }
         String sql = "INSERT INTO Bill(Bill_Date, Bill_Time, Service_ID, Total_Price, Coupon_ID, Payment_Method)\n"
-                    + "VALUES('"+date+"', '"+time+"', '"+Sid+"', '"+price+"', '"+coupon+"', '"+pay+"')";
+                    + "VALUES('"+date+"', '"+time+"', '"+Sid+"', '"+price+"', '"+cpid+"', '"+pay+"')";
         Connect.ExecuteUpdate(sql);
     }
 }

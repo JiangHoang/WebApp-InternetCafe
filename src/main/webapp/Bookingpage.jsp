@@ -269,7 +269,7 @@
                 <%  
                     int stage = 0;
                     List<List<String>> ord = new ArrayList<>();
-
+                    String comp="";
                     if(request.getParameter("book") != null){
                         boolean empty = false;
                         ResultSet result = dataExecute.bookingData.selectMenu();
@@ -310,21 +310,19 @@
                                 dataExecute.bookingData.InsertOrdComp(sid, compid, sTime, eTime, date);
                             }
 
-                            request.setAttribute("Sid", sid);
-                            System.out.print("\t" +request.getAttribute("Sid"));
-                            request.setAttribute("comp", available);
+//                            session.setAttribute("Sid", sid);
+//                            System.out.print("\t" +request.getAttribute("Sid"));
+//                            session.setAttribute("comp", available);
+                            comp = String.join(", ", available);
                             stage = 1;
-//                            response.sendRedirect("Orderpage.jsp");
                         }
-                    }
-                    if(stage == 1){
-                        request.getRequestDispatcher("Orderpage.jsp").forward(request, response); 
-
+                    }if(stage == 1){
+                         response.sendRedirect("Orderpage.jsp?Sid=" + sid + "&comp=" +comp);
                     }
                 %>            
 
-            </div>               
-        </div>
+                </div>               
+            </div>
         </form>
 
         <div class="Footer">

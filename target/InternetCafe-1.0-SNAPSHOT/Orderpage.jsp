@@ -32,7 +32,6 @@
                             email = cookies[i].getValue();
                         else if(cookies[i].getName().equals("phone"))
                              phone = cookies[i].getValue();
-                        System.out.print("\n"+acc+ "\t" + email +"\t" + phone );
                     }
                 }
         %>
@@ -58,17 +57,11 @@
             </div>
             <form action="Orderpage.jsp" class="info" method="post">
                 <%
-                    ArrayList<String> comp = (ArrayList) request.getAttribute("comp");
-                    String Sid = (String)request.getAttribute("Sid");
-                    String compString = "";
-                    if ( comp == null && Sid == null) {
-                        compString = request.getParameter("comp");
-                        Sid = request.getParameter("Sid");
-                    }else
-                        compString = String.join(", ", comp);
+                    String comp = request.getParameter("comp");
+                    String Sid = request.getParameter("Sid");
                 %>
-                <input type="hidden" name="Sid" value="<%= Sid %>">
-                <input type="hidden" name="comp" value="<%= compString%>">
+                <input type="hidden" name="Sid" value="<%=Sid%>">
+                <input type="hidden" name="comp" value="<%=comp%>">
                 <div class="contain-userinfo">
                     <div class="title1">
                         <label>Your Information</label>
@@ -103,7 +96,7 @@
                         <input type="checkbox">
                         <label>I agree with Terms & Conditions</label>
                     </div>
-                    <button type="submit" class="finishorder" name="finishorder">Submit</button>
+                    <button class="finishorder" name="finishorder">Submit</button>
                 </div>
                 <div class="items-ordered">
                     <div class="title1">
@@ -121,7 +114,7 @@
                                 <div>
                                     <div class="product"><%out.print(type);%></div>
                                     <label class="type">Computer</label><br>
-                                    <div class="quantity"><%out.print(compString);%></div>
+                                    <div class="quantity"><%out.print(comp);%></div>
 
                                 </div>
                                 <span class="money"><%out.print(price);%>$</span>
@@ -148,11 +141,12 @@
                             <%
                                 boolean valid = false;
                                 double total = 0;
+
                                 res = dataExecute.orderData.SelectTotal(Sid);
                                 if(res.next()){
                                     total = Double.parseDouble(res.getString("Total"));
                                 }
-                                String coupon ="";
+                                String coupon = "";
                                 if(request.getParameter("addcoupon") != null){
                                     res = dataExecute.orderData.SelectCoupon();
                                     String discount ="";
@@ -173,10 +167,11 @@
                                             <li>
                                                 <div>
                                                     <div class="coupon">Coupon</div>
-                                                    <label class="code"><%out.print(coupon);%></label><br>
+                                                    <label class="code"><%=coupon%></label><br>
                                                 </div>
                                                 <span class="money">-<%out.print(String.format("%.2f", dc));%>$</span>
                                             </li>
+                                            <input type="hidden" id="couponid" name="couponid" value="<%=coupon%>">
                             <%          }}%>
                             <li>
                                 <div>
@@ -188,7 +183,7 @@
                     </div>
                             <div class="enter-coupon">
                                 <input type="text" class="couponid" name="couponid" placeholder="Enter Your Coupon">
-                                <button class="addcoupon" name="addcoupon" >Add</button>
+                                <button type="submit" class="addcoupon" name="addcoupon" >Add</button>
                             </div>
                         <%  
                             boolean ord = false;
@@ -204,7 +199,10 @@
                                 String time = tf.format(Time);
                                 String Total = Double.toString(total);
                                 
-                                dataExecute.orderData.InsertBill( date, time, Sid, Total, coupon, pay);
+                                String cpid =request.getParameter("couponid");
+                                System.out.print("\nhuhu" +cpid);
+                                
+                                dataExecute.orderData.InsertBill( date, time, Sid, Total, cpid, pay);
                                 ord = true;
                             }  
                             if(ord)
