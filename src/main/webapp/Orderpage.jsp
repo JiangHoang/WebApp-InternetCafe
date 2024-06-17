@@ -174,13 +174,15 @@
                                                 <span class="money">-<%out.print(String.format("%.2f", dc));%>$</span>
                                             </li>
                                             <input type="hidden" id="cpid" name="cpid" value="<%=coupon%>">
-                            <%          }}%>
+                            <%          }}
+                                String Total = String.format("%.2f", total);
+                            %>
                             <li>
                                 <div>
                                     <div class="total">Total</div>
                                 </div>
-                                <span class="money"><%out.print(String.format("%.2f", total));%>$</span>
-                                <input type="hidden" id="total" name="total" value="<%=total%>">
+                                <span class="money"><%=Total%>$</span>
+                                <input type="hidden" id="total" name="total" value="<%=Total%>">
                             </li>
                         </ul>
                     </div>
@@ -190,6 +192,7 @@
                             </div>
                         <%  
                             boolean ord = false;
+                            String Bid ="";
                             if(request.getParameter("finishorder") != null){
                                 LocalDate Date = LocalDate.now(); 
                                 DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -201,15 +204,19 @@
                                 String date = df.format(Date);
                                 String time = tf.format(Time);
                                 
-                                String Total = request.getParameter("total");
+                                String Tprice = request.getParameter("total");
                                 String cpid =request.getParameter("cpid");
                                 System.out.print("\nhuhu" +cpid);
                                 
-                                dataExecute.orderData.InsertBill( date, time, Sid, Total, cpid, pay);
+                                dataExecute.orderData.InsertBill( date, time, Sid, Tprice, cpid, pay);
+                                res = dataExecute.orderData.SelectBillId(Sid);
+                                while(res.next()){
+                                    Bid = res.getString("Bill_ID");
+                                }
                                 ord = true;
                             }  
                             if(ord)
-                                response.sendRedirect("Accountpage.jsp");
+                                response.sendRedirect("Billpage.jsp?Bid=" + Bid);
 
                         %>
                     </div>
