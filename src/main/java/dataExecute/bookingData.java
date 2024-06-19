@@ -25,7 +25,7 @@ public class bookingData {
                      "	  FROM Computer as C \n" +
                      "	  JOIN Service_Computer as SC \n" +
                      "	  ON C.Computer_ID = SC.Computer_ID \n" +
-                     "	  WHERE SC.CheckInDate = '"+date+"') as Comp";
+                     "	  WHERE SC.Check_In_Date = '"+date+"') as Comp";
         return Connect.ExecuteQuery(sql);
     } 
     
@@ -35,7 +35,7 @@ public class bookingData {
                     "JOIN Computer as C\n" +
                     "ON C.Computer_ID = SC.Computer_ID\n" +
                     "WHERE C.Type = '"+type+"'\n" +
-                    "AND CheckInDate = '"+ date+"'\n" +
+                    "AND Check_In_Date = '"+ date+"'\n" +
                     "GROUP BY SC.Computer_ID\n" +
                     "HAVING COUNT(*) = SUM(\n" +
                     "    CASE\n" +
@@ -72,7 +72,7 @@ public class bookingData {
         Connect.ExecuteUpdate(sql);
     }
     public static void InsertOrdComp(String Sid, String Compid, String sTime, String eTime, String date){
-        String sql = "INSERT INTO Service_Computer(Service_ID, Computer_ID, Start_Time, Stop_Time, CheckInDate)\n"
+        String sql = "INSERT INTO Service_Computer(Service_ID, Computer_ID, Start_Time, Stop_Time, Check_In_Date)\n"
                     + "VALUES('"+Sid+"','"+Compid+"','"+sTime+"','"+eTime+"','"+date+"')";
         Connect.ExecuteUpdate(sql);
     }

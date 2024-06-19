@@ -51,14 +51,14 @@ public class orderData {
             String sql = "SELECT * FROM Coupon";
         return Connect.ExecuteQuery(sql);
     }
-    public static void InsertBill(String date, String time, String Sid, String price, String cpid, String pay){
+    public static void InsertBill(String date, String time, String Sid, String price, String cpid, String pay, String status){
         String sql ="";
         if (cpid == null || cpid.isEmpty()) {
-            sql = "INSERT INTO Bill(Bill_Date, Bill_Time, Service_ID, Total_Price, Coupon_ID, Payment_Method)\n"
-                    + "VALUES('"+date+"', '"+time+"', '"+Sid+"', '"+price+"', NULL, '"+pay+"')";
+            sql = "INSERT INTO Bill(Bill_Date, Bill_Time, Service_ID, Total_Price, Coupon_ID, Payment_Method, Status)\n"
+                    + "VALUES('"+date+"', '"+time+"', '"+Sid+"', '"+price+"', NULL, '"+pay+"', '"+status+"')";
         }else
-            sql = "INSERT INTO Bill(Bill_Date, Bill_Time, Service_ID, Total_Price, Coupon_ID, Payment_Method)\n"
-                    + "VALUES('"+date+"', '"+time+"', '"+Sid+"', '"+price+"', '"+cpid+"', '"+pay+"')";
+            sql = "INSERT INTO Bill(Bill_Date, Bill_Time, Service_ID, Total_Price, Coupon_ID, Payment_Method, Status)\n"
+                    + "VALUES('"+date+"', '"+time+"', '"+Sid+"', '"+price+"', '"+cpid+"', '"+pay+"', '"+status+"')";
         Connect.ExecuteUpdate(sql);
     }
     

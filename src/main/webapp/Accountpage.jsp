@@ -1,4 +1,5 @@
 
+<%@page import="java.sql.ResultSet"%>
 <%-- 
     Document   : Account
     Created on : Jun 1, 2024, 10:53:46 PM
@@ -13,9 +14,40 @@
         <link rel="stylesheet" type="text/css" href="account.css">
         <link rel="stylesheet" type="text/css" href="headerfooter.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Account</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />        <title>Account</title>
     </head>
     <body class="Accountpage">
+        <%
+            boolean valid = false;
+            String Cid = "";
+            String acc = "";
+            String pass = "";
+            String email = "";
+            String phone = "";
+            String message = "";
+            Cookie[] cookies = null;
+            cookies = request.getCookies();
+            if( cookies != null ){
+                for (int i = 0; i < cookies.length; i++){
+                    if(cookies[i].getName().equals("acc"))
+                        acc = cookies[i].getValue();
+                    else if(cookies[i].getName().equals("pass"))
+                        pass = cookies[i].getValue();
+                    else if(cookies[i].getName().equals("email"))
+                        email = cookies[i].getValue();
+                    else if(cookies[i].getName().equals("phone"))
+                        phone = cookies[i].getValue();
+                    else if(cookies[i].getName().equals("cid"))
+                        Cid = cookies[i].getValue();
+                }
+            }
+            
+            String Tpass = "";
+            ResultSet res = dataExecute.accountData.SelectAcc(Cid);
+                while(res.next()){
+                    Tpass = res.getString("Password");
+            }
+        %>
         <div class="headerbox">
             <a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"></a>
             <div class="Header">
@@ -44,7 +76,7 @@
                     <div class="circle">
                         
                     </div>
-                    <label>account name</label>
+                    <label><%=acc%></label>
                 </div>
                 <div class="contain-editinfo">
                     <div class="edit-infor">
@@ -53,7 +85,7 @@
                                 <div class="showed">
                                     <div>
                                         <label class="label1">Display name</label>
-                                        <label class="label2">Name</label>
+                                        <label class="label2"><%=acc%></label>
                                     </div>
                                     <button onclick="showbox(event, 'change-account', 'id1')">Edit</button>
                                 </div>
@@ -65,24 +97,45 @@
                                     <form>
                                         <div class="edit">
                                             <label>New account</label>
-                                            <input type="text">
+                                            <input type="text" id="newacc" name="newacc">
                                         </div>
                                         <div class="edit">
                                             <label>Current password</label>
-                                            <input type="password">
+                                            <input type="password" id="pass1" name="pass1">
                                         </div>
                                         <div class="contain-button">
-                                            <input type="button" value="Cancel" onclick="hiddenbox(event, 'change-account', 'id1')">
-                                            <input type="button" value="Update" onclick="hiddenbox(event, 'change-account', 'id1')">
+                                            <input type="button" name="cancel1" value="Cancel" onclick="hiddenbox(event, 'change-account', 'id1')">
+                                            <button name="update1">Update</button>
                                         </div>
                                     </form>
                                 </div>
                             </li>
+                            <%
+                                if(request.getParameter("update1") != null){
+                                    String newAcc = request.getParameter("newacc");
+                                    String pw = request.getParameter("pass1");
+                                    if(pw.equals(Tpass)){
+                                        if( cookies != null ){
+                                            for (Cookie cookie : cookies){
+                                                if(cookie.getName().equals("acc")){
+                                                    cookie.setValue(newAcc);
+                                                    response.addCookie(cookie);
+                                                }
+                                            }
+                                        }
+                                        valid = true;
+                                        dataExecute.accountData.UpdateAcc(Cid, newAcc);
+                                    }
+                                    else{
+                                        message = "Incorrect password. Please try again!";
+                                    }
+                                }
+                            %>
                             <li id="id2">
                                 <div class="showed">
                                     <div>
                                         <label class="label1">Password</label>
-                                        <label class="label2">pass</label>
+                                        <label class="label2">********</label>
                                     </div>
                                     <button onclick="showbox(event, 'change-password', 'id2')">Edit</button>
                                 </div>
@@ -94,28 +147,54 @@
                                     <form>
                                         <div class="edit">
                                             <label>Current password</label>
-                                            <input type="password" >
+                                            <input type="password" id="pass2" name="pass2">
                                         </div>
                                         <div class="edit">
                                             <label>New password</label>
-                                            <input type="password" >
+                                            <input type="password" id="newpass" name="newpass">
                                         </div>
                                         <div class="edit">
                                             <label>Confirm new password</label>
-                                            <input type="password" >
+                                            <input type="password" id="cfpass" name="cfpass">
                                         </div>
                                         <div class="contain-button">
-                                            <input type="button" value="Cancel" onclick="hiddenbox(event, 'change-password', 'id2')">
-                                            <input type="button" value="Update" onclick="hiddenbox(event, 'change-password', 'id2')">
+                                            <input type="button" name="cancel2" value="Cancel" onclick="hiddenbox(event, 'change-password', 'id2')">
+                                            <button name="update2">Update</button>
                                         </div>
                                     </form>
                                 </div>
                             </li>
+                            <%
+                                if(request.getParameter("update2") != null){
+                                    String pw = request.getParameter("pass2");
+                                    String newpass = request.getParameter("newpass");
+                                    String cfpass = request.getParameter("cfpass");
+                                    if(pw.equals(Tpass)){
+                                        if(newpass.equals(cfpass)){
+                                            if( cookies != null ){
+                                                for (Cookie cookie : cookies){
+                                                    if(cookie.getName().equals("pass")){
+                                                        cookie.setValue(newpass);
+                                                        response.addCookie(cookie);
+                                                    }
+                                                }
+                                            }
+                                            valid = true;
+                                        }
+                                        else
+                                            message = "Passwords do not match. Please try again!";
+                                        dataExecute.accountData.UpdatePass(Cid, newpass);
+                                    }
+                                    else{
+                                        message = "Incorrect password. Please try again!";
+                                    }
+                                }
+                            %>
                             <li id="id3">
                                 <div class="showed">
                                     <div>
                                         <label class="label1">Email</label>
-                                        <label class="label2">email@aaa.com</label>
+                                        <label class="label2"><%=email%></label>
                                     </div>
                                     <button onclick="showbox(event, 'change-email', 'id3')">Edit</button>
                                 </div>
@@ -127,24 +206,45 @@
                                     <form>
                                         <div class="edit">
                                             <label>New email</label>
-                                            <input type="email" >
+                                            <input type="email" name="newemail">
                                         </div>
                                         <div class="edit">
                                             <label>Current password</label>
-                                            <input type="password" >
+                                            <input type="password" id="pass3" name="pass3">
                                         </div>
                                         <div class="contain-button">
-                                            <input type="button" value="Cancel" onclick="hiddenbox(event, 'change-email', 'id3')">
-                                            <input type="button" value="Update" onclick="hiddenbox(event, 'change-email', 'id3')">
+                                            <input type="button" name="cancel3" value="Cancel" onclick="hiddenbox(event, 'change-email', 'id3')">
+                                            <button name="update3">Update</button>
                                         </div>
                                     </form>
                                 </div>
                             </li> 
+                            <%
+                                if(request.getParameter("update3") != null){
+                                    String pw = request.getParameter("pass3");
+                                    String newemail = request.getParameter("newemail");
+                                    if(pw.equals(Tpass)){
+                                        if( cookies != null ){
+                                            for (Cookie cookie : cookies){
+                                                if(cookie.getName().equals("email")){
+                                                    cookie.setValue(newemail);
+                                                    response.addCookie(cookie);
+                                                }
+                                            }
+                                        }
+                                        valid = true;
+                                        dataExecute.accountData.UpdateEmail(Cid, newemail);
+                                    }
+                                    else{
+                                        message = "Incorrect password. Please try again!";
+                                    }
+                                }
+                            %>
                             <li id="id4">
                                 <div class="showed">
                                     <div>
                                         <label class="label1">Phone</label>
-                                        <label class="label2">099999999</label>
+                                        <label class="label2"><%=phone%></label>
                                     </div>
                                     <button onclick="showbox(event, 'change-phone', 'id4')">Edit</button>
                                 </div>
@@ -156,114 +256,241 @@
                                     <form>
                                         <div class="edit">
                                             <label>New phone number</label>
-                                            <input type="tel" >
+                                            <input type="tel" id="newphone" name="newphone">
                                         </div>
                                         <div class="edit">
                                             <label>Current password</label>
-                                            <input type="password" >
+                                            <input type="password" id="pass4" name="pass4">
                                         </div>
                                         <div class="contain-button">
-                                            <input type="button" value="Cancel" onclick="hiddenbox(event, 'change-phone', 'id4')">
-                                            <input type="button" value="Update" onclick="hiddenbox(event, 'change-phone', 'id4')">
+                                            <input type="button" name="cancel4" value="Cancel" onclick="hiddenbox(event, 'change-phone', 'id4')">
+                                            <button name="update4">Update</button>
                                         </div>
                                     </form>
                                 </div>
-                            </li>  
+                            </li> 
+                            <%
+                                if(request.getParameter("update4") != null){
+                                    String pw = request.getParameter("pass4");
+                                    String newphone = request.getParameter("newphone");
+                                    if(pw.equals(Tpass)){
+                                        if( cookies != null ){
+                                            for (Cookie cookie : cookies){
+                                                if(cookie.getName().equals("phone")){
+                                                    cookie.setValue(newphone);
+                                                    response.addCookie(cookie);
+                                                }
+                                            }
+                                        }
+                                        valid = true;
+                                        dataExecute.accountData.UpdatePhone(Cid, newphone);
+                                    }
+                                    else{
+                                        message = "Incorrect password. Please try again!";
+                                    }
+                                }
+                            %>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
+        <% 
+            if(!message.isEmpty()){
+        %>
+            <script>
+                alert("<%= message %>");
+                window.history.back();
+            </script>
+        <%  }
+            else if(valid)
+                response.sendRedirect("Accountpage.jsp");
+        %>
         <div class="contain-ordered">
             <div class="title">
                 <label>Ordered Recording</label>
             </div>
-            <div class="myorder">
-                <div class="pending-order">
-                    <div class="title1">
-                        <label>Pending Confirmation</label>
+            <div class="myorder0">
+                <div id="pending-order0" class ="pending-order0">
+                    <span class="material-symbols-outlined">
+                        calendar_clock
+                    </span>
+                    <div class="title0">
+                        <label>Processing</label>
                     </div>
-                    <ul>
-                        <li>
-                            <div class="ordered">
-                                <div class="ordered-info">
-                                    <div>
-                                        <label>Bill ID: </label>
-                                        <label class="label1">#010101</label>
-                                    </div>
-                                    <div>
-                                        <label>Trans. Date, Time: </label>
-                                        <label class="label1">2024/10/02 | 10:30</label>
-                                    </div>
-                                    <div>
-                                        <label>Check-in: </label>
-                                        <label class="label1">2024/10/02 | 10:30</label>
-                                    </div>
-                                </div>
-                                <div class="price">
-                                    <label>$48</label>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
-                <div class="confirmed-order">
-                    <div class="title1">
+                <div id="confirmed-order0" class ="confirmed-order0">
+                    <span class="material-symbols-outlined">
+                        event_available
+                    </span>
+                    <div class="title0">
                         <label>Confirmed</label>
                     </div>
+                </div>
+                <div id="completed-order0" class ="completed-order0">
+                    <span class="material-symbols-outlined">
+                        stadia_controller
+                    </span>
+                    <div class="title0">
+                        <label>Completed</label>
+                    </div>
+                </div>
+            </div>
+            <div id="pending-order" class="myorder">
+                <%
+                    res = dataExecute.accountData.SelectBill(Cid, "Processing");
+                    if(!res.next()){
+                %>
+                <div class ="pending-order">
+                    <div class = "empty">
+                        <span class="material-symbols-outlined">
+                            event_busy
+                        </span>
+                        <label>NO ORDERS IN PROCESS</label>
+                    </div>
+                </div>
+                <%
+                    }else{       
+                        do{
+                            String Bid = res.getString("Bill_ID");
+                            String Bdate = res.getString("Bill_Date");
+                            String Btime = res.getString("Bill_Time");
+                            String checkin = res.getString("Check_In_Date");
+                            String sTime = res.getString("Start_Time");
+                            String total = res.getString("Total_Price");
+                %>
+                <div class="pending-order">
+            
                     <ul>
                         <li>
                             <div class="ordered">
                                 <div class="ordered-info">
                                     <div>
                                         <label>Bill ID: </label>
-                                        <label class="label1">#010101</label>
+                                        <label class="label1">&ensp;#<%=Bid%></label>
                                     </div>
                                     <div>
                                         <label>Trans. Date, Time: </label>
-                                        <label class="label1">2024/10/02 | 10:30</label>
+                                        <label class="label1">&ensp;<%=Bdate%>&ensp;|&ensp;<%=Btime%></label>
                                     </div>
                                     <div>
                                         <label>Check-in: </label>
-                                        <label class="label1">2024/10/02 | 10:30</label>
+                                        <label class="label1">&ensp;<%=checkin%>&ensp;|&ensp;<%=sTime%></label>
                                     </div>
                                 </div>
                                 <div class="price">
-                                    <label>$48</label>
+                                    <label>$<%=total%></label>
                                 </div>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <div class="completed-order">
-                    <div class="title1">
-                        <label>Completed</label>
+            <%          }while(res.next());
+                    }%>
+            </div>
+            <div id="confirmed-order" class="myorder">
+                <%
+                    res = dataExecute.accountData.SelectBill(Cid, "Confirmed");
+                    if(!res.next()){
+                %>
+                <div class ="confirmed-order">
+                    <div class = "empty">
+                        <span class="material-symbols-outlined">
+                            event_busy
+                        </span>
+                        <label>NO ORDERS FOUND!</label>
                     </div>
+                </div>
+                <%
+                    }else{       
+                        do{
+                            String Bid = res.getString("Bill_ID");
+                            String Bdate = res.getString("Bill_Date");
+                            String Btime = res.getString("Bill_Time");
+                            String checkin = res.getString("Check_In_Date");
+                            String sTime = res.getString("Start_Time");
+                            String total = res.getString("Total_Price");
+                %>
+                <div class="confirmed-order">
                     <ul>
                         <li>
                             <div class="ordered">
                                 <div class="ordered-info">
                                     <div>
                                         <label>Bill ID: </label>
-                                        <label class="label1">#010101</label>
+                                        <label class="label1">&ensp;#<%=Bid%></label>
                                     </div>
                                     <div>
                                         <label>Trans. Date, Time: </label>
-                                        <label class="label1">2024/10/02 | 10:30</label>
+                                        <label class="label1">&ensp;<%=Bdate%>&ensp;|&ensp;<%=Btime%></label>
                                     </div>
                                     <div>
                                         <label>Check-in: </label>
-                                        <label class="label1">2024/10/02 | 10:30</label>
+                                        <label class="label1">&ensp;<%=checkin%>&ensp;|&ensp;<%=sTime%></label>
                                     </div>
                                 </div>
                                 <div class="price">
-                                    <label>$48</label>
+                                    <label>$<%=total%></label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            <%          }while(res.next());
+                    }%>
+            </div>
+
+            <div id="completed-order" class="myorder">
+                <%
+                    res = dataExecute.accountData.SelectBill(Cid, "Completed");
+                    if(!res.next()){
+                %>
+                <div class ="completed-order">
+                    <div class = "empty">
+                        <span class="material-symbols-outlined">
+                            event_busy
+                        </span>
+                        <label>YOU HAVEN'T COMPLETED ANY ORDERS YET!</label>
+                    </div>
+                </div>
+                <%
+                    }else{       
+                        do{
+                            String Bid = res.getString("Bill_ID");
+                            String Bdate = res.getString("Bill_Date");
+                            String Btime = res.getString("Bill_Time");
+                            String checkin = res.getString("Check_In_Date");
+                            String sTime = res.getString("Start_Time");
+                            String total = res.getString("Total_Price");
+                %>
+                <div class="completed-order">
+                    <ul>
+                        <li>
+                            <div class="ordered">
+                                <div class="ordered-info">
+                                    <div>
+                                        <label>Bill ID: </label>
+                                        <label class="label1">&ensp;#<%=Bid%></label>
+                                    </div>
+                                    <div>
+                                        <label>Trans. Date, Time: </label>
+                                        <label class="label1">&ensp;<%=Bdate%>&ensp;|&ensp;<%=Btime%></label>
+                                    </div>
+                                    <div>
+                                        <label>Check-in: </label>
+                                        <label class="label1">&ensp;<%=checkin%>&ensp;|&ensp;<%=sTime%></label>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <label>$<%=total%></label>
                                 </div>
                             </div>
                         </li>
                     </ul>
                     
                 </div>
+            <%          }while(res.next());
+                    }%>
             </div>
         </div>
         <div class="Footer">
@@ -310,6 +537,8 @@
                     elements[i].style.visibility = 'hidden';
                 }
                 document.getElementById(id).style.height = '10vh';
+                var form = document.getElementById(id).querySelector('form');
+                form.reset();
             }
             document.addEventListener('DOMContentLoaded', function() {
                 const stars = document.querySelectorAll('.fa-star');
@@ -324,6 +553,38 @@
                     });
                 });
             });
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('pending-order0').addEventListener('click', function() {
+                    showOrder('pending-order');
+                });
+                document.getElementById('confirmed-order0').addEventListener('click', function() {
+                    showOrder('confirmed-order');
+                });
+                document.getElementById('completed-order0').addEventListener('click', function() {
+                    showOrder('completed-order');
+                });
+            }); 
+
+            function showOrder(orderClass) {
+                const orders = document.querySelectorAll('.contain-ordered .myorder');
+
+                orders.forEach(function(order) {
+                    const orderId = order.id;
+
+                    if (orderId === orderClass) {
+                        order.style.display = 'flex'; 
+                    } else {
+                        order.style.display = 'none';
+                    }
+                });
+
+                const selectedOrders = document.querySelectorAll('.contain-ordered .myorder .' + orderClass);
+                selectedOrders.forEach(function(select) {
+                    select.style.display = 'block'; 
+                });
+            }
+
         </script>
     </body>
 </html>

@@ -182,24 +182,47 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         font-size: 25px;
         display: block;
     }
-    .myorder{
+    .myorder0{
         margin: 3% auto;
         width: 100%;
         display: flex;
         height: fit-content;
         flex-direction: row;
-        justify-content: space-between;
-        .pending-order, .confirmed-order, .completed-order{
+        justify-content: space-evenly;
+        text-align: center;
+        .material-symbols-outlined {
+            font-size: 6vw;
+            margin-top: 5%;
+        }
+        .pending-order0, .confirmed-order0, .completed-order0{
             background-color: black;
             border-radius: 15px;
-            width: 32%;
-            .title1{
-                margin: 3%;
+            width: 20%;
+            .title0{
+                margin: 5% 0%;
                 width: 100%;
                 font-weight: 600;    
                 font-size: 20px;
                 display: block;
             }
+        }
+    }
+    .myorder{
+        margin: 2%;
+        width: auto;
+        display: none;
+        height: fit-content;
+        flex-direction: row;
+        justify-content: space-evenly;
+        background-color: black;
+        border-radius: 15px;
+        flex-wrap: wrap;
+        padding: 2% 0%;
+        .pending-order, .confirmed-order, .completed-order{
+            display: none;
+            background-color: black;
+            border-radius: 15px;
+            width: 48%;
             ul{
                 margin: 3%;
                 background-color: #0D0D0D;
@@ -245,6 +268,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
                 }
             }
         }
+    }
+}
+.empty{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: 'Outfit', sans-serif;
+    opacity: 25%;
+    .material-symbols-outlined {
+        font-size: 6vw;
+    }
+    .label{
+        
     }
 }
 .contain-feedback{
