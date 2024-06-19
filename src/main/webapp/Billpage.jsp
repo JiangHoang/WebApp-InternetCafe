@@ -78,7 +78,7 @@
                         res1 = dataExecute.orderData.SelectOrdComp(Sid);
                         while(res1.next()){
                             String type = res1.getString("Type");
-                            String price = res1.getString("Price");
+                            Double price = Double.parseDouble(res1.getString("Price"));
                             String p_hr = res1.getString("Price_Per_Hour");
                             String quant = res1.getString("Quantity");
                     %>
@@ -86,7 +86,7 @@
                         <td class="item-col"><%=type%></td>
                         <td class="qty-col"><%=quant%></td>
                         <td>$<%=p_hr%></td>
-                        <td>$<%=price%></td>
+                        <td>$<%out.print(String.format("%.2f",price));%></td>
                     </tr>
                     <%  }%>
                     <%
@@ -98,7 +98,7 @@
                             String quant = res1.getString("Quantity");
                     %>
                     <tr>
-                        <td class="item-col"><%=name%></td>
+                        <td class="item-col">Computer(<%=name%>)</td>
                         <td class="qty-col"><%=quant%></td>
                         <td>$<%=cost%></td>
                         <td>$<%=price%></td>
@@ -107,13 +107,13 @@
                     <%
                         res1 = dataExecute.orderData.SelectTotal(Sid);
                         while(res1.next()){
-                            String sTotal = res1.getString("Total");
+                            Double sTotal = Double.parseDouble(res1.getString("Total"));
                     %>
                         <tr>
                             <td class="item-col bold">Subtotal</td>
                             <td></td>
                             <td></td>
-                            <td>$<%=sTotal%></td>
+                            <td>$<%out.print(String.format("%.2f",sTotal));%></td>
                         </tr>
                     <%  }%>
                     <%

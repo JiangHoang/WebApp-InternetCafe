@@ -111,7 +111,7 @@
                                 ResultSet res = dataExecute.orderData.SelectOrdComp(Sid);
                                 while(res.next()){
                                     String type = res.getString("Type");
-                                    String price = res.getString("Price");
+                                    Double price = Double.parseDouble(res.getString("Price"));
                             %>
                             <li>
                                 <div>
@@ -120,7 +120,7 @@
                                     <div class="quantity"><%out.print(comp);%></div>
 
                                 </div>
-                                <span class="money"><%out.print(price);%>$</span>
+                                <span class="money"><%out.print(String.format("%.2f",price));%>$</span>
                                 
                             </li>
                             <%  }
