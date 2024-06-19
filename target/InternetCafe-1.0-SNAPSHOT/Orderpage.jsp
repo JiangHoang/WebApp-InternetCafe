@@ -208,7 +208,7 @@
                                 String cpid =request.getParameter("cpid");
                                 System.out.print("\nhuhu" +cpid);
                                 
-                                dataExecute.orderData.InsertBill( date, time, Sid, Tprice, cpid, pay);
+                                dataExecute.orderData.InsertBill( date, time, Sid, Tprice, cpid, pay, "Processing");
                                 res = dataExecute.orderData.SelectBillId(Sid);
                                 while(res.next()){
                                     Bid = res.getString("Bill_ID");
