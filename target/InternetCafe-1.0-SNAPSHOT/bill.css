@@ -12,19 +12,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .billpage{
     margin: 0;
     width: 100%; 
-    height: 100%;
-    background: #f5f5ef;
+    height: fit-content;
     left: 0; 
     top: 0;
     display: flex;
     justify-content: center;
 }
 .contain-bill{
-    font-size: 18px;
+    font-size: 2.5vh;
     font-family: 'Outfit', sans-serif;
-    margin-top: 5%;
-    width: 45%;
-    background: #f5f5ef;
+    width: 80%;
+    margin: 5% 10%;
 }
 .title{
     width: 100%;
@@ -35,12 +33,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     .company-info{
         display: flex;
         flex-direction: column;
+        font-size: 2.5vh;
     }
 }
 .bill-info{
     display: flex;
     justify-content: space-between;
     margin-bottom: 5%;
+    font-size: 2vh;
     .account, .bill-id{
         display: flex;
         flex-direction: column;
@@ -61,7 +61,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         }
         th, td{
             border-bottom: 1px solid #ddd;
-            height: 5vh;
+            height: 4vh;
             text-align: right;
         }
         .item-col{
@@ -84,15 +84,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     display: flex;
     margin-bottom: 5%;
     img{
-        width: 11vh;
-        height: 11vh;
+        width: 10vh;
+        height: 10vh;
         margin-right: 3%;
     }
     div{
         display: flex;
         flex-direction: column;
         label{
-            font-size: 15px;
+            font-size: 2vh;
         }
     }
 }
@@ -100,11 +100,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     width: 27%;
     .signature{
         font-family: "Freehand", cursive;
-        font-size: 35px;
+        font-size: 3vh;
     }
 }
 .note{
     margin-bottom: 10%;
+    font-size: 2vh;
 }
 .contain{
     display: flex;
@@ -114,8 +115,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     font-weight: bold;
 }
 .size-bigger{
-    font-size: 24px;
+    font-size: 3vh;
 }
 label{
     margin-bottom: 1%;
+}
+.billpage::-webkit-scrollbar {
+    display: none;
 }

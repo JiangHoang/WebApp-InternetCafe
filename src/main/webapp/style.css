@@ -69,7 +69,7 @@ body{
         font-weight: 300;
     }
 }
-form{
+.form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -77,13 +77,13 @@ form{
     width: 80%;
     margin: 0 5%;
 }
-.Login form{
+.Login .form{
     margin-top: 8%;
 }   
-.Register form{
+.Register .form{
     margin-top: 10%;
 }
-form div{
+.form div{
     width: auto;
     height: 10%;
     font-size: 1.4vw; 
@@ -93,7 +93,7 @@ form div{
     margin: 2% 0;
 
 }
-form div input{
+.form div input{
     width:98%;
     height: 100%;
     border: 1px solid #460259;

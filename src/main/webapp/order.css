@@ -66,11 +66,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
                         width: 30%;
                     }
                     td input, td select{
+                        border: none;
                         width: 80%;
                         height: 30px;
-                        background-color: #f2f2f2;
+                        background-color: transparent;
                         font-family: 'Outfit', sans-serif;
                         display: block;
+                        border-bottom: 0.4vh solid gray;
+                        color: white;
+                        height: 4vh;
+                    }
+                    select option{
+                        background-color: #1E0126;
                     }
                 }
             }
@@ -149,8 +156,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
                 width: 80%;
                 margin-left: 10%;
                 margin-bottom: 5%;
-                display: flex;
-                position: absolute;
+                display: flex;  
+                position: relative;
                 border: 1px solid gray;
                 height: 5vh;
                 justify-content: center;
@@ -163,20 +170,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
                     color: white;
                     font-family: 'Outfit', sans-serif;
                     margin: 1%;
-                    
                 }
                 .couponid::focus{
                     outline: none;
                     border: none;
                 }
-                .addcoupon{
-                    margin: 1%;
-                    height: 4.5vh;
+                button{
+                    width: 20%;
+                    height: 5vh;
                     background-color: transparent;
-                    border: none;
-                    border-left: 1px solid gray;
+                    border: 1px solid gray;
+                    align-content: center;
+                    justify-content: center;
                     color: white;
-                    font-family: 'Outfit', sans-serif;
+                    margin-left: 3.5%;
                 }
             }
         }

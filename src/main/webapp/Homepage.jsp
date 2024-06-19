@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="headerfooter.css">
@@ -40,26 +40,23 @@
             <div class="Header">
                 <nav>
                     <ul>
-                        <li><a href="Homepage.jsp" class="Home">HOME</a></li>
-                        <li><a href="AboutUspage.jsp" class="About">ABOUT</a></li>
-                        <li><a href="Specspage.jsp" class="Specs">SPECS</a></li>
-                        <li><a href="Gamespage.jsp" class="Games">GAMES</a></li>
-                        <li><a href="Menupage.jsp" class="Menu">MENU</a></li>
-                        <li><a href="Bookingpage.jsp" class="Booking">BOOKING</a></li>
-                        <li><a href="Accountpage.jsp" class="Account">ACCOUNT</a></li>
+                        <li><a href="Homepage.jsp">HOME</a></li>
+                        <li><a href="AboutUspage.jsp">ABOUT</a></li>
+                        <li><a href="Specspage.jsp">SPECS</a></li>
+                        <li><a href="Menupage.jsp">MENU</a></li>
+                        <li><a href="Bookingpage.jsp">BOOKING</a></li>
+                        <li><a href="Accountpage.jsp">ACCOUNT</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
-        <div>
-            <div class="Welcome">
-                <span class="id1">Welcome to<br/></span>
-                <span class="id2">Internet Café</span>
-            </div>
-            <div class="slogan">
-                <p class="Brief">Internet Café offers a serene retreat in the heart of the city, where state-of-the-art technology meets tranquil ambiance. Enjoy high-speed internet, gourmet refreshments, and a peaceful atmosphere for work, study, or play</p>
-                <p><a href="AboutUspage.jsp" class="SeeMore"><u>See more</u></a></p>
-            </div>
+        <div class="Welcome">
+            <span class="id1">Welcome to<br/></span>
+            <span class="id2">Internet Café</span>
+        </div>
+        <div class="slogan">
+            <p class="Brief">Internet Café offers a serene retreat in the heart of the city, where state-of-the-art technology meets tranquil ambiance. Enjoy high-speed internet, gourmet refreshments, and a peaceful atmosphere for work, study, or play</p>
+            <p><a href="AboutUspage.jsp" class="SeeMore"><u>See more</u></a></p>
         </div>
         <div class="feedback-summary">
             <div class="feedback">
@@ -162,7 +159,7 @@
                             <div class="fbform">
                                 <div class="name">
                                     <label>Name:</label>
-                                    <input type="text" name="name" value="" required>
+                                    <input type="text" name="name" value="" >
                                     <script>
                                         document.getElementsByName("name")[0].addEventListener('input', function() {
                                         console.log("Name:", this.value);
@@ -171,7 +168,7 @@
                                 </div>
                                 <div class="des">
                                     <label>Feedback:</label>
-                                    <textarea class="fb" name="description" cols="50" rows="5" value="" required></textarea>
+                                    <textarea class="fb" name="description" cols="50" rows="5" value="" ></textarea>
                                     <script>
                                         document.getElementsByName("description")[0].addEventListener('input', function() {
                                         console.log("Description:", this.value);
@@ -188,34 +185,8 @@
                                     Rate = rating;
                                     Name = nameString;
                                 %>
-                                <button type="button" name="feedback" class="btn feedbackbutt" data-toggle="modal" data-target="#exampleModalCenter">Submit</button>
+                                <button type="button" class="btn feedbackbutt" id="submitFeedback">Submit</button>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to submit your feedback?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn" data-dismiss="modal">No</button>
-                            <button type="submit" class="btn accept">Yes</button>
-                            <%
-                                System.out.println("\n" + Description + "\t" + Name + "\t" + Rate);
-                                dataExecute.feedbackData.insertFeedback(Description, Name, Rate, cid);
-                                if (request.getParameter("accept") != null) {
-                                    System.out.println("success");
-                                }
-                            %>
                         </div>
                     </div>
                 </div>
@@ -239,16 +210,62 @@
                 <p class="ViewAllOrders">View all orders</p>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="feedbackModalLabel">Feedback</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modalBody">
+                    </div>
+                    <div class="modal-footer" id="modalFooter">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script>
             window.addEventListener('scroll', function() {
-                    const header = document.getElementsByClassName("headerbox");
-                    if (window.scrollY > 0) {
-                        document.body.classList.add('scrolled');
+                const header = document.getElementsByClassName("headerbox");
+                if (window.scrollY > 0) {
+                    document.body.classList.add('scrolled');
+                } else {
+                    document.body.classList.remove('scrolled');
+                }
+            });
+            $(document).ready(function() {
+                $('#submitFeedback').click(function() {
+                    const name = $('input[name="name"]').val().trim();
+                    const description = $('textarea[name="description"]').val().trim();
+                    const starRating = $('#rateid').val();
+
+                    if (name === '' || description === '') {
+                        $('#modalBody').text('You have not entered name or feedback');
+                        $('#modalFooter').html('<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>');
+                        $('#feedbackModal').modal('show');
                     } else {
-                        document.body.classList.remove('scrolled');
+                        $('#modalBody').text('Do you want to submit feedback?');
+                        $('#modalFooter').html(`
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary accept" id="confirmSubmit" name="accept">Confirm</button>
+                        `);
+                        $('#feedbackModal').modal('show');
+
+                        $('#confirmSubmit').click(function() {
+                            <%
+                                dataExecute.feedbackData.insertFeedback(Description, Name, Rate, cid);
+                            %>
+                            $('#feedbackForm').append('<input type="hidden" name="feedback" value="true">');
+                            $('#feedbackForm').submit();
+                        });
                     }
                 });
+            });
         </script>
-
     </body>
 </html>

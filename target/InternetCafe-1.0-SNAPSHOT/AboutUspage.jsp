@@ -19,13 +19,12 @@
             <div class="Header">
                 <nav>
                     <ul>
-                        <li><a href="Homepage.jsp" class="Home">HOME</a></li>
-                        <li><a href="AboutUspage.jsp" class="About">ABOUT</a></li>
-                        <li><a href="Specspage.jsp" class="Specs">SPECS</a></li>
-                        <li><a href="Gamespage.jsp" class="Games">GAMES</a></li>
-                        <li><a href="Menupage.jsp" class="Menu">MENU</a></li>
-                        <li><a href="Bookingpage.jsp" class="Booking">BOOKING</a></li>
-                        <li><a href="Accountpage.jsp" class="Account">ACCOUNT</a></li>
+                        <li><a href="Homepage.jsp">HOME</a></li>
+                        <li><a href="AboutUspage.jsp">ABOUT</a></li>
+                        <li><a href="Specspage.jsp">SPECS</a></li>
+                        <li><a href="Menupage.jsp">MENU</a></li>
+                        <li><a href="Bookingpage.jsp">BOOKING</a></li>
+                        <li><a href="Accountpage.jsp">ACCOUNT</a></li>
                     </ul>
                 </nav>
             </div>
@@ -80,19 +79,19 @@
         <div class="Footer">
             <div class="Contact">
                 <p><u>Contact</u></p>
-                <p><a class="Phone">📞 Phone: (+84) 88888888</a></p>
-                <p><a class="Email">✉️ Email: internetcafe@gmail.com</a></p>
-                <p><a class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</a></p>
+                <p class="Phone">📞 Phone: (+84) 88888888</p>
+                <p class="Email">✉️ Email: internetcafe@gmail.com</p>
+                <p class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</p>
             </div>
             <div class="Support">
                 <p><u>Support</u></p>
-                <p><a class="Feedback">Feedback</a></p>
-                <p><a class="PrivacyPolicy">Privacy Policy</a></p>
+                <p class="Feedback">Feedback</p>
+                <p class="PrivacyPolicy">Privacy Policy</p>
             </div>
             <div class="Acc">
                 <p><u>Account</u></p>
-                <p><a class="MyAccount">My account</a></p>
-                <p><a class="ViewAllOrders">View all orders</a></p>
+                <p class="MyAccount">My account</p>
+                <p class="ViewAllOrders">View all orders</p>
             </div>
         </div>
         <script>

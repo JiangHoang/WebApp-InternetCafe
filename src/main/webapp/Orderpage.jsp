@@ -14,6 +14,9 @@
     <head>
         <meta charset="utf-8">
         <title>Ordering</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="order.css">
         <link rel="stylesheet" type="text/css" href="headerfooter.css">
     </head>
@@ -40,13 +43,12 @@
             <div class="Header">
                 <nav>
                     <ul>
-                        <li><a href="Homepage.jsp" class="Home">HOME</a></li>
-                        <li><a href="AboutUspage.jsp" class="About">ABOUT</a></li>
-                        <li><a href="Specspage.jsp" class="Specs">SPECS</a></li>
-                        <li><a href="Gamespage.jsp" class="Games">GAMES</a></li>
-                        <li><a href="Menupage.jsp" class="Menu">MENU</a></li>
-                        <li><a href="Bookingpage.jsp" class="Booking">BOOKING</a></li>
-                        <li><a href="Accountpage.jsp" class="Account">ACCOUNT</a></li>
+                        <li><a href="Homepage.jsp">HOME</a></li>
+                        <li><a href="AboutUspage.jsp">ABOUT</a></li>
+                        <li><a href="Specspage.jsp">SPECS</a></li>
+                        <li><a href="Menupage.jsp">MENU</a></li>
+                        <li><a href="Bookingpage.jsp">BOOKING</a></li>
+                        <li><a href="Accountpage.jsp">ACCOUNT</a></li>
                     </ul>
                 </nav>
             </div>
@@ -96,7 +98,8 @@
                         <input type="checkbox">
                         <label>I agree with Terms & Conditions</label>
                     </div>
-                    <button class="finishorder" name="finishorder">Submit</button>
+                    <button class="btn finishorder" name="finishorder" type="submit" id="finishorder">Submit</button>
+
                 </div>
                 <div class="items-ordered">
                     <div class="title1">
@@ -215,29 +218,48 @@
                                 }
                                 ord = true;
                             }  
-                            if(ord)
-                                response.sendRedirect("Billpage.jsp?Bid=" + Bid);
-
-                        %>
+                            %>
+                            <script>
+                            $(document).ready(function(){
+                                <% if(ord) { %>
+                                    $('#exampleModalLong').modal('show');
+                                <% } %>
+                            });
+                            </script>
                     </div>
             </form>
+        </div>
+        <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document" style="width: 100%">
+                <div class="modal-content" style="width: 100%">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight: 700;">Your Bill</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="window.location.href='Homepage.jsp';">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modalContent" style="width: 100%; margin: 0; padding: 0;">
+                        <iframe src="Billpage.jsp?Bid=<%=Bid%>" style="width:100%; height: 90vh; border:none; margin: 0; padding: 0;"></iframe>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="Footer">
             <div class="Contact">
                 <p><u>Contact</u></p>
-                <p><a class="Phone">📞 Phone: (+84) 88888888</a></p>
-                <p><a class="Email">✉️ Email: internetcafe@gmail.com</a></p>
-                <p><a class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</a></p>
+                <p class="Phone">📞 Phone: (+84) 88888888</p>
+                <p class="Email">✉️ Email: internetcafe@gmail.com</p>
+                <p class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</p>
             </div>
             <div class="Support">
                 <p><u>Support</u></p>
-                <p><a class="Feedback">Feedback</a></p>
-                <p><a class="PrivacyPolicy">Privacy Policy</a></p>
+                <p class="Feedback">Feedback</p>
+                <p class="PrivacyPolicy">Privacy Policy</p>
             </div>
             <div class="Acc">
                 <p><u>Account</u></p>
-                <p><a class="MyAccount">My account</a></p>
-                <p><a class="ViewAllOrders">View all orders</a></p>
+                <p class="MyAccount">My account</p>
+                <p class="ViewAllOrders">View all orders</p>
             </div>
         </div>
         <script>

@@ -12,8 +12,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="booking.css">
         <link rel="stylesheet" type="text/css" href="headerfooter.css">
+        <style>
+            .fade {
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+
+            .fade.show {
+                opacity: 1;
+            }
+        </style>
         <title>Booking</title>
     </head>
     <body class="Bookingpage">
@@ -35,6 +48,8 @@
                     }
                }
             }
+            
+            String title = "";
         %>
         <img class="Bgr" src="image/Booking-bgr.png"/>
         <div class="headerbox">
@@ -42,13 +57,12 @@
             <div class="Header">
                 <nav>
                     <ul>
-                        <li><a href="Homepage.jsp" class="Home">HOME</a></li>
-                        <li><a href="AboutUspage.jsp" class="About">ABOUT</a></li>
-                        <li><a href="Specspage.jsp" class="Specs">SPECS</a></li>
-                        <li><a href="Gamespage.jsp" class="Games">GAMES</a></li>
-                        <li><a href="Menupage.jsp" class="Menu">MENU</a></li>
-                        <li><a href="Bookingpage.jsp" class="Booking">BOOKING</a></li>
-                        <li><a href="Accountpage.jsp" class="Account">ACCOUNT</a></li>
+                        <li><a href="Homepage.jsp">HOME</a></li>
+                        <li><a href="AboutUspage.jsp">ABOUT</a></li>
+                        <li><a href="Specspage.jsp">SPECS</a></li>
+                        <li><a href="Menupage.jsp">MENU</a></li>
+                        <li><a href="Bookingpage.jsp">BOOKING</a></li>
+                        <li><a href="Accountpage.jsp">ACCOUNT</a></li>
                     </ul>
                 </nav>
             </div>
@@ -69,9 +83,9 @@
                     <div class="Rect">
                         <div class="content">
                             <div class="butts">
-                                <button class="but" id="but1" onclick="show(event, 'infor', 'normal', 'but1')">Normal</button>
-                                <button class="but" id="but2" onclick="show(event, 'infor', 'vip', 'but2')">VIP</button>
-                                <button class="but" id="but3" onclick="show(event, 'infor', 'gaming', 'but3')">Gaming</button>
+                                <button class="but" id="but1" onclick="show(event, 'normal', 'but1')">Normal</button>
+                                <button class="but" id="but2" onclick="show(event, 'vip', 'but2')">VIP</button>
+                                <button class="but" id="but3" onclick="show(event, 'gaming', 'but3')">Gaming</button>
                             </div>
                             <div class="infor normal">
 <!--                                <div class="area">Normal Area</div>-->
@@ -137,12 +151,11 @@
                                     </tr>
                                 </table>
                                 <div class="contain-button">
-                                    <button type="submit" name="check">Check</button>  
+                                    <button type="submit" name="check">Check</button>
                                 </div>                               
                             </div>
                         </div>
                     </div>
-                    
                 </div>
                 <%
                     if(request.getParameter("check") != null){
@@ -152,14 +165,19 @@
                         String quantity = request.getParameter("quantity");
                         String type = request.getParameter("type");
 
-                        String title = "Please choose the area!";
-                        String title2 = "Out of computer!";
                         if( date == null || date.trim().isEmpty() ||
                             sTime == null || sTime.trim().isEmpty() ||
                             eTime == null || eTime.trim().isEmpty() ||
                             quantity == null || quantity.trim().isEmpty() ||
                             type.equals("none")){
-                            out.print("<font color =  \"#FF00FF\" align=\"right\">" + title + "</font>");
+                            title = "Please choose area!";
+                        %>
+                        <script>
+                            $(document).ready(function(){
+                                $('#exampleModal').modal('show');
+                            });
+                        </script>
+                        <%
                         }
                         else{
                             int quant = Integer.parseInt(quantity);
@@ -180,9 +198,23 @@
                                 }
                             }
                             if(available.isEmpty()){  
-                                out.print("<font color =  \"#FF00FF\" align=\"right\">" + title2 + "</font>");
+                                title = "Out of computer!";
+                            %>
+                            <script>
+                                $(document).ready(function(){
+                                $('#exampleModal').modal('show');
+                            });
+                            </script>
+                            <%
                             }else if(available.size() < quant){
-                                out.print("<font color =  \"#FF00FF\" align=\"right\">Only "+available.size()+ " computers left</font>");
+                                title = "Only " + available.size() + " computer left";
+                            %>
+                            <script>
+                                $(document).ready(function(){
+                                $('#exampleModal').modal('show');
+                            });
+                            </script>
+                            <%
                             }else{
                                 session.setAttribute("available", available);
                                 session.setAttribute("date", date);
@@ -287,9 +319,15 @@
                                 }
                             }
                         }
-                        String title = "Please choose the quantity!";
                         if(empty){
-                            out.print("<font color =  \"#FF00FF\" align=\"right\">" + title + "</font>");
+                            title = "Please choose the quantity!";
+                            %>
+                            <script>
+                                $(document).ready(function(){
+                                $('#exampleModal').modal('show');
+                            });
+                            </script>
+                            <%
                         }
                         else{
                             dataExecute.bookingData.InsertOrder(cid);
@@ -316,31 +354,55 @@
                             comp = String.join(", ", available);
                             stage = 1;
                         }
-                    }if(stage == 1){
-                         response.sendRedirect("Orderpage.jsp?Sid=" + sid + "&comp=" +comp);
+                        System.out.println("\n" + stage + "\t" + empty);
                     }
-                %>            
-
+                    System.out.println("\n" + stage);
+                    if(stage == 1){
+                        String redirectURL = "Orderpage.jsp?Sid=" + sid + "&comp=" + comp;
+                     %>
+                        <script>
+                                window.location.href = "<%=redirectURL%>";
+                        </script>                  
+                    <%
+                        }
+                    %>
                 </div>               
             </div>
         </form>
-
+        <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                    <div class="modal-body">
+                      <%=title%>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="Footer">
             <div class="Contact">
                 <p><u>Contact</u></p>
-                <p><a class="Phone">📞 Phone: (+84) 88888888</a></p>
-                <p><a class="Email">✉️ Email: internetcafe@gmail.com</a></p>
-                <p><a class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</a></p>
+                <p class="Phone">📞 Phone: (+84) 88888888</p>
+                <p class="Email">✉️ Email: internetcafe@gmail.com</p>
+                <p class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</p>
             </div>
             <div class="Support">
                 <p><u>Support</u></p>
-                <p><a class="Feedback">Feedback</a></p>
-                <p><a class="PrivacyPolicy">Privacy Policy</a></p>
+                <p class="Feedback">Feedback</p>
+                <p class="PrivacyPolicy">Privacy Policy</p>
             </div>
             <div class="Acc">
                 <p><u>Account</u></p>
-                <p><a class="MyAccount">My account</a></p>
-                <p><a class="ViewAllOrders">View all orders</a></p>
+                <p class="MyAccount">My account</p>
+                <p class="ViewAllOrders">View all orders</p>
             </div>
         </div> 
         <script>
@@ -352,16 +414,16 @@
                     document.body.classList.remove('scrolled');
                 }
             });
-            function show(event, classname, classname1, id){
+            function show(event, classname, id){
                 event.preventDefault();
-                var elements = document.getElementsByClassName(classname);
+                var elements = document.getElementsByClassName('infor');
                 var element = document.getElementsByClassName('but');
                 for (var i = 0; i < elements.length; i++) {
                     elements[i].style.visibility = 'hidden';
                     element[i].style.fontWeight = 'normal';
                     element[i].style.color = '#999';
                 }
-                var elements = document.getElementsByClassName(classname1);
+                var elements = document.getElementsByClassName(classname);
                 for (var i = 0; i < elements.length; i++) {
                     elements[i].style.visibility = 'visible';
                 }

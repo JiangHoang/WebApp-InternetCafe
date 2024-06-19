@@ -41,7 +41,6 @@
                 </div>
                 <div class="bold size-bigger">INVOICE</div>
             </div>
-            <!-- m chi dc sua o bill info + order info -->
             
             <div class="bill-info">
                 <div class="account">
@@ -50,14 +49,14 @@
                     <label><%=phone%></label>
                 </div>
                 <%
-                    ResultSet res = dataExecute.orderData.SelectBill(Bid);
-                    while(res.next()){
-                        Bid = res.getString("Bill_ID");
-                        Sid = res.getString("Service_ID");
-                        String date = res.getString("Bill_Date");
-                        String time = res.getString("Bill_Time");
-                        total = res.getString("Total_Price");
-                        Cpid = res.getString("Coupon_ID");                        
+                    ResultSet res1 = dataExecute.orderData.SelectBill(Bid);
+                    while(res1.next()){
+                        Bid = res1.getString("Bill_ID");
+                        Sid = res1.getString("Service_ID");
+                        String date = res1.getString("Bill_Date");
+                        String time = res1.getString("Bill_Time");
+                        total = res1.getString("Total_Price");
+                        Cpid = res1.getString("Coupon_ID");                        
                 %>
                 <div class="bill-id">
                     <label>Bill No.<%=Bid%></label>
@@ -75,14 +74,13 @@
                         <th class="total-col">Total</th>
                     </tr>
                     
-                    <!--xuất item ở đây-->
                     <%
-                        res = dataExecute.orderData.SelectOrdComp(Sid);
-                        while(res.next()){
-                            String type = res.getString("Type");
-                            String price = res.getString("Price");
-                            String p_hr = res.getString("Price_Per_Hour");
-                            String quant = res.getString("Quantity");
+                        res1 = dataExecute.orderData.SelectOrdComp(Sid);
+                        while(res1.next()){
+                            String type = res1.getString("Type");
+                            String price = res1.getString("Price");
+                            String p_hr = res1.getString("Price_Per_Hour");
+                            String quant = res1.getString("Quantity");
                     %>
                     <tr>
                         <td class="item-col"><%=type%></td>
@@ -92,12 +90,12 @@
                     </tr>
                     <%  }%>
                     <%
-                        res = dataExecute.orderData.SelectOrdMenu(Sid);
-                        while(res.next()){
-                            String name = res.getString("Name");
-                            String price = res.getString("Price");
-                            String cost = res.getString("Cost");
-                            String quant = res.getString("Quantity");
+                        res1 = dataExecute.orderData.SelectOrdMenu(Sid);
+                        while(res1.next()){
+                            String name = res1.getString("Name");
+                            String price = res1.getString("Price");
+                            String cost = res1.getString("Cost");
+                            String quant = res1.getString("Quantity");
                     %>
                     <tr>
                         <td class="item-col"><%=name%></td>
@@ -106,11 +104,10 @@
                         <td>$<%=price%></td>
                     </tr>
                     <%  }%>
-                    <!-- chỉ trong này thôi -->
                     <%
-                        res = dataExecute.orderData.SelectTotal(Sid);
-                        while(res.next()){
-                            String sTotal = res.getString("Total");
+                        res1 = dataExecute.orderData.SelectTotal(Sid);
+                        while(res1.next()){
+                            String sTotal = res1.getString("Total");
                     %>
                         <tr>
                             <td class="item-col bold">Subtotal</td>
@@ -120,9 +117,9 @@
                         </tr>
                     <%  }%>
                     <%
-                        res = dataExecute.orderData.SelectDiscount(Cpid);
-                        while(res.next()){
-                            String dc = res.getString("Discount");
+                        res1 = dataExecute.orderData.SelectDiscount(Cpid);
+                        while(res1.next()){
+                            String dc = res1.getString("Discount");
                     %>
                     <tr>
                         <td class="item-col bold">Discount</td>
