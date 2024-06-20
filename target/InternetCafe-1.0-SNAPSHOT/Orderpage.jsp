@@ -39,7 +39,7 @@
                 }
         %>
         <div class="headerbox">
-            <a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"/></a>
+            <a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"></a>
             <div class="Header">
                 <nav>
                     <ul>
@@ -49,6 +49,7 @@
                         <li><a href="Menupage.jsp">MENU</a></li>
                         <li><a href="Bookingpage.jsp">BOOKING</a></li>
                         <li><a href="Accountpage.jsp">ACCOUNT</a></li>
+                        <li><a href="Login.jsp"><svg xmlns="http://www.w3.org/2000/svg" height="4vh" viewBox="0 -850 960 960" width="4vh" fill="#fff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></a></li>
                     </ul>
                 </nav>
             </div>
@@ -95,11 +96,16 @@
                         </table>   
                     </div>
                     <div class="agree">
-                        <input type="checkbox">
+                        <input type="checkbox" required>
                         <label>I agree with Terms & Conditions</label>
                     </div>
-                    <button class="btn finishorder" name="finishorder" type="submit" id="finishorder">Submit</button>
-
+                    <div class="contain-butts">
+                        <div style="position: relative; width: 50%; top: -1.5vh;">
+                            <label style="font-weight: 200; margin-bottom: 0; font-size: 2vh;">If you want to add more, click back!</label><br>
+                            <button onclick="window.href.back()" style="font-size: 4vh; background-color: transparent; border: none; color: white; padding: 0; margin: 0; height: 2vh; position: absolute; width: fit-content; top: 30%; outline: none;">←</button>
+                        </div>
+                        <button class="btn finishorder" name="finishorder" type="submit" id="finishorder">Submit</button>
+                    </div>
                 </div>
                 <div class="items-ordered">
                     <div class="title1">

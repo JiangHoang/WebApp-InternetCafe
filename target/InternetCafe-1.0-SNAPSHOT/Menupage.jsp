@@ -17,7 +17,7 @@
     </head>
     <body class="Menupage">
         <div class="headerbox">
-            <a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"/></a>
+            <a href="Homepage.jsp"><img class ="Logo" src="image/logo.png"></a>
             <div class="Header">
                 <nav>
                     <ul>
@@ -27,6 +27,7 @@
                         <li><a href="Menupage.jsp">MENU</a></li>
                         <li><a href="Bookingpage.jsp">BOOKING</a></li>
                         <li><a href="Accountpage.jsp">ACCOUNT</a></li>
+                        <a href="Login.jsp" class="log"><svg xmlns="http://www.w3.org/2000/svg" height="4.3vh" viewBox="-10 -1010 960 960" width="4.3vh" fill="#fff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></a>
                     </ul>
                 </nav>
             </div>

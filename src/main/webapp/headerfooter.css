@@ -10,7 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .headerbox{
     display: block;
     width: 100%; 
-    height: 12%; 
+    height: 12vh; 
     position: fixed;
     z-index: 100;
     margin: 0;
@@ -25,13 +25,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         float: left;
         z-index: 1000;
     }
+    .log{
+        border: none;
+        width: 5vh;
+        height: 5vh;
+        display: block;
+        position: fixed;
+        z-index: 1000;
+        right: 10vw;
+        top: 3.8vh;
+    }
     nav ul{
         display: block;
         text-align: center;
         background: transparent;
         opacity: 0.8;
-        margin-top: 0;
         width: 100%;
+        padding: 0;
     }
     nav ul li{
         display:inline-block;
