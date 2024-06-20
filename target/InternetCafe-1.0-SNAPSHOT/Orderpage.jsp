@@ -150,13 +150,13 @@
                                     total = Double.parseDouble(res.getString("Total"));
                                 }
                                 String coupon = "";
-                                if(request.getParameter("addcoupon") != null){
+                                if(request.getParameter("addcoupon") != null || request.getParameter("finishorder") != null){
                                     res = dataExecute.orderData.SelectCoupon();
                                     String discount ="";
                                     while(res.next()){
                                         coupon = res.getString("Coupon_ID");
                                         discount = res.getString("Discount");
-                                        if(coupon.equals(request.getParameter("couponid"))){
+                                        if(coupon.equals(request.getParameter("couponid")) || coupon.equals(request.getParameter("cpid"))){
                                             valid = true;
                                             break;
                                         }
