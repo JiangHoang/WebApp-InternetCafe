@@ -24,7 +24,6 @@
                         <li><a href="Homepage.jsp">HOME</a></li>
                         <li><a href="AboutUspage.jsp">ABOUT</a></li>
                         <li><a href="Specspage.jsp">SPECS</a></li>
-                        <li><a href="Gamespage.jsp">GAMES</a></li>
                         <li><a href="Menupage.jsp">MENU</a></li>
                         <li><a href="Bookingpage.jsp">BOOKING</a></li>
                         <li><a href="Accountpage.jsp">ACCOUNT</a></li>

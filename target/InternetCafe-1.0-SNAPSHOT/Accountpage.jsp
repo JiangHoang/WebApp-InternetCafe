@@ -11,6 +11,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="account.css">
         <link rel="stylesheet" type="text/css" href="headerfooter.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -54,13 +57,12 @@
             <div class="Header">
                 <nav>
                     <ul>
-                        <li><a href="Homepage.jsp" class="Home">HOME</a></li>
-                        <li><a href="AboutUspage.jsp" class="About">ABOUT</a></li>
-                        <li><a href="Specspage.jsp" class="Specs">SPECS</a></li>
-                        <li><a href="Gamespage.jsp" class="Games">GAMES</a></li>
-                        <li><a href="Menupage.jsp" class="Menu">MENU</a></li>
-                        <li><a href="Bookingpage.jsp" class="Booking">BOOKING</a></li>
-                        <li><a href="Accountpage.jsp" class="Account">ACCOUNT</a></li>
+                        <li><a href="Homepage.jsp">HOME</a></li>
+                        <li><a href="AboutUspage.jsp">ABOUT</a></li>
+                        <li><a href="Specspage.jsp">SPECS</a></li>
+                        <li><a href="Menupage.jsp">MENU</a></li>
+                        <li><a href="Bookingpage.jsp">BOOKING</a></li>
+                        <li><a href="Accountpage.jsp">ACCOUNT</a></li>
                     </ul>
                 </nav>
             </div>
@@ -75,7 +77,7 @@
                 </div>
                 <div class="info">
                     <div class="circle">
-                        
+                        <img class="avatar" src="image/kyobigames.png"/>
                     </div>
                     <label><%=acc%></label>
                 </div>
@@ -300,8 +302,9 @@
             if(!message.isEmpty()){
         %>
             <script>
-                alert("<%= message %>");
-                window.history.back();
+                $(document).ready(function(){
+                    $('#errorModal').modal('show');
+                });
             </script>
         <%  }
             else if(valid)
@@ -494,22 +497,37 @@
                     }%>
             </div>
         </div>
+        <div class="modal" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <label class="modal-title" id="errorModalLabel" style="font-weight: bold">Announce</label>
+                    </div>
+                    <div class="modal-body">
+                        <%=message%>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="Footer">
             <div class="Contact">
                 <p><u>Contact</u></p>
-                <p><a class="Phone">📞 Phone: (+84) 88888888</a></p>
-                <p><a class="Email">✉️ Email: internetcafe@gmail.com</a></p>
-                <p><a class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</a></p>
+                <p class="Phone">📞 Phone: (+84) 88888888</p>
+                <p class="Email">✉️ Email: internetcafe@gmail.com</p>
+                <p class="Office">📍 Office: 123 Street 2, Direct 2, Ho Chi Minh City, VietNam</p>
             </div>
             <div class="Support">
                 <p><u>Support</u></p>
-                <p><a class="Feedback">Feedback</a></p>
-                <p><a class="PrivacyPolicy">Privacy Policy</a></p>
+                <p class="Feedback">Feedback</p>
+                <p class="PrivacyPolicy">Privacy Policy</p>
             </div>
             <div class="Acc">
                 <p><u>Account</u></p>
-                <p><a class="MyAccount">My account</a></p>
-                <p><a class="ViewAllOrders">View all orders</a></p>
+                <p class="MyAccount">My account</p>
+                <p class="ViewAllOrders">View all orders</p>
             </div>
         </div>
         <script>
@@ -585,7 +603,6 @@
                     select.style.display = 'block'; 
                 });
             }
-
         </script>
     </body>
 </html>

@@ -1,32 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
 
-.Rect{
-    width: 80%; 
-    height: 80%; 
-    left: 10%;
-    top: 10%; 
-    position: absolute; 
-    background: white; 
-    box-shadow: 0px 4px 4px #460259;
-    font-family: 'Outfit', sans-serif;
-    word-wrap: break-word;
-    border-radius: 4px;
-}
-.title{
-    display: block;
-    width: 40%;
-    height: 50%;
-    position: absolute;
-    font-family: 'Outfit', sans-serif;
-    top: 25%;
-    left: 5%;
-}
-.title div{
-    display: block;
-    font-family: 'Outfit', sans-serif;
-    margin: 0 0;
-}
-
 body{
     margin: 0;
     width: 100%; 
@@ -36,92 +9,154 @@ body{
     top: 0;
     background: #1E0126;
 }
-    
-.hi{
-    color: #1E0126; 
-    font-size: 5vw; 
-    font-weight: 700; 
-}
-.intro{
-    color: #460259; 
-    font-size: 1.5vw; 
-    font-weight: 500; 
-}
-.Group1{
-    display: block;
-    position: absolute;
-    width: 50%; 
-    height: 100%;
-    left: 50%;
-}
-.reg{
+.contain{
+    width: 80%; 
+    height: 80%;
+    margin: 5% 10%;
+    box-shadow: 0px 4px 4px #460259;
+    font-family: 'Outfit', sans-serif;
     display: flex;
+    background-color: white;
     flex-direction: row;
-    justify-content: space-between;
-    font-size: 1.5vw; 
-    margin: 0 5%;
-    .accAct{
-        color: #460259; 
-        font-weight: 600;
+}
+.title{
+    display: flex;
+    flex-direction: column;
+    /*background-color: red;*/
+    width: 40%;
+    height: 60%;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+    margin: auto 5% auto 8%;
+    color: #1E0126;
+    label{
+        font-size: 5vw;
+        font-weight: 700;
     }
-    .accScript{
-        color: #757575; 
-        font-weight: 300;
+    p{
+        font-size: 1.5vw;
+        font-weight: 500;
     }
 }
-.form{
+
+.contain-form{
+    display: flex;
+    height: 80%;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    margin: 5% 5%;
+    form{
+        display: block;
+        width: 100%;
+        font-family: 'Outfit', sans-serif;
+        
+        input[type="text"], input[type="password"], input[type="tel"], input[type="email"]{
+            width: 80%;
+            height: 6vh;
+            border: none;
+            border-bottom: 1px solid #333;
+            margin: 2% 10%;
+            outline: none;
+            font-size: 2.5vh;
+            padding: 1.5%;
+            color: #1E0126;
+        }
+        .select{
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin: 2% 10%;
+            align-items: center;
+            label{
+                font-size: 2.5vh;
+            }
+        }
+        .select1{
+            width: 80%;
+            margin: 2% 10%;
+        }
+        input[type="checkbox"]{
+            width: 2vh;
+            height: 2vh;
+            border: 1px solid #333;
+            outline: none;
+        }
+        label a{
+            color: #1E0126;
+        }
+        .reg{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: 2.5vh; 
+            margin: 5% 10% 0 10%;
+            label{
+                color: #1E0126; 
+                font-weight: 600;
+            }
+            a{
+                color: #1E0126;
+                font-weight: 300;
+            }
+        }
+        button{
+            background-color: #1E0126;
+            border: none;
+            color: white;
+            font-weight: 500;
+            font-size: 1.6vw; 
+            width: 80%;
+            margin: auto 10%;
+        }
+    }
+}
+.container{
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 80%;
-    width: 80%;
-    margin: 0 5%;
+    align-items: center;
 }
-.Login .form{
-    margin-top: 8%;
-}   
-.Register .form{
-    margin-top: 10%;
-}
-.form div{
-    width: auto;
-    height: 10%;
-    font-size: 1.4vw; 
-    color: #460259; 
-    font-family: 'Outfit', sans-serif; 
-    font-weight: 600;
-    margin: 2% 0;
-
-}
-.form div input{
-    width:98%;
-    height: 100%;
-    border: 1px solid #460259;
-    border-radius: 4px;
-}
-.select{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-button{
-    width:100%;
-    height: 100%;
-    background-color: #1E0126;
-    border: 2px solid #460259;
-    border-radius: 4px;
-    color: white;
-    font-weight: 500;
-    font-size: 1.6vw; 
+.title1{
     font-family: 'Outfit', sans-serif;
+    display: flex;
+    width: 80%;
+    height: 40%;
+    flex-direction: column;
+    align-items: center;
+    label{
+        font-size: 5vw;
+        font-weight: 700;
+    }
+    p{
+        font-size: 1.5vw;
+        font-weight: 500;
+    }
 }
-.checkbox{
-    height:auto;
-    margin: 2% 0; 
-}
-.policy{
-    height: auto;
-    margin: 0 0;
-    color: #757575; 
-    font-weight: 500;
+.contain-email{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    input{
+        width: 50%;
+        height: 5vh;
+        margin-bottom: 3%;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #333;
+    }
+    button{
+        width: 30%;
+        height: 5vh;
+        background-color: #1E0126;
+        border: none;
+        color: white;
+        font-weight: 500;
+        font-size: 1.3vw; 
+    }
 }

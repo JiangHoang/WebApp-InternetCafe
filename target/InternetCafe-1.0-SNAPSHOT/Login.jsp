@@ -17,16 +17,21 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body class="Login">
-        <div class="Rect">
-            <div class="Group1">
+        <div class="contain">
+            <div class="title">
+                <label class="hi">Hi!<br/>Welcome</label>
+                <p class="introd">I'm waiting for you, please enter your detail</p>
+            </div>
+            <div class="contain-form">
                 <form>
-                    <div><input type="text" name="username" required class="username" placeholder="Account"><br></div>
-                    <div><input type="password" name="password" required class="password" placeholder="Password"><br></div>
+                    <input type="text" name="username" required class="username" placeholder="Account">
+                    <br>
+                    <input type="password" name="password" required class="password" placeholder="Password">
                     <div class="select">
-                        <label class="checkbox"><input type="checkbox" style="width: 14px; height: 14px">Remember me</label>
-                        <label class="ForgotPassword">Forgot Password?</label>
+                        <label class="checkbox"><input type="checkbox"> Remember me</label>
+                        <label class="ForgotPassword"><a href="Forgotpassword.jsp">Forgot Password?</a></label>
                     </div>
-                    <div><button type="submit" name="login" value="Login" id="login">Log In</button></div>
+                    <button type="submit" name="login" value="Login" id="login">Log In</button>
                     <%
                         int valid = 0;
                         if(request.getParameter("login") != null){ 
@@ -74,18 +79,14 @@
                         }
                     %>
                     <div class ="reg">
-                        <div class="accScript">Don’t have an account?</div>
+                        <label>Don’t have an account?</label>
                         <div><a href="Register.jsp" class="accAct">Register Now</a></div>
                     </div>
                 </form>
             </div>
-            <div class="title">
-                <div class="hi">Hi!<br/>Welcome</div>
-                <div class="introd">I'm waiting for you, please enter your detail</div>
-            </div>
         </div>
         <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <label class="modal-title" id="errorModalLabel" style="font-weight: bold">Announce</label>

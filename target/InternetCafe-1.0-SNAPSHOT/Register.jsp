@@ -17,20 +17,21 @@
         <title>Register Page</title>
     </head>
     <body class="Register">
-        <div class="Rect">
+        <div class="contain">
             <div class="title">
-                <div class="hi">Let’s register account</div>
-                <div class="intro">To keep connected with us please login with your personal info</div>
+                <label class="hi">Let’s register account</label>
+                <p class="intro">To keep connected with us please login with your personal info</p>
             </div>
-            <div class="Group1">
+            <div class="contain-form">
                 <form action="Register.jsp" method="post" id="formm">
-                    <div><input type="text" id="username" name="username" required class="check" placeholder="Account" value="<%= request.getParameter("username") != null ? request.getParameter("username") : "" %>"/></div>
-                    <div><input type="email" id="email" name="email" required class="email" placeholder="Email" value="<%= request.getParameter("email") != null ? request.getParameter("email") : "" %>"/></div>
-                    <div><input type="tel" id="phone" name="phone" required class="phone" placeholder="Phone Number" value="<%= request.getParameter("phone") != null ? request.getParameter("phone") : "" %>"/></div>
-                    <div><input type="password" id="pass" name="pass" required class="pass" placeholder="Password" /></div>
-                    <div><input type="password" name="cfpass" required class="check" placeholder="Confirm Password"/></div>
-                    <div class="checkbox"><input type="checkbox" style="width: 14px; height: 14px">Remember me</div>
-                    <div class="policy">By clicking register button you agree to our terms and conditions and privacy and policy.</div>
+                    <input type="text" id="username" name="username" required class="check" placeholder="Account" value="<%= request.getParameter("username") != null ? request.getParameter("username") : "" %>"/>
+                    <input type="email" id="email" name="email" required class="email" placeholder="Email" value="<%= request.getParameter("email") != null ? request.getParameter("email") : "" %>"/>
+                    <input type="tel" id="phone" name="phone" required class="phone" placeholder="Phone Number" value="<%= request.getParameter("phone") != null ? request.getParameter("phone") : "" %>"/>
+                    <input type="password" id="pass" name="pass" required class="pass" placeholder="Password" />
+                    <input type="password" name="cfpass" required class="check" placeholder="Confirm Password"/>
+                    <div class = "select1">
+                        <div class="policy">By clicking register button you agree to our terms and conditions and privacy and policy.</div>    
+                    </div>
                     <div><button name="regist" value="register">Register</button></div>
 
                     <%
@@ -83,7 +84,7 @@
                         } 
                     %>
                     <div class="reg">
-                        <div class="accScript">Already have an account?</div>
+                        <label class="accScript">Already have an account?</label>
                         <div><a href="Login.jsp" class="accAct">Login</a></div>
                     </div>
                 </form>
