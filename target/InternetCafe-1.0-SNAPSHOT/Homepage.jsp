@@ -33,6 +33,13 @@
                     }
                }
             }
+            String namefb = request.getParameter("name");
+            String desdfb = request.getParameter("description");
+            String ratefb = request.getParameter("starRating");
+
+            if (namefb != null && desdfb != null && ratefb != null) {
+                dataExecute.feedbackData.insertFeedback(namefb, desdfb, ratefb, cid);
+            }
         %>
         <img class="Bgr" src="image/homepage-bgr.png"/>
         <div class="headerbox">
@@ -258,9 +265,6 @@
                         $('#feedbackModal').modal('show');
 
                         $('#confirmSubmit').click(function() {
-                            <%
-                                dataExecute.feedbackData.insertFeedback(Description, Name, Rate, cid);
-                            %>
                             $('#feedbackForm').append('<input type="hidden" name="feedback" value="true">');
                             $('#feedbackForm').submit();
                         });
