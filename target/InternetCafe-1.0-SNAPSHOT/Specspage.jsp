@@ -36,7 +36,7 @@
             <label class="title">Specs</label>
             <div class="contain gaming">
                 <div class="tit">
-                    <label class="big">Gaming Area</label><br>
+                    <label class="big">Gaming Area</label>
                     <label class="small">Price: $10/hour</label>
                     <p>Step into the ultimate gaming paradise with our Gaming Level, tailored specifically for gamers and eSports enthusiasts. Our setup includes top-tier gaming PCs, high-end gaming chairs, and professional-grade peripherals, all designed to offer an immersive gaming experience. Enjoy ultra-fast internet, access to a vast library of popular games, and participate in exciting tournaments. Competitive hourly rates and special group packages make this the go-to destination for serious gamers seeking top performance and thrilling gameplay.</p>
                 </div>

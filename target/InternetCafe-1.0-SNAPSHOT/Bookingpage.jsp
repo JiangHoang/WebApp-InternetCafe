@@ -50,6 +50,9 @@
             }
             
             String title = "";
+            
+            if("true".equals(request.getParameter("cancel")))
+                dataExecute.bookingData.DeleteOrder(request.getParameter("Sid"));
         %>
         <img class="Bgr" src="image/Booking-bgr.png"/>
         <div class="headerbox">
@@ -326,6 +329,9 @@
                             <script>
                                 $(document).ready(function(){
                                 $('#exampleModal').modal('show');
+                                $('#exampleModal').on('hide.bs.modal', function () {
+                                    window.history.back()
+                                });
                             });
                             </script>
                             <%
@@ -360,7 +366,7 @@
                     System.out.println("\n" + stage);
                     if(stage == 1){
                         String redirectURL = "Orderpage.jsp?Sid=" + sid + "&comp=" + comp;
-                     %>
+                    %>
                         <script>
                                 window.location.href = "<%=redirectURL%>";
                         </script>                  
@@ -383,7 +389,7 @@
                       <%=title%>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.history.back()">Close</button>
                     </div>
                 </div>
             </div>

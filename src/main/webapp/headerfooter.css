@@ -32,16 +32,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         display: block;
         position: fixed;
         z-index: 1000;
-        right: 10vw;
-        top: 3.8vh;
+        right: 3.5vw;
+        top: 3.2vh;
     }
     nav ul{
         display: block;
         text-align: center;
         background: transparent;
-        opacity: 0.8;
-        width: 100%;
+        opacity: 0.9;
+        width: 90%;
         padding: 0;
+        margin: 0;
     }
     nav ul li{
         display:inline-block;

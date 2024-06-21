@@ -58,7 +58,7 @@
             <div class="title">
                 <label>Order Information</label>
             </div>
-            <form action="Orderpage.jsp" class="info" method="post">
+            <form action="Orderpage.jsp" class="info" method="post" >
                 <%
                     String comp = request.getParameter("comp");
                     String Sid = request.getParameter("Sid");
@@ -95,16 +95,31 @@
                             </tr>
                         </table>   
                     </div>
+                    <script>
+                        function validateForm() {
+                            var checkbox = document.getElementById('agree');
+                            if (!checkbox.checked) {
+                                alert('Please agree to Terms & Conditions.');
+                                event.preventDefault(); 
+                                return false;
+                            }
+                            else
+                                return true; 
+                        }
+                    </script>
                     <div class="agree">
-                        <input type="checkbox" required>
+                        <input type="checkbox" id ="agree">
                         <label>I agree with Terms & Conditions</label>
                     </div>
                     <div class="contain-butts">
-                        <div style="position: relative; width: 50%; top: -1.5vh;">
-                            <label style="font-weight: 200; margin-bottom: 0; font-size: 2vh;">If you want to add more, click back!</label><br>
-                            <button onclick="window.href.back()" style="font-size: 4vh; background-color: transparent; border: none; color: white; padding: 0; margin: 0; height: 2vh; position: absolute; width: fit-content; top: 30%; outline: none;">←</button>
-                        </div>
-                        <button class="btn finishorder" name="finishorder" type="submit" id="finishorder">Submit</button>
+                        <button class="finishorder" name="finishorder" type="submit" id="finishorder" onclick="validateForm()">Submit</button>
+                        <button class="cancel" name="cancel" type="submit" id="cancel" onclick="goToBookingPage()">Cancel</button>
+                    <script>
+                        function goToBookingPage() {
+                            var Sid = "<%= request.getParameter("Sid") %>";
+                            window.location.href = 'Bookingpage.jsp?Sid=' + encodeURIComponent(Sid) + '&cancel=true';
+                        }
+                    </script>
                     </div>
                 </div>
                 <div class="items-ordered">
@@ -240,7 +255,7 @@
                 <div class="modal-content" style="width: 100%">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight: 700;">Your Bill</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="window.location.href='Homepage.jsp';">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="window.location.href='Bookingpage.jsp';">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>

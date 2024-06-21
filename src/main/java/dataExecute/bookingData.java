@@ -85,4 +85,14 @@ public class bookingData {
         String sql = "SELECT Service_ID FROM Service WHERE Customer_ID = '"+Cid+"'";
         return Connect.ExecuteQuery(sql);
     }
+    
+    public static void DeleteOrder(String Sid){
+        String sql = "DELETE FROM Service_Computer \n" +
+                     "WHERE Service_ID = '"+Sid+"';\n" +
+                     "DELETE FROM Service_Menu \n" +
+                     "WHERE Service_ID = '"+Sid+"';\n" +
+                     "DELETE FROM Service\n" +
+                     "WHERE Service_ID = '"+Sid+"';";
+        Connect.ExecuteUpdate(sql);
+    }
 }
