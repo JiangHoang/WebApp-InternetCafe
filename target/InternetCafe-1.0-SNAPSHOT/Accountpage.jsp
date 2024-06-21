@@ -308,8 +308,16 @@
                 });
             </script>
         <%  }
-            else if(valid)
-                response.sendRedirect("Accountpage.jsp");
+            else if(valid){
+                message = "Update sucessfully!";
+        %>
+            <script>
+                $(document).ready(function(){
+                    $('#errorModal').modal('show');
+                });
+            </script>
+        <%
+            }
         %>
         <div class="contain-ordered">
             <div class="title">
@@ -508,7 +516,7 @@
                         <%=message%>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='Accountpage.jsp'">Close</button>
                     </div>
                 </div>
             </div>

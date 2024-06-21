@@ -19,6 +19,10 @@ public class accountData {
                     "WHERE Customer_ID = '"+Cid+"'";
         return Connect.ExecuteQuery(sql);
     }
+    public static ResultSet SelectAccount(){
+        String sql = "SELECT * FROM Customer";
+        return Connect.ExecuteQuery(sql);
+    }
     public static void UpdateAcc(String Cid, String acc){
         String sql = "UPDATE Customer\n" +
                      "SET Account = '"+acc+"'\n" +
@@ -29,6 +33,12 @@ public class accountData {
         String sql = "UPDATE Customer\n" +
                      "SET Password = '"+pass+"'\n" +
                      "WHERE Customer_ID = '"+Cid+"'";
+        Connect.ExecuteUpdate(sql);
+    }
+    public static void RePass(String acc, String pass){
+        String sql = "UPDATE Customer\n" +
+                     "SET Password = '" + pass + "'\n" +
+                     "WHERE Account = '" + acc +"'";
         Connect.ExecuteUpdate(sql);
     }
     public static void UpdateEmail(String Cid, String email){
