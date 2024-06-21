@@ -113,7 +113,7 @@
                     </div>
                     <div class="contain-butts">
                         <button class="finishorder" name="finishorder" type="submit" id="finishorder" onclick="validateForm()">Submit</button>
-                        <button class="cancel" name="cancel" type="submit" id="cancel" onclick="goToBookingPage()">Cancel</button>
+                        <button class="cancel" name="cancel" type="button" id="cancel" onclick="goToBookingPage()">Cancel</button>
                     <script>
                         function goToBookingPage() {
                             var Sid = "<%= request.getParameter("Sid") %>";

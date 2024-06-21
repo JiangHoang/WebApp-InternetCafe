@@ -39,12 +39,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         width: 100%;
         align-items: center;
         flex-direction: column;
-        margin: 15% auto auto auto;
+        margin: 20% auto;
         .BookingIntro{
             width: 100%;
             position: relative;
             color: white; 
-            font-size: 12vh; 
+            font-size: 8.5vh; 
             font-family: 'Outfit', sans-serif; 
             font-weight: 700;
             text-align: center;
@@ -57,10 +57,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
             align-items: center;
             display: block;
             color: white; 
-            font-size: 3vh; 
+            font-size: 4vh; 
             font-family: 'Outfit', sans-serif; 
             font-weight: 400;
-            margin: 3% auto 3% auto;
+            margin: 2% auto;
         }
     }
 }
